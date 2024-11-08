@@ -1,56 +1,281 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
   <head>
-    <meta charset="utf-8" />
-    <title>Lucas Ferreira de Oliveira</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./assets/images/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/images/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/images/site.webmanifest" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/proprieties.css" />
+    <link rel="stylesheet" href="./assets/css/KeyFrames.css" />
+    <title>Portifólio - Lucas Oliveira</title>
   </head>
   <body>
-    <header>
-      <img src="pic1.jpg" alt="imagem" class="pic" />
-      <h1 id="title">Lucas Ferreira de Oliveira</h1>
-    </header>
-    <section>
+    <div class="container">
+      <div class="hamburguer" id="Close-menu">
+        <div class="line" id="line1"></div>
+        <div class="line" id="line2"></div>
+        <div class="line" id="line3"></div>
+        <span>Fechar</span>
+      </div>
+
       <header>
-        <h2 class="subtitle">Posts</h2>
+        <div class="img-wrapper">
+          <img src="./assets/images/backgroundimg.jpg" alt="" />
+        </div>
+        <div class="banner">
+          <h1 class="title-style">Lucas Ferreira de Oliveira</h1>
+          <p>
+            Desenvolvedor full-stack com mais de 3 anos de experiência
+            profissional atualmente trabalhando na Conceito Tecnologia. Minha
+            stack é ASP.NET 6/Core, Angular 10+ e SQL Server.
+          </p>
+          <a class="ButtonCustom" href="#conhecimentos" id="button-banner">
+            Saiba mais
+          </a>
+        </div>
       </header>
-      <article class="post">
-        <header>
-          <h3 class="post_title">Post #1</h3>
-          <img src="pic2.jpg" alt="imagem" class="post_image" />
-        </header>
-        <p class="post_content">
-          <a href="https://br.lipsum.com/" target="_blank">Lorem Ipsum</a> é
-          simplesmente uma simulação de texto da indústria tipográfica e de
-          impressos, e vem sendo utilizado desde o século XVI, quando um
-          impressor desconhecido pegou uma bandeja de tipos e os embaralhou para
-          fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a
-          cinco séculos, como também ao salto para a editoração eletrônica,
-          permanecendo essencialmente inalterado. Se popularizou na década de
-          60, quando a Letraset lançou decalques contendo passagens de Lorem
-          Ipsum, e mais recentemente quando passou a ser integrado a softwares
-          de editoração eletrônica como Aldus PageMaker.
-        </p>
-      </article>
-    </section>
-    <footer>
-      <ul class="contacts_list">
-        <li>
-          <a href="mailto:oliverlucasfer@gmail.com" target="_blank"
-            >oliverlucasfer@gmail.com</a
-          >
-        </li>
-        <li>
-          <a href="https://github.com/oliverlucasfer" target="_blank">GitHub</a>
-        </li>
-        <li>
+
+      <aside class="sidebar">
+        <nav>
+          <ul class="menu">
+            <li id="menu-1" class="menu-item">
+              <a id="Close-menu" href="#" class="menu-link">home</a>
+            </li>
+            <li id="menu-2" class="menu-item">
+              <a id="Close-menu" href="#conhecimentos" class="menu-link">
+                conhecimentos
+              </a>
+            </li>
+            <li id="menu-3" class="menu-item">
+              <a id="Close-menu" href="#projetos" class="menu-link">projetos</a>
+            </li>
+            <li id="menu-4" class="menu-item">
+              <a id="Close-menu" href="#contato" class="menu-link">contato</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="social-media">
           <a
-            href="https://www.linkedin.com/in/lucas-ferreira-de-oliveira-34295219b/"
+            id="social-1"
+            href="https://github.com/oliverlucasfer"
             target="_blank"
-            >Linkedin</a
           >
-        </li>
-      </ul>
-    </footer>
+            <i class="fab fa-github"></i>
+          </a>
+          <a
+            id="social-2"
+            href="https://www.linkedin.com/in/lucas-ferreira-de-oliveira-0975392a5/"
+            target="_blank"
+          >
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a
+            id="social-3"
+            href="mailto:oliverlucasfer@hotmail.com"
+            target="_blank"
+          >
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </aside>
+
+      <section class="sessao-conhecimentos">
+        <div class="sessao-header" id="conhecimentos">
+          <h1 class="title-style">Conhecimentos</h1>
+        </div>
+        <div class="conhecimentos">
+          <div class="conhecimento" data-anime="left">
+            <div class="conhecimento-header">
+              <i class="fa-brands fa-microsoft"></i>
+              <h3>C#/.Net</h3>
+            </div>
+            <div class="conhecimento-text">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum
+                quae eligendi molestiae corrupti.
+              </p>
+            </div>
+          </div>
+          <div class="conhecimento" data-anime="right">
+            <div class="conhecimento-header">
+              <i class="fab fa-css3-alt"></i>
+              <h3>Css</h3>
+            </div>
+            <div class="conhecimento-text">
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Corporis consectetur.
+              </p>
+            </div>
+          </div>
+          <div class="conhecimento" data-anime="left">
+            <div class="conhecimento-header">
+              <i class="fab fa-js"></i>
+              <h3>Javascript</h3>
+            </div>
+            <div class="conhecimento-text">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores
+                placeat non odit.
+              </p>
+            </div>
+          </div>
+          <div class="conhecimento" data-anime="right">
+            <div class="conhecimento-header">
+              <i class="fa-brands fa-angular"></i>
+              <h3>Angular 10+</h3>
+            </div>
+            <div class="conhecimento-text">
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum
+                unde itaque.
+              </p>
+            </div>
+          </div>
+          <div class="conhecimento" data-anime="left">
+            <div class="conhecimento-header">
+              <i class="fab fa-github"></i>
+              <h3>Git e Github</h3>
+            </div>
+            <div class="conhecimento-text">
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Debitis!
+              </p>
+            </div>
+          </div>
+          <div class="conhecimento" data-anime="right">
+            <div class="conhecimento-header">
+              <i class="fab fa-python"></i>
+              <h3>Python</h3>
+            </div>
+            <div class="conhecimento-text">
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Officiis
+              </p>
+            </div>
+          </div>
+          <div class="imagemFundo">
+            <i class="fa-solid fa-laptop-code"></i>
+          </div>
+        </div>
+      </section>
+      <section class="sessao-projetos" id="projetos">
+        <div class="projetos-header">
+          <h1>Projetos</h1>
+        </div>
+        <div class="cards">
+          <div class="card" data-anime="up">
+            <div class="card-img-wrapper">
+              <img src="./media/proj1.jpg" alt="" />
+            </div>
+            <div class="background">
+              <div class="card-info">
+                <h2>projeto1</h2>
+                <h3>HTML, CSS</h3>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea,
+                  doloremque maiores. Sequi quam, sit sapiente amet debitis.
+                </p>
+                <button class="ButtonSend">Saiba mais</button>
+              </div>
+            </div>
+          </div>
+          <div class="card" data-anime="up">
+            <div class="card-img-wrapper">
+              <img src="./media/proj2.jpg" alt="" />
+            </div>
+            <div class="background">
+              <div class="card-info">
+                <h2>projeto2</h2>
+                <h3>HTML, CSS</h3>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Consequuntur placeat necessitatibus.
+                </p>
+                <button class="ButtonSend">Saiba mais</button>
+              </div>
+            </div>
+          </div>
+          <div class="card" data-anime="up">
+            <div class="card-img-wrapper">
+              <img src="./media/proj3.jpg" alt="" />
+            </div>
+            <div class="background">
+              <div class="card-info">
+                <h2>projeto3</h2>
+                <h3>HTML, CSS</h3>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Officiis provident debitis.
+                </p>
+                <button class="ButtonSend">Saiba mais</button>
+              </div>
+            </div>
+          </div>
+          <div class="card" data-anime="up">
+            <div class="card-img-wrapper">
+              <img src="./media/proj4.jpg" alt="" />
+            </div>
+            <div class="background">
+              <div class="card-info">
+                <h2>projeto4</h2>
+                <h3>HTML, CSS</h3>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
+                  velit voluptatibus facilis eaque, nulla officia placeat.
+                </p>
+                <button class="ButtonSend">Saiba mais</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer>
+        <div class="footer--item">
+          <p>Desenvolvido por Lucas Oliveira</p>
+          <div>
+            <a
+              href="https://www.linkedin.com/in/lucas-ferreira-de-oliveira-0975392a5/"
+              target="_blank"
+            >
+              <img
+                src="https://img.shields.io/badge/-Lucas-blue?style=flat-square&logo=Linkedin&logoColor=white"
+              />
+            </a>
+            <a href="https://github.com/oliverlucasfer" target="_blank">
+              <img
+                src="https://img.shields.io/badge/-oliverlucasfer-gray?style=flat-square&logo=Github&logoColor=white"
+              />
+            </a>
+            <a href="mailto:oliverlucasfer@hotmail.com" target="_blank">
+              <img
+                src="https://img.shields.io/badge/-oliverlucasfer-gray?style=flat-square&logo=Github&logoColor=white"
+              />
+            </a>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="./script.js"></script>
   </body>
 </html>
