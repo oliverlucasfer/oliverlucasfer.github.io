@@ -137,7 +137,7 @@ header {
 
 .banner {
   position: absolute;
-  top: 20%;
+  top: 25%;
   left: 5%;
 }
 
@@ -271,14 +271,6 @@ header {
 
 .show-menu #menu-3 {
   animation: moveMenu 0.8s;
-}
-
-.show-menu #menu-4 {
-  animation: moveMenu 1s;
-}
-
-.show-menu #menu-5 {
-  animation: moveMenu 1.3s;
 }
 
 /* =======================redes sociais=========================== */
@@ -574,11 +566,14 @@ footer .button:hover {
 
 /* Media Queries */
 
-@media (max-width: 580px) {
+@media (max-width: 900px) {
   .banner {
     position: absolute;
-    top: 5%;
-    left: 5%;
+    top: 10%;
+    left: 0%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .banner h1 {
@@ -588,10 +583,12 @@ footer .button:hover {
     font-weight: 300;
     text-transform: uppercase;
     text-shadow: 0.3rem 0.4rem 2px rgba(0, 0, 0, 0.404);
+    text-align: center;
     line-height: 3rem;
     opacity: 0;
     animation: moveBanner 0.5s forwards;
     padding-bottom: 1rem;
+    max-width: 90%;
   }
 
   .banner p {
@@ -599,34 +596,16 @@ footer .button:hover {
     font-size: 1.5rem;
     color: white;
     text-shadow: 0.3rem 0.4rem 2px rgba(0, 0, 0, 0.404);
+    text-align: center;
     line-height: 3rem;
     margin-bottom: 2rem;
     animation: moveBanner 0.7s forwards;
-    max-width: 85%;
+    max-width: 90%;
   }
 
-  .field {
-    background: transparent;
-    border: none;
-    border-bottom: 2px dashed grey;
-    width: 10rem;
-    font-size: 1rem;
-    font-family: var(--font-tertiary);
-    outline: none;
-    margin: 2rem;
-  }
-
-  .contact-left {
-    display: none;
-  }
-
-  .contact-right {
-    position: relative;
-    transform: translateX(-4%);
-
-    background-color: #eee;
-    padding: 1rem 3rem 3rem 3rem;
-    border-radius: inherit;
+  .banner #button-banner {
+    animation: moveBanner 1s forwards;
+    width: 23vw;
   }
 
   .conhecimentos {
@@ -661,30 +640,6 @@ footer .button:hover {
   .conhecimento:nth-child(6) {
     grid-column: 11 / 14;
     grid-row: 5 / -1;
-  }
-
-  .budget-wrapper {
-    width: 22rem;
-  }
-
-  .footer--area {
-    display: block;
-  }
-
-  .footer-social {
-    justify-content: center;
-    margin-bottom: 15px;
-  }
-
-  .footer--item.area2 {
-    text-align: center;
-    margin-bottom: 15px;
-  }
-
-  .qtde-page,
-  .group-layout {
-    width: 19rem;
-    padding: 0.5rem;
   }
 
   .conhecimentos {
