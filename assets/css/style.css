@@ -605,7 +605,8 @@ footer .button:hover {
 
   .banner #button-banner {
     animation: moveBanner 1s forwards;
-    width: 23vw;
+    width: 100px;
+    text-align: center;
   }
 
   .conhecimentos {
