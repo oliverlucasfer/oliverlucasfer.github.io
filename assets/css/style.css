@@ -137,8 +137,8 @@ header {
 
 .banner {
   position: absolute;
-  top: 30%;
-  left: 15%;
+  top: 20%;
+  left: 5%;
 }
 
 .banner h1 {
@@ -151,6 +151,7 @@ header {
   line-height: 3.5rem;
   opacity: 0;
   animation: moveBanner 0.5s forwards;
+  padding-bottom: 1rem;
 }
 
 .banner p {
@@ -383,10 +384,10 @@ header {
 }
 
 .conhecimento img {
-    width: 7rem;
-    height: 7rem;
-    transition: all 0.5s;
-  }
+  width: 7rem;
+  height: 7rem;
+  transition: all 0.5s;
+}
 
 .sessao-header {
   display: flex;
@@ -439,11 +440,11 @@ header {
 }
 
 .card-img-wrapper img {
-  object-fit: cover;
   width: 100%;
   height: 100%;
   border: inherit;
   border-radius: inherit;
+  background-size: contain;
 }
 
 .background {
@@ -453,33 +454,28 @@ header {
   bottom: 30rem;
   border: inherit;
   border-radius: inherit;
-
   opacity: 0;
 }
 
 .card-info {
   display: flex;
-  height: 15rem;
+  height: 26rem;
   width: 15rem;
   flex-direction: column;
   align-items: center;
   text-align: center;
   justify-content: center;
   border-radius: inherit;
-
   backdrop-filter: blur(19px) saturate(124%);
   -webkit-backdrop-filter: blur(19px) saturate(124%);
   background-color: rgba(255, 255, 255, 0.47);
   padding: 1rem;
-
   -webkit-box-shadow: 3px 0px 37px 6px rgba(0, 0, 0, 0.55);
   -moz-box-shadow: 3px 0px 37px 6px rgba(0, 0, 0, 0.55);
   box-shadow: 3px 0px 37px 6px rgba(0, 0, 0, 0.55);
-
   position: absolute;
-  bottom: 6rem;
+  bottom: 1rem;
   left: 1.6rem;
-
   font-family: var(--font-tertiary);
   color: rgb(46, 46, 46);
   opacity: 1;
@@ -556,6 +552,7 @@ footer {
   justify-content: center;
   align-content: center;
   padding: 0.5rem;
+  font-family: var(--font-primary);
 }
 
 .footer--item {
@@ -578,6 +575,36 @@ footer .button:hover {
 /* Media Queries */
 
 @media (max-width: 580px) {
+  .banner {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+  }
+
+  .banner h1 {
+    color: white;
+    font-size: 2rem;
+    font-family: var(--font-tertiary);
+    font-weight: 300;
+    text-transform: uppercase;
+    text-shadow: 0.3rem 0.4rem 2px rgba(0, 0, 0, 0.404);
+    line-height: 3rem;
+    opacity: 0;
+    animation: moveBanner 0.5s forwards;
+    padding-bottom: 1rem;
+  }
+
+  .banner p {
+    font-family: var(--font-tertiary);
+    font-size: 1.5rem;
+    color: white;
+    text-shadow: 0.3rem 0.4rem 2px rgba(0, 0, 0, 0.404);
+    line-height: 3rem;
+    margin-bottom: 2rem;
+    animation: moveBanner 0.7s forwards;
+    max-width: 85%;
+  }
+
   .field {
     background: transparent;
     border: none;
