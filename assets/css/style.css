@@ -569,7 +569,7 @@ footer .button:hover {
 @media (max-width: 900px) {
   .banner {
     position: absolute;
-    top: 10%;
+    top: 7%;
     left: 0%;
     display: flex;
     flex-direction: column;
