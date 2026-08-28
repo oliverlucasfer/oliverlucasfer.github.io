@@ -412,10 +412,10 @@ function renderContact(locale) {
   const form = endpoint
     ? `          <form class="contato-form" data-endpoint="${esc(endpoint)}" aria-label="${esc(f.aria)}">
             <div class="form-row">
-              <input type="text" name="nome" placeholder="${esc(f.nome)}" autocomplete="name" required />
-              <input type="email" name="email" placeholder="${esc(f.email)}" autocomplete="email" required />
+              <input type="text" name="nome" aria-label="${esc(f.nome)}" placeholder="${esc(f.nome)}" autocomplete="name" required />
+              <input type="email" name="email" aria-label="${esc(f.email)}" placeholder="${esc(f.email)}" autocomplete="email" required />
             </div>
-            <textarea name="mensagem" rows="5" placeholder="${esc(f.mensagem)}" required></textarea>
+            <textarea name="mensagem" rows="5" aria-label="${esc(f.mensagem)}" placeholder="${esc(f.mensagem)}" required></textarea>
             <button class="ButtonSend" type="submit">${esc(f.enviar)}</button>
             <p class="form-status" role="status" aria-live="polite"></p>
           </form>`
