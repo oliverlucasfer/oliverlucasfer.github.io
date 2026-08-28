@@ -1,9 +1,13 @@
 :root{
-    --font-primary: "Baloo Da 2", serif;
-    --font-secondary: "Josefin Slab", serif;
-    --font-tertiary: 'JetBrains Mono', monospace;
-    --font-action: "Mulish", serif;
+    --bg: #0e0e14;
+    --bg-elev: #16161f;
+    --bg-elev-2: #1d1d28;
+    --text: #e8e8f0;
+    --muted: #9a9aab;
+    --accent: #7c5cff;
+    --accent-2: #a78bfa;
+    --border: rgba(255, 255, 255, 0.08);
+
+    --font-primary: "Inter", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
 }
-
-
-
