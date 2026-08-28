@@ -1,0 +1,353 @@
+{
+  "siteUrl": "https://oliverlucasfer.github.io",
+  "githubUser": "oliverlucasfer",
+  "careerStartYear": 2021,
+  "email": "oliverlucasfer@hotmail.com",
+  "linkedin": "https://www.linkedin.com/in/oliverlucasfer/",
+  "github": "https://github.com/oliverlucasfer",
+  "formspreeEndpoint": "",
+  "locales": {
+    "pt": {
+      "code": "pt-BR",
+      "ogLocale": "pt_BR",
+      "prefix": "/",
+      "otherPrefix": "/en/",
+      "langLabel": "EN",
+      "langHreflang": "en",
+      "meta": {
+        "title": "Portfólio - Lucas Oliveira",
+        "description": "Portfólio de Lucas Oliveira, desenvolvedor full stack com 5 anos de experiência: ASP.NET Core, Angular, Flutter, PostgreSQL, MongoDB, Docker e CI/CD.",
+        "ogTitle": "Portfólio - Lucas Oliveira",
+        "ogDescription": "Desenvolvedor full stack com 5 anos de experiência: ASP.NET Core, Angular, Flutter, PostgreSQL, MongoDB, Docker e CI/CD."
+      },
+      "aria": {
+        "nav": "Navegação principal",
+        "pular": "Pular para o conteúdo",
+        "filtro": "Filtrar projetos",
+        "menuAbrir": "Abrir menu de navegação",
+        "menuFechar": "Fechar menu de navegação",
+        "temaEscuro": "Ativar tema escuro",
+        "temaClaro": "Ativar tema claro",
+        "github": "GitHub de Lucas Oliveira",
+        "linkedin": "LinkedIn de Lucas Oliveira",
+        "email": "Enviar e-mail para Lucas Oliveira"
+      },
+      "nav": [
+        { "id": "top", "label": "Início" },
+        { "id": "sobre", "label": "Sobre" },
+        { "id": "conhecimentos", "label": "Conhecimentos" },
+        { "id": "experiencia", "label": "Experiência" },
+        { "id": "projetos", "label": "Projetos" },
+        { "id": "depoimentos", "label": "Depoimentos" },
+        { "id": "contato", "label": "Contato" }
+      ],
+      "hero": {
+        "ola": "Olá, eu sou",
+        "typedPrefix": "Desenvolvedor",
+        "typedWords": ["Full Stack", "Mobile", "Flutter"],
+        "desc": "anos construindo produtos web e mobile que estendem o ERP da Conceito Tecnologia, do banco de dados ao deploy em produção.",
+        "ctaPrimario": "Conheça meu trabalho",
+        "ctaSecundario": "Fale comigo"
+      },
+      "marquee": [
+        "ASP.NET Core", "Angular", "Flutter", "TypeScript", "PostgreSQL",
+        "MongoDB", "Firebird", "Docker", "Firebase", "Tailwind CSS",
+        "GitHub Actions", "Jenkins"
+      ],
+      "sobre": {
+        "titulo": "Sobre",
+        "cargo": "Desenvolvedor Full Stack",
+        "bioP1": "Sou desenvolvedor há cerca de 5 anos, com foco em aplicações web robustas usando <strong>ASP.NET Core</strong> no backend e <strong>Angular</strong> no frontend. Gosto de construir produtos de ponta a ponta, do banco de dados ao deploy em produção com containers e pipelines de CI/CD.",
+        "bioP2": "Também atuo no desenvolvimento mobile com <strong>Flutter</strong>, criando apps multiplataforma (Android/iOS) integrados aos sistemas da empresa.",
+        "stats": [
+          { "target": "anos", "label": "anos de experiência" },
+          { "target": "projetos", "label": "projetos no portfólio" },
+          { "target": 2, "label": "apps na Play Store" }
+        ],
+        "cv": {
+          "titulo": "Currículo",
+          "texto": "Baixe meu CV completo com experiência, formação e skills.",
+          "botao": "Baixar CV"
+        },
+        "github": {
+          "titulo": "GitHub",
+          "texto": "Código, experimentos e contribuições — tudo aberto no meu perfil.",
+          "repos": "repositórios públicos",
+          "seguidores": "seguidores",
+          "botao": "Ver perfil"
+        }
+      },
+      "conhecimentos": {
+        "titulo": "Conhecimentos"
+      },
+      "experiencia": {
+        "titulo": "Experiência",
+        "itens": [
+          {
+            "periodo": "mar 2021 — Atual",
+            "cargo": "Desenvolvedor Full Stack",
+            "empresa": "Conceito Tecnologia · Barreiras, BA",
+            "desc": "Desenvolvimento de sistemas que estendem o ERP principal da empresa, do banco de dados ao deploy em produção.",
+            "itens": [
+              "Sistemas web responsivos e escaláveis para o varejo (ASP.NET, Angular 10+, PostgreSQL e <strong>Solr</strong>), incluindo os sistemas <strong>CiMobile</strong> e <strong>CiDash</strong>",
+              "Apps mobile em <strong>Flutter</strong> (CiMobile App e CiSelf-Checkout) publicados na <strong>Play Store</strong>",
+              "Pipelines de <strong>CI/CD</strong> automatizados com Docker, Jenkins e GitHub Actions",
+              "Integrações e persistência com <strong>PostgreSQL</strong>, <strong>Firebird</strong> e <strong>MongoDB</strong>",
+              "<strong>Mentoria</strong> de desenvolvedores juniores: orientação técnica e suporte nas tarefas diárias"
+            ]
+          },
+          {
+            "periodo": "ago 2021 — dez 2021",
+            "cargo": "Desenvolvedor de Software (Estágio)",
+            "empresa": "Casa da Robótica · Vitória da Conquista, BA",
+            "desc": "",
+            "itens": [
+              "Estágio supervisionado durante a graduação",
+              "Desenvolvimento de softwares para <strong>microcontroladores</strong>"
+            ]
+          },
+          {
+            "periodo": "2016 — 2022",
+            "cargo": "Bacharelado em Engenharia de Computação",
+            "empresa": "Faculdade Independente do Nordeste (FAINOR)",
+            "desc": "",
+            "itens": []
+          }
+        ]
+      },
+      "projetos": {
+        "titulo": "Projetos",
+        "filtros": [
+          { "id": "todos", "label": "Todos" },
+          { "id": "web", "label": "Web" },
+          { "id": "mobile", "label": "Mobile" },
+          { "id": "estudos", "label": "Estudos" }
+        ],
+        "badges": { "web": "Web", "mobile": "Mobile", "estudos": "Estudos" },
+        "verCase": "Ver case study",
+        "verPost": "Ver post",
+        "playStore": "Play Store",
+        "demo": "Demo",
+        "codigo": "Código",
+        "menos": "menos"
+      },
+      "depoimentos": {
+        "titulo": "Depoimentos",
+        "intro": "O que colegas e clientes dizem sobre trabalhar comigo."
+      },
+      "contato": {
+        "titulo": "Contato",
+        "intro": "Vamos conversar? Ficarei feliz em responder.",
+        "form": {
+          "nome": "Seu nome",
+          "email": "Seu e-mail",
+          "mensagem": "Sua mensagem",
+          "enviar": "Enviar mensagem",
+          "enviando": "Enviando…",
+          "sucesso": "Mensagem enviada! Obrigado pelo contato.",
+          "erro": "Não foi possível enviar. Tente direto pelo e-mail:",
+          "aria": "Formulário de contato"
+        }
+      },
+      "footer": {
+        "texto": "Desenvolvido por Lucas Oliveira",
+        "badgeLinkedin": "Badge do LinkedIn de Lucas Oliveira",
+        "badgeGithub": "Badge do GitHub de Lucas Oliveira"
+      },
+      "case": {
+        "voltar": "Voltar ao portfólio",
+        "anterior": "Anterior",
+        "proximo": "Próximo",
+        "maisProjetos": "Ver todos os projetos",
+        "periodo": "Período",
+        "papel": "Papel",
+        "destaques": "Destaques",
+        "secoes": {
+          "contexto": "Contexto",
+          "desafio": "O desafio",
+          "papel": "Papel e responsabilidades",
+          "stack": "Stack e arquitetura",
+          "aprendizados": "Aprendizados"
+        },
+        "anon": "Case study anonimizado por confidencialidade — detalhes de cliente e métricas internas foram omitidos."
+      },
+      "erro404": {
+        "titulo": "Página não encontrada",
+        "texto": "A página que você procura não existe ou foi movida.",
+        "voltar": "Voltar ao início",
+        "projetos": "Ver projetos"
+      }
+    },
+    "en": {
+      "code": "en",
+      "ogLocale": "en_US",
+      "prefix": "/en/",
+      "otherPrefix": "/",
+      "langLabel": "PT",
+      "langHreflang": "pt-BR",
+      "meta": {
+        "title": "Portfolio - Lucas Oliveira",
+        "description": "Portfolio of Lucas Oliveira, full stack developer with 5 years of experience: ASP.NET Core, Angular, Flutter, PostgreSQL, MongoDB, Docker and CI/CD.",
+        "ogTitle": "Portfolio - Lucas Oliveira",
+        "ogDescription": "Full stack developer with 5 years of experience: ASP.NET Core, Angular, Flutter, PostgreSQL, MongoDB, Docker and CI/CD."
+      },
+      "aria": {
+        "nav": "Main navigation",
+        "pular": "Skip to content",
+        "filtro": "Filter projects",
+        "menuAbrir": "Open navigation menu",
+        "menuFechar": "Close navigation menu",
+        "temaEscuro": "Switch to dark theme",
+        "temaClaro": "Switch to light theme",
+        "github": "Lucas Oliveira's GitHub",
+        "linkedin": "Lucas Oliveira's LinkedIn",
+        "email": "Email Lucas Oliveira"
+      },
+      "nav": [
+        { "id": "top", "label": "Home" },
+        { "id": "about", "label": "About" },
+        { "id": "skills", "label": "Skills" },
+        { "id": "experience", "label": "Experience" },
+        { "id": "projects", "label": "Projects" },
+        { "id": "testimonials", "label": "Testimonials" },
+        { "id": "contact", "label": "Contact" }
+      ],
+      "hero": {
+        "ola": "Hi, I'm",
+        "typedPrefix": "Developer",
+        "typedWords": ["Full Stack", "Mobile", "Flutter"],
+        "desc": "years building web and mobile products that extend Conceito Tecnologia's ERP, from database to production deployment.",
+        "ctaPrimario": "Check out my work",
+        "ctaSecundario": "Get in touch"
+      },
+      "marquee": [
+        "ASP.NET Core", "Angular", "Flutter", "TypeScript", "PostgreSQL",
+        "MongoDB", "Firebird", "Docker", "Firebase", "Tailwind CSS",
+        "GitHub Actions", "Jenkins"
+      ],
+      "sobre": {
+        "titulo": "About",
+        "cargo": "Full Stack Developer",
+        "bioP1": "I've been a developer for about 5 years, focused on robust web applications using <strong>ASP.NET Core</strong> on the backend and <strong>Angular</strong> on the frontend. I enjoy building products end to end, from the database to production deployment with containers and CI/CD pipelines.",
+        "bioP2": "I also work with mobile development using <strong>Flutter</strong>, creating cross-platform apps (Android/iOS) integrated with the company's systems.",
+        "stats": [
+          { "target": "anos", "label": "years of experience" },
+          { "target": "projetos", "label": "projects in this portfolio" },
+          { "target": 2, "label": "apps on the Play Store" }
+        ],
+        "cv": {
+          "titulo": "Resume",
+          "texto": "Download my full resume with experience, education and skills.",
+          "botao": "Download CV"
+        },
+        "github": {
+          "titulo": "GitHub",
+          "texto": "Code, experiments and contributions — all open on my profile.",
+          "repos": "public repositories",
+          "seguidores": "followers",
+          "botao": "View profile"
+        }
+      },
+      "conhecimentos": {
+        "titulo": "Skills"
+      },
+      "experiencia": {
+        "titulo": "Experience",
+        "itens": [
+          {
+            "periodo": "Mar 2021 — Present",
+            "cargo": "Full Stack Developer",
+            "empresa": "Conceito Tecnologia · Barreiras, Brazil",
+            "desc": "I develop and maintain systems that extend the company's main ERP, from database to production deployment.",
+            "itens": [
+              "Responsive, scalable retail web systems (ASP.NET, Angular 10+, PostgreSQL and <strong>Solr</strong>), including the <strong>CiMobile</strong> and <strong>CiDash</strong> systems",
+              "<strong>Flutter</strong> mobile apps (CiMobile App and CiSelf-Checkout) published on the <strong>Play Store</strong>",
+              "Automated <strong>CI/CD</strong> pipelines with Docker, Jenkins and GitHub Actions",
+              "Integrations and persistence with <strong>PostgreSQL</strong>, <strong>Firebird</strong> and <strong>MongoDB</strong>",
+              "<strong>Mentoring</strong> junior developers: technical guidance and day-to-day support"
+            ]
+          },
+          {
+            "periodo": "Aug 2021 — Dec 2021",
+            "cargo": "Software Developer (Internship)",
+            "empresa": "Casa da Robótica · Vitória da Conquista, Brazil",
+            "desc": "",
+            "itens": [
+              "Supervised internship during college",
+              "Software development for <strong>microcontrollers</strong>"
+            ]
+          },
+          {
+            "periodo": "2016 — 2022",
+            "cargo": "BSc in Computer Engineering",
+            "empresa": "Faculdade Independente do Nordeste (FAINOR)",
+            "desc": "",
+            "itens": []
+          }
+        ]
+      },
+      "projetos": {
+        "titulo": "Projects",
+        "filtros": [
+          { "id": "todos", "label": "All" },
+          { "id": "web", "label": "Web" },
+          { "id": "mobile", "label": "Mobile" },
+          { "id": "estudos", "label": "Studies" }
+        ],
+        "badges": { "web": "Web", "mobile": "Mobile", "estudos": "Studies" },
+        "verCase": "View case study",
+        "verPost": "See post",
+        "playStore": "Play Store",
+        "demo": "Demo",
+        "codigo": "Code",
+        "menos": "less"
+      },
+      "depoimentos": {
+        "titulo": "Testimonials",
+        "intro": "What colleagues and clients say about working with me."
+      },
+      "contato": {
+        "titulo": "Contact",
+        "intro": "Let's talk? I'll be glad to hear from you.",
+        "form": {
+          "nome": "Your name",
+          "email": "Your e-mail",
+          "mensagem": "Your message",
+          "enviar": "Send message",
+          "enviando": "Sending…",
+          "sucesso": "Message sent! Thanks for reaching out.",
+          "erro": "Could not send. Try directly via e-mail:",
+          "aria": "Contact form"
+        }
+      },
+      "footer": {
+        "texto": "Developed by Lucas Oliveira",
+        "badgeLinkedin": "Lucas Oliveira's LinkedIn badge",
+        "badgeGithub": "Lucas Oliveira's GitHub badge"
+      },
+      "case": {
+        "voltar": "Back to portfolio",
+        "anterior": "Previous",
+        "proximo": "Next",
+        "maisProjetos": "View all projects",
+        "periodo": "Period",
+        "papel": "Role",
+        "destaques": "Highlights",
+        "secoes": {
+          "contexto": "Context",
+          "desafio": "The challenge",
+          "papel": "Role and responsibilities",
+          "stack": "Stack and architecture",
+          "aprendizados": "Takeaways"
+        },
+        "anon": "Case study anonymized for confidentiality — client details and internal metrics have been omitted."
+      },
+      "erro404": {
+        "titulo": "Page not found",
+        "texto": "The page you are looking for does not exist or has been moved.",
+        "voltar": "Back to home",
+        "projetos": "View projects"
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "grupos": [
+    {
+      "id": "backend",
+      "icon": "dotnet",
+      "nome": { "pt": "Backend", "en": "Backend" },
+      "descricao": {
+        "pt": "APIs REST, ORMs, bancos SQL/NoSQL e testes",
+        "en": "REST APIs, ORMs, SQL/NoSQL databases and testing"
+      },
+      "itens": [
+        { "nome": "C# / .NET", "icon": "dotnet" },
+        { "nome": "REST APIs", "icon": "code" },
+        { "nome": "EF Core / Dapper", "icon": "database" },
+        { "nome": "PostgreSQL", "icon": "postgresql" },
+        { "nome": "OAuth 2.0 / OpenIddict", "icon": "shield" },
+        { "nome": "MongoDB", "icon": "mongodb" },
+        { "nome": "xUnit", "icon": "check" },
+        { "nome": "Firebird", "icon": "flame" },
+        { "nome": "Solr", "icon": "search" }
+      ]
+    },
+    {
+      "id": "frontend",
+      "icon": "angular",
+      "nome": { "pt": "Frontend", "en": "Frontend" },
+      "descricao": {
+        "pt": "SPAs com Angular e ecossistema moderno",
+        "en": "SPAs with Angular and the modern ecosystem"
+      },
+      "itens": [
+        { "nome": "Angular 2+", "icon": "angular" },
+        { "nome": "TypeScript", "icon": "typescript" },
+        { "nome": "HTML / CSS / JavaScript", "icon": "javascript" },
+        { "nome": "Tailwind CSS", "icon": "tailwindcss" },
+        { "nome": "Angular Material", "icon": "materialdesign" },
+        { "nome": "RxJS", "icon": "waves" },
+        { "nome": "NgRX / Akita / Elf", "icon": "ngrx" }
+      ]
+    },
+    {
+      "id": "devops",
+      "icon": "docker",
+      "nome": { "pt": "DevOps", "en": "DevOps" },
+      "descricao": {
+        "pt": "Containers, pipelines de CI/CD e versionamento",
+        "en": "Containers, CI/CD pipelines and versioning"
+      },
+      "itens": [
+        { "nome": "Git & GitHub", "icon": "git" },
+        { "nome": "Docker", "icon": "docker" },
+        { "nome": "GitHub Actions", "icon": "githubactions" },
+        { "nome": "Jenkins", "icon": "jenkins" }
+      ]
+    },
+    {
+      "id": "mobile",
+      "icon": "flutter",
+      "nome": { "pt": "Mobile", "en": "Mobile" },
+      "descricao": {
+        "pt": "Apps cross-platform com Flutter e Firebase",
+        "en": "Cross-platform apps with Flutter and Firebase"
+      },
+      "itens": [
+        { "nome": "Flutter", "icon": "flutter" },
+        { "nome": "Dart", "icon": "dart" },
+        { "nome": "Firebase", "icon": "firebase" }
+      ]
+    }
+  ]
+}

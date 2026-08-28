@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&display=swap");
+/* Fontes (Inter + JetBrains Mono) carregadas via <link> com preconnect no <head> */
 
 * {
   margin: 0;
@@ -302,7 +302,7 @@ button:focus-visible {
 }
 
 /* ====================== HERO ====================== */
-header {
+#top {
   width: 100%;
   height: 100vh;
   height: 100svh;
@@ -416,6 +416,12 @@ header {
   opacity: 0;
   animation: fadeUp 0.7s 1.3s forwards;
 }
+.banner-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
 
 /* ====================== BUTTONS ====================== */
 .ButtonCustom {
@@ -506,7 +512,8 @@ section {
   grid-template-columns: repeat(4, 1fr);
   grid-template-areas:
     "foto foto bio bio"
-    "foto foto stats cv";
+    "foto foto stats cv"
+    "github github github github";
   gap: 1.2rem;
   max-width: 1100px;
   margin: 0 auto;
@@ -591,6 +598,56 @@ section {
   color: var(--muted);
   font-size: 0.92rem;
 }
+.bento-github {
+  grid-area: github;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.4rem;
+}
+.bento-github[hidden] {
+  display: none;
+}
+.gh-identity {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1 1 320px;
+}
+.gh-avatar-wrap {
+  width: 52px;
+  height: 52px;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff;
+}
+.gh-avatar {
+  width: 26px;
+  height: 26px;
+}
+.bento-github h3 {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+.bento-github p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  max-width: 52ch;
+}
+.gh-stats {
+  display: flex;
+  gap: 2.2rem;
+}
+.gh-stat .stat-num {
+  font-size: 1.7rem;
+}
 
 /* ====================== CONHECIMENTOS (skills) ====================== */
 .sessao-conhecimentos {
@@ -624,62 +681,52 @@ section {
   font-size: 0.85rem;
   margin-bottom: 1.4rem;
 }
-.skill {
-  margin-bottom: 1.2rem;
-}
-.skill-header {
+.skills-chips {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.6rem;
-  margin-bottom: 0.4rem;
-}
-.skill-name {
-  display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   gap: 0.55rem;
-  font-size: 0.9rem;
-  color: var(--text);
 }
-.icon-slot {
-  width: 18px;
-  height: 18px;
-  flex: none;
+.chip {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+  font-family: var(--font-mono);
+  color: var(--text);
+  background-color: var(--bg);
+  border: 1px solid var(--border);
+  padding: 0.42rem 0.8rem;
+  border-radius: var(--radius-pill);
+  transition: border-color 0.25s, color 0.25s;
 }
-.skill-icon {
-  width: 18px;
-  height: 18px;
+.chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }
-.icon-slot svg {
-  width: 16px;
-  height: 16px;
-  stroke: var(--accent);
+
+/* ====================== ICONES (sprite local) ====================== */
+.ic {
+  width: 15px;
+  height: 15px;
+  flex: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+.ic-brand {
+  fill: currentColor;
+}
+.ic-line {
   fill: none;
+  stroke: currentColor;
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.skill-pct {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--muted);
-}
-.skill-bar {
-  width: 100%;
-  height: 8px;
-  background-color: var(--bg);
-  border-radius: var(--radius-pill);
-  overflow: hidden;
-}
-.skill-fill {
-  height: 100%;
-  width: 0;
-  border-radius: var(--radius-pill);
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  transition: width 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+.chip .ic,
+.tag .ic {
+  width: 13px;
+  height: 13px;
+  color: var(--accent-2);
 }
 
 /* ====================== EXPERIÊNCIA (timeline) ====================== */
@@ -936,6 +983,125 @@ section {
   width: 2.6rem;
   height: 2.6rem;
 }
+.contato-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-bottom: 2.4rem;
+  text-align: left;
+}
+.contato-form input,
+.contato-form textarea {
+  width: 100%;
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  color: var(--text);
+  background-color: var(--bg-elev-2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.9rem 1.1rem;
+  transition: border-color 0.25s;
+}
+.contato-form input:focus-visible,
+.contato-form textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 0;
+  border-color: var(--accent);
+}
+.contato-form input::placeholder,
+.contato-form textarea::placeholder {
+  color: var(--muted);
+}
+.contato-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+.contato-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+}
+.contato-form .ButtonSend {
+  align-self: center;
+  min-width: 220px;
+  justify-content: center;
+}
+.form-status {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--accent-2);
+  min-height: 1.2em;
+}
+.form-fallback-note {
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+
+/* ====================== DEPOIMENTOS ====================== */
+.sessao-depoimentos {
+  background-color: var(--bg-elev);
+  padding-bottom: 5rem;
+}
+.depoimentos-intro {
+  text-align: center;
+  color: var(--muted);
+  max-width: 60ch;
+  margin: 0 auto;
+  padding: 1rem 2rem 0;
+}
+.depoimentos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+.depoimento-card {
+  background-color: var(--bg-elev-2);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.depoimento-card blockquote {
+  color: var(--text);
+  font-size: 0.98rem;
+  line-height: 1.7;
+  flex: 1;
+}
+.depoimento-card figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.depoimento-autor {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-weight: 500;
+}
+.depoimento-cargo {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.depoimento-link {
+  margin-top: 0.4rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-2);
+}
+.depoimento-link:hover {
+  color: var(--accent);
+}
+.depoimento-card.is-placeholder {
+  opacity: 0.55;
+  border-style: dashed;
+}
 
 /* ====================== FOOTER ====================== */
 footer {
@@ -956,8 +1122,27 @@ footer {
   font-weight: 600;
   color: var(--text);
 }
-.footer--item img {
-  height: 28px;
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.4rem;
+}
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--muted);
+  transition: color 0.25s;
+}
+.footer-links a:hover {
+  color: var(--accent);
+}
+.footer-links .ic {
+  width: 14px;
+  height: 14px;
 }
 
 .btn-icon {
@@ -1116,6 +1301,221 @@ html.lenis body {
   margin-top: 1.2rem;
 }
 
+/* ====================== CASE STUDY ====================== */
+.case-page {
+  padding-top: 64px;
+}
+.case {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+.case-breadcrumb {
+  margin-bottom: 2rem;
+}
+.case-voltar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--muted);
+  transition: color 0.25s;
+}
+.case-voltar:hover {
+  color: var(--accent);
+}
+.case-hero {
+  margin-bottom: 2rem;
+}
+.case-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent-2);
+  background-color: rgba(124, 92, 255, 0.12);
+  border: 1px solid rgba(124, 92, 255, 0.3);
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: 1rem;
+}
+.case-hero h1 {
+  font-family: var(--font-mono);
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--text);
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin-bottom: 0.6rem;
+}
+.case-subtitle {
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 60ch;
+  margin-bottom: 1.4rem;
+}
+.case-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.case-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+.case-meta-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+}
+.case-meta-value {
+  color: var(--text);
+  font-weight: 500;
+}
+.case-anon {
+  margin-top: 1.4rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  padding: 0.7rem 1rem;
+}
+.case-anon .btn-icon {
+  stroke: var(--accent-2);
+}
+.case-cover {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  margin-bottom: 3rem;
+  background-color: var(--bg-elev-2);
+}
+.case-cover img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+.case-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+.case-section h2 {
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent);
+  margin-bottom: 0.9rem;
+  font-weight: 500;
+}
+.case-section p {
+  color: var(--muted);
+}
+.case-list {
+  padding-left: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.case-list li {
+  color: var(--muted);
+}
+.case-list li::marker {
+  color: var(--accent);
+}
+.case-list li strong {
+  color: var(--text);
+}
+.case-highlights {
+  list-style: none;
+  padding-left: 0;
+  gap: 0.8rem;
+}
+.case-highlights li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  background-color: var(--bg-elev-2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.9rem 1.1rem;
+}
+.case-check {
+  color: var(--accent);
+  margin-top: 0.25rem;
+}
+.case-aprendizado {
+  border-left: 3px solid var(--accent);
+  padding: 0.4rem 0 0.4rem 1.2rem;
+  color: var(--text);
+}
+.case-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+.case-nav {
+  margin-top: 3.5rem;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1rem;
+  align-items: stretch;
+}
+.case-nav-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem 1.2rem;
+  background-color: var(--bg-elev);
+  transition: border-color 0.25s, transform 0.25s;
+}
+.case-nav-item:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+.case-nav-prev {
+  align-items: flex-start;
+}
+.case-nav-next {
+  align-items: flex-end;
+  text-align: right;
+}
+.case-nav-all {
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+}
+.case-nav-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+}
+.case-nav-title {
+  color: var(--text);
+  font-weight: 600;
+}
+
 /* ====================== RESPONSIVE ====================== */
 @media (max-width: 820px) {
   .topbar {
@@ -1223,7 +1623,12 @@ html.lenis body {
       "foto"
       "bio"
       "stats"
-      "cv";
+      "cv"
+      "github";
+  }
+  .gh-stats {
+    width: 100%;
+    justify-content: space-around;
   }
   .bento-foto {
     width: 100%;
@@ -1233,6 +1638,19 @@ html.lenis body {
     aspect-ratio: 4 / 5;
   }
   .conhecimentos {
+    grid-template-columns: 1fr;
+  }
+  .case {
+    padding: 2rem 1.2rem 3rem;
+  }
+  .case-nav {
+    grid-template-columns: 1fr;
+  }
+  .case-nav-next {
+    align-items: flex-start;
+    text-align: left;
+  }
+  .contato-form .form-row {
     grid-template-columns: 1fr;
   }
 }
@@ -1252,8 +1670,5 @@ html.lenis body {
   [data-anime] {
     opacity: 1;
     transform: none;
-  }
-  .skill-fill {
-    transition: none;
   }
 }

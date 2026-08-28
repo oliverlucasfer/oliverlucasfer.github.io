@@ -2,6 +2,8 @@ const prefersReducedMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)"
 ).matches;
 
+const siteConfig = window.__SITE__ || {};
+
 const safeStorage = {
   get(key) {
     try {
@@ -75,31 +77,36 @@ const container = document.querySelector(".container");
 const menuToggle = document.querySelector(".js-menu-toggle");
 
 function setMenu(open) {
+  if (!container || !menuToggle) return;
   container.classList.toggle("show-menu", open);
   menuToggle.setAttribute("aria-expanded", String(open));
   menuToggle.setAttribute(
     "aria-label",
-    open ? "Fechar menu de navegação" : "Abrir menu de navegação"
+    open
+      ? menuToggle.dataset.labelClose || "Fechar menu de navegação"
+      : menuToggle.dataset.labelOpen || "Abrir menu de navegação"
   );
 }
 
-menuToggle.addEventListener("click", () => {
-  setMenu(!container.classList.contains("show-menu"));
-});
+if (menuToggle) {
+  menuToggle.addEventListener("click", () => {
+    setMenu(!container.classList.contains("show-menu"));
+  });
 
-document.querySelectorAll(".menu-link").forEach((link) => {
-  link.addEventListener("click", () => setMenu(false));
-});
+  document.querySelectorAll(".menu-link").forEach((link) => {
+    link.addEventListener("click", () => setMenu(false));
+  });
 
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") setMenu(false);
-});
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") setMenu(false);
+  });
 
-document.addEventListener("click", (event) => {
-  if (!container.classList.contains("show-menu")) return;
-  if (event.target.closest(".sidebar, .js-menu-toggle")) return;
-  setMenu(false);
-});
+  document.addEventListener("click", (event) => {
+    if (!container.classList.contains("show-menu")) return;
+    if (event.target.closest(".sidebar, .js-menu-toggle")) return;
+    setMenu(false);
+  });
+}
 
 const filterChips = document.querySelectorAll(".filter-chip");
 const projectCards = document.querySelectorAll(".cards .card");
@@ -161,8 +168,10 @@ if (progressBar) {
 
 const typeEl = document.getElementById("typewriter");
 if (typeEl) {
-  const words = ["Full Stack", "Mobile", "Flutter"];
-  if (prefersReducedMotion) {
+  const words = siteConfig.typedWords?.length
+    ? siteConfig.typedWords
+    : ["Full Stack"];
+  if (prefersReducedMotion || words.length === 1) {
     typeEl.textContent = words[0];
   } else {
     let wordIndex = 0;
@@ -222,8 +231,10 @@ if (!prefersReducedMotion && window.matchMedia("(hover: hover)").matches) {
 
 const statNums = document.querySelectorAll(".stat-num");
 
-const CAREER_START_YEAR = 2021;
-const yearsExp = Math.max(1, new Date().getFullYear() - CAREER_START_YEAR);
+const yearsExp = Math.max(
+  1,
+  new Date().getFullYear() - (siteConfig.careerStartYear || 2021)
+);
 
 const yearsStat = document.querySelector('[data-stat="anos"]');
 if (yearsStat) yearsStat.dataset.target = String(yearsExp);
@@ -280,21 +291,6 @@ if ("IntersectionObserver" in window) {
   );
   animatedElements.forEach((element) => revealObserver.observe(element));
 
-  const skillObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.style.width = entry.target.dataset.level + "%";
-          skillObserver.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.4 }
-  );
-  document
-    .querySelectorAll(".skill-fill")
-    .forEach((bar) => skillObserver.observe(bar));
-
   const navLinks = document.querySelectorAll(".nav-link");
   const spyObserver = new IntersectionObserver(
     (entries) => {
@@ -317,7 +313,60 @@ if ("IntersectionObserver" in window) {
     .forEach((section) => spyObserver.observe(section));
 } else {
   animatedElements.forEach((element) => element.classList.add("animate"));
-  document
-    .querySelectorAll(".skill-fill")
-    .forEach((bar) => (bar.style.width = bar.dataset.level + "%"));
+}
+
+/* ---------------- GitHub (card do bento) ---------------- */
+
+const githubCard = document.querySelector(".bento-github");
+if (githubCard && siteConfig.githubUser) {
+  fetch(`https://api.github.com/users/${siteConfig.githubUser}`)
+    .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
+    .then((user) => {
+      const repos = githubCard.querySelector('[data-gh="repos"]');
+      const followers = githubCard.querySelector('[data-gh="followers"]');
+      if (repos) repos.textContent = user.public_repos ?? "–";
+      if (followers) followers.textContent = user.followers ?? "–";
+      githubCard.hidden = false;
+    })
+    .catch(() => {
+      githubCard.hidden = true;
+    });
+}
+
+/* ---------------- Formulário de contato (Formspree) ---------------- */
+
+const contactForm = document.querySelector(".contato-form");
+if (contactForm && contactForm.dataset.endpoint) {
+  const status = contactForm.querySelector(".form-status");
+  const submitBtn = contactForm.querySelector('button[type="submit"]');
+  const defaultLabel = submitBtn?.textContent;
+
+  contactForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!submitBtn) return;
+    submitBtn.disabled = true;
+    submitBtn.textContent = siteConfig.sendingLabel || "…";
+    if (status) status.textContent = "";
+    try {
+      const res = await fetch(contactForm.dataset.endpoint, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(contactForm)
+      });
+      if (res.ok) {
+        contactForm.reset();
+        if (status) status.textContent = siteConfig.sentLabel || "OK";
+        submitBtn.textContent = defaultLabel;
+      } else {
+        throw new Error(res.status);
+      }
+    } catch {
+      if (status) {
+        status.textContent = `${siteConfig.errorLabel || "Erro:"} ${siteConfig.email || ""}`;
+      }
+      submitBtn.textContent = defaultLabel;
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
 }

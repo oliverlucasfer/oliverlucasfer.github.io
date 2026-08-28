@@ -1,0 +1,546 @@
+{
+  "projetos": [
+    {
+      "slug": "cimobile-web",
+      "category": "web",
+      "title": "CiMobile",
+      "thumb": "/media/thumbs/proj1.webp",
+      "thumbWidth": 423,
+      "thumbHeight": 360,
+      "thumbAlt": {
+        "pt": "Tela do CiMobile, sistema web de vendas em campo com Angular e .NET",
+        "en": "CiMobile screen, field sales web system built with Angular and .NET"
+      },
+      "tags": [
+        { "nome": "Angular 16", "icon": "angular" },
+        { "nome": ".NET 6", "icon": "dotnet" },
+        { "nome": "Tailwind", "icon": "tailwindcss" },
+        { "nome": "PostgreSQL", "icon": "postgresql" },
+        { "nome": "Docker", "icon": "docker" },
+        { "nome": "Firebird" },
+        { "nome": "GitHub Actions", "icon": "githubactions" }
+      ],
+      "summary": {
+        "pt": "Sistema web que estende o ERP para operações de vendas em campo, com foco em performance e experiência do usuário.",
+        "en": "Web system that extends the ERP for field sales operations, focused on performance and user experience."
+      },
+      "links": [
+        { "key": "verPost", "href": "https://www.instagram.com/p/C668UR6vut6/" }
+      ],
+      "caseStudy": {
+        "anon": true,
+        "subtitle": {
+          "pt": "Sistema web de vendas em campo para o varejo, extensão do ERP da empresa.",
+          "en": "Field sales web system for retail, an extension of the company's ERP."
+        },
+        "periodo": { "pt": "2021 — atual", "en": "2021 — present" },
+        "papel": { "pt": "Desenvolvedor Full Stack", "en": "Full Stack Developer" },
+        "contexto": {
+          "pt": "O ERP de varejo da empresa atende bem as lojas físicas, mas as equipes de vendas em campo precisavam registrar pedidos, consultar estoque e acompanhar clientes fora do balcão. O CiMobile nasceu para levar esse fluxo para a web, acessível dos mais variados dispositivos.",
+          "en": "The company's retail ERP served physical stores well, but field sales teams needed to register orders, check inventory and follow up with customers away from the counter. CiMobile was born to bring that workflow to the web, accessible from a wide range of devices."
+        },
+        "desafio": {
+          "pt": "Garantir uma experiência rápida e confiável em redes instáveis e telas variadas, mantendo os dados perfeitamente sincronizados com o ERP que roda sobre Firebird — sem duplicar regras de negócio entre os sistemas.",
+          "en": "Deliver a fast, reliable experience on unstable networks and varied screens, while keeping data perfectly in sync with the ERP running on Firebird — without duplicating business rules across systems."
+        },
+        "papelItens": {
+          "pt": [
+            "Frontend em Angular com foco em performance, design responsivo e acessibilidade",
+            "APIs REST em ASP.NET Core com autenticação OAuth 2.0 / OpenIddict",
+            "Integrações com PostgreSQL e Firebird, incluindo consultas otimizadas de estoque",
+            "Indexação de busca com Solr para consultas rápidas de produtos",
+            "Containerização com Docker e pipeline de CI/CD com GitHub Actions"
+          ],
+          "en": [
+            "Angular frontend focused on performance, responsive design and accessibility",
+            "REST APIs in ASP.NET Core with OAuth 2.0 / OpenIddict authentication",
+            "PostgreSQL and Firebird integrations, including optimized inventory queries",
+            "Search indexing with Solr for fast product lookups",
+            "Containerization with Docker and CI/CD pipeline with GitHub Actions"
+          ]
+        },
+        "stack": {
+          "pt": "Aplicação desacoplada: SPA Angular consumindo APIs .NET, com Solr para busca e PostgreSQL como persistência transacional, integrado ao ERP em Firebird. Build e deploy automatizados via containers.",
+          "en": "Decoupled application: Angular SPA consuming .NET APIs, with Solr for search and PostgreSQL as transactional persistence, integrated with the Firebird ERP. Automated build and deploy via containers."
+        },
+        "destaques": {
+          "pt": [
+            "Uso diário por equipes de vendas externas",
+            "Busca de produtos com resposta rápida mesmo em catálogos grandes (Solr)",
+            "Deploy automatizado: merge na main gera build, imagem e deploy"
+          ],
+          "en": [
+            "Daily use by field sales teams",
+            "Fast product search even on large catalogs (Solr)",
+            "Automated deploy: merging to main triggers build, image and deploy"
+          ]
+        },
+        "aprendizados": {
+          "pt": "Esse projeto consolidou minha visão de produto de ponta a ponta: da modelagem de consultas no banco ao comportamento da SPA em campo. Aprendi a tratar performance como requisito desde o desenho da API, e não como ajuste de fim de linha.",
+          "en": "This project solidified my end-to-end product mindset: from query modeling in the database to SPA behavior in the field. I learned to treat performance as a requirement from the API design stage, not as an end-of-line fix."
+        }
+      }
+    },
+    {
+      "slug": "cidash",
+      "category": "web",
+      "title": "CiDash",
+      "thumb": "/media/thumbs/proj2.webp",
+      "thumbWidth": 425,
+      "thumbHeight": 360,
+      "thumbAlt": {
+        "pt": "Tela do CiDash, dashboard com KPIs, vendas e estoques em tempo real",
+        "en": "CiDash screen, dashboard with real-time KPIs, sales and inventory"
+      },
+      "tags": [
+        { "nome": "Angular 16", "icon": "angular" },
+        { "nome": ".NET", "icon": "dotnet" },
+        { "nome": "Firebird" },
+        { "nome": "Jenkins", "icon": "jenkins" }
+      ],
+      "summary": {
+        "pt": "Dashboard que entrega visão em tempo real das operações — KPIs, vendas e estoques para decisão rápida da equipe.",
+        "en": "Dashboard delivering real-time visibility into operations — KPIs, sales and inventory for fast decision-making."
+      },
+      "links": [
+        { "key": "verPost", "href": "https://www.instagram.com/p/C6_YloTM2Q5/" }
+      ],
+      "caseStudy": {
+        "anon": true,
+        "subtitle": {
+          "pt": "Dashboard de KPIs e indicadores em tempo quase real para a gestão do varejo.",
+          "en": "Near real-time KPI dashboard for retail management."
+        },
+        "periodo": { "pt": "2021 — atual", "en": "2021 — present" },
+        "papel": { "pt": "Desenvolvedor Full Stack", "en": "Full Stack Developer" },
+        "contexto": {
+          "pt": "Gestores dependiam de relatórios manuais para acompanhar vendas e estoque. O CiDash centraliza os principais indicadores do ERP em telas que se atualizam continuamente, colocando a informação no centro da decisão.",
+          "en": "Managers relied on manual reports to track sales and inventory. CiDash centralizes the main ERP indicators in continuously updating views, putting information at the center of decision-making."
+        },
+        "desafio": {
+          "pt": "Agregações sobre grandes volumes de dados sem penalizar o banco transacional, entregando telas que carregam rápido e permanecem úteis no dia a dia da gestão.",
+          "en": "Aggregating large volumes of data without penalizing the transactional database, delivering views that load fast and stay useful for day-to-day management."
+        },
+        "papelItens": {
+          "pt": [
+            "Frontend Angular com gráficos e filtros interativos",
+            "Endpoints de agregação em .NET com consultas otimizadas",
+            "Pipeline de build e deploy com Jenkins",
+            "Evolutivas contínuas a partir de feedback da área de negócio"
+          ],
+          "en": [
+            "Angular frontend with interactive charts and filters",
+            ".NET aggregation endpoints with optimized queries",
+            "Build and deploy pipeline with Jenkins",
+            "Continuous improvements driven by business feedback"
+          ]
+        },
+        "stack": {
+          "pt": "SPA Angular + APIs .NET sobre Firebird, com agregações calculadas em camada dedicada e entregues por Jenkins em builds versionados.",
+          "en": "Angular SPA + .NET APIs on Firebird, with aggregations computed in a dedicated layer and delivered by Jenkins in versioned builds."
+        },
+        "destaques": {
+          "pt": [
+            "Substituição de relatórios manuais por indicadores sempre visíveis",
+            "Filtros por período, loja e categoria para análises rápidas",
+            "Arquitetura que evolui com novos KPIs sem retrabalho"
+          ],
+          "en": [
+            "Manual reports replaced by always-visible indicators",
+            "Filters by period, store and category for quick analysis",
+            "Architecture that grows with new KPIs without rework"
+          ]
+        },
+        "aprendizados": {
+          "pt": "Aprendi a desenhar APIs pensando em agregação (e não só em CRUD), a medir o custo real de consultas sobre o ERP e a iterar rápido com feedback direto dos gestores.",
+          "en": "I learned to design APIs with aggregation in mind (not just CRUD), to measure the real cost of queries against the ERP, and to iterate quickly with direct manager feedback."
+        }
+      }
+    },
+    {
+      "slug": "cipdv",
+      "category": "web",
+      "title": "CiPDV",
+      "thumb": "/media/thumbs/proj7.webp",
+      "thumbWidth": 760,
+      "thumbHeight": 360,
+      "thumbAlt": {
+        "pt": "Tela do CiPDV, sistema de ponto de venda integrado ao ERP",
+        "en": "CiPDV screen, point-of-sale system integrated with the ERP"
+      },
+      "tags": [
+        { "nome": "Angular", "icon": "angular" },
+        { "nome": ".NET", "icon": "dotnet" },
+        { "nome": "PostgreSQL", "icon": "postgresql" },
+        { "nome": "Docker", "icon": "docker" },
+        { "nome": "Firebird" },
+        { "nome": "GitHub Actions", "icon": "githubactions" }
+      ],
+      "summary": {
+        "pt": "Sistema de ponto de venda integrado ao ERP, com fluxo de caixa ágil para as operações comerciais.",
+        "en": "Point-of-sale system integrated with the ERP, enabling agile cash flow for commercial operations."
+      },
+      "links": [
+        { "key": "verPost", "href": "https://www.instagram.com/oliverlucasfer/" }
+      ],
+      "caseStudy": {
+        "anon": true,
+        "subtitle": {
+          "pt": "Frente de caixa web integrada ao ERP do varejo.",
+          "en": "Web point-of-sale front integrated with the retail ERP."
+        },
+        "periodo": { "pt": "2022 — atual", "en": "2022 — present" },
+        "papel": { "pt": "Desenvolvedor Full Stack", "en": "Full Stack Developer" },
+        "contexto": {
+          "pt": "O fluxo de caixa é o coração do varejo: cada segundo do atendimento importa. O CiPDV traz a operação de PDV para uma aplicação web integrada ao estoque e à financeira do ERP.",
+          "en": "Cash flow is the heart of retail: every second of service matters. CiPDV brings the POS operation to a web application integrated with the ERP's inventory and financial modules."
+        },
+        "desafio": {
+          "pt": "Confiabilidade acima de tudo: fechamento de caixa sem divergência, operação fluida mesmo em dias de pico e integração exata com o ERP.",
+          "en": "Reliability above all: cash closing without discrepancies, smooth operation even on peak days, and exact integration with the ERP."
+        },
+        "papelItens": {
+          "pt": [
+            "Desenvolvimento full stack (Angular + .NET) do fluxo de venda",
+            "Integração com movimentação financeira e estoque do ERP (Firebird/PostgreSQL)",
+            "Automação de build e deploy com GitHub Actions e Docker",
+            "Suporte à homologação junto às lojas piloto"
+          ],
+          "en": [
+            "Full stack development (Angular + .NET) of the sales workflow",
+            "Integration with the ERP's financial and inventory movements (Firebird/PostgreSQL)",
+            "Build and deploy automation with GitHub Actions and Docker",
+            "Rollout support with pilot stores"
+          ]
+        },
+        "stack": {
+          "pt": "Angular + .NET + PostgreSQL/Firebird em containers, com pipeline GitHub Actions e deploy controlado por ambiente.",
+          "en": "Angular + .NET + PostgreSQL/Firebird in containers, with a GitHub Actions pipeline and environment-controlled deploys."
+        },
+        "destaques": {
+          "pt": [
+            "Fluxo de caixa conduzido com poucos cliques e validações em cada etapa",
+            "Integração direta com estoque e financeiro do ERP",
+            "Rollback simples via versionamento de imagens Docker"
+          ],
+          "en": [
+            "Cash flow handled in a few clicks with validations at every step",
+            "Direct integration with the ERP's inventory and financial modules",
+            "Simple rollback via Docker image versioning"
+          ]
+        },
+        "aprendizados": {
+          "pt": "Sistemas de PDV me ensinaram que consistência de dados vale mais que qualquer feature: validações defensivas, transações bem definidas e logs claros fazem toda a diferença em produção.",
+          "en": "POS systems taught me that data consistency beats any feature: defensive validations, well-defined transactions and clear logs make all the difference in production."
+        }
+      }
+    },
+    {
+      "slug": "cimobile-app",
+      "category": "mobile",
+      "title": "CiMobile — App",
+      "thumb": "/media/thumbs/proj6.webp",
+      "thumbWidth": 558,
+      "thumbHeight": 360,
+      "thumbAlt": {
+        "pt": "Tela do app CiMobile, desenvolvido em Flutter",
+        "en": "CiMobile app screen, developed with Flutter"
+      },
+      "tags": [
+        { "nome": "Flutter", "icon": "flutter" },
+        { "nome": "Dart", "icon": "dart" },
+        { "nome": "Firebase", "icon": "firebase" },
+        { "nome": "Firebird" },
+        { "nome": "GitHub Actions", "icon": "githubactions" }
+      ],
+      "summary": {
+        "pt": "App Flutter multiplataforma que leva o CiMobile para Android e iOS, integrado ao ERP e publicado na Play Store.",
+        "en": "Cross-platform Flutter app that brings CiMobile to Android and iOS, integrated with the ERP and published on the Play Store."
+      },
+      "links": [
+        { "key": "playStore", "href": "https://play.google.com/store/apps/details?id=com.conceitotecnologia.ci_app" }
+      ],
+      "caseStudy": {
+        "anon": true,
+        "subtitle": {
+          "pt": "Aplicativo Android/iOS do sistema de vendas em campo, publicado na Play Store.",
+          "en": "Android/iOS app of the field sales system, published on the Play Store."
+        },
+        "periodo": { "pt": "2022 — atual", "en": "2022 — present" },
+        "papel": { "pt": "Desenvolvedor Mobile (Flutter)", "en": "Mobile Developer (Flutter)" },
+        "contexto": {
+          "pt": "As equipes de campo vivem no celular. Levar o CiMobile para um aplicativo nativo trouxe agilidade, notificações e um uso mais confortável no dia a dia.",
+          "en": "Field teams live on their phones. Bringing CiMobile to a native app brought agility, notifications and more comfortable everyday use."
+        },
+        "desafio": {
+          "pt": "Uma única base de código Flutter para Android e iOS, consumo das mesmas APIs do sistema web e publicação contínua na Play Store com controle de versões.",
+          "en": "A single Flutter codebase for Android and iOS, consuming the same APIs as the web system, with continuous Play Store publishing and version control."
+        },
+        "papelItens": {
+          "pt": [
+            "Desenvolvimento do app em Flutter/Dart com integração às APIs .NET",
+            "Notificações e telemetria com Firebase",
+            "Pipeline de build automatizado com GitHub Actions",
+            "Publicação e atualizações na Google Play"
+          ],
+          "en": [
+            "App development in Flutter/Dart integrated with the .NET APIs",
+            "Notifications and telemetry with Firebase",
+            "Automated build pipeline with GitHub Actions",
+            "Publishing and updates on Google Play"
+          ]
+        },
+        "stack": {
+          "pt": "Flutter + Dart, Firebase (notificações/analytics), backend compartilhado com o CiMobile web e CI/CD via GitHub Actions.",
+          "en": "Flutter + Dart, Firebase (notifications/analytics), backend shared with the CiMobile web system and CI/CD via GitHub Actions."
+        },
+        "destaques": {
+          "pt": [
+            "Disponível publicamente na Play Store",
+            "Mesma camada de API do sistema web — sem duplicação de regras",
+            "Atualizações frequentes com rollout controlado"
+          ],
+          "en": [
+            "Publicly available on the Play Store",
+            "Same API layer as the web system — no duplicated rules",
+            "Frequent updates with controlled rollout"
+          ]
+        },
+        "aprendizados": {
+          "pt": "Flutter me mostrou o quanto um time full stack ganha ao dominar também o mobile: reuso do modelo de domínio e da API encurta muito o caminho entre ideia e loja.",
+          "en": "Flutter showed me how much a full stack team gains by mastering mobile too: reusing the domain model and API greatly shortens the path from idea to store."
+        }
+      }
+    },
+    {
+      "slug": "ciself-checkout",
+      "category": "mobile",
+      "title": "CiSelf-Checkout",
+      "thumb": "/media/thumbs/proj5.webp",
+      "thumbWidth": 636,
+      "thumbHeight": 360,
+      "thumbAlt": {
+        "pt": "Tela do app CiSelf-Checkout, desenvolvido em Flutter",
+        "en": "CiSelf-Checkout app screen, developed with Flutter"
+      },
+      "tags": [
+        { "nome": "Flutter", "icon": "flutter" },
+        { "nome": "Dart", "icon": "dart" },
+        { "nome": "Firebase", "icon": "firebase" },
+        { "nome": "Firebird" },
+        { "nome": "GitHub Actions", "icon": "githubactions" }
+      ],
+      "summary": {
+        "pt": "App de self-checkout em Flutter integrado aos sistemas da empresa, trazendo agilidade ao atendimento.",
+        "en": "Flutter self-checkout app integrated with the company's systems, bringing agility to customer service."
+      },
+      "links": [
+        { "key": "playStore", "href": "https://play.google.com/store/apps/details?id=com.conceitotecnologia.self_checkout_client" }
+      ],
+      "caseStudy": {
+        "anon": true,
+        "subtitle": {
+          "pt": "App de autoatendimento para finalização de compras, publicado na Play Store.",
+          "en": "Self-service app for completing purchases, published on the Play Store."
+        },
+        "periodo": { "pt": "2023 — atual", "en": "2023 — present" },
+        "papel": { "pt": "Desenvolvedor Mobile (Flutter)", "en": "Mobile Developer (Flutter)" },
+        "contexto": {
+          "pt": "Filas no caixa são um problema clássico do varejo. O CiSelf-Checkout permite que o próprio cliente escaneie e finalize a compra, integrando-se ao estoque e ao financeiro do ERP.",
+          "en": "Checkout lines are a classic retail problem. CiSelf-Checkout lets customers scan and complete their purchase themselves, integrated with the ERP's inventory and financial modules."
+        },
+        "desafio": {
+          "pt": "Simplicidade radical para o usuário final — qualquer pessoa precisa conseguir usar — com rigor absoluto na conferência de valores, estoque e pagamento.",
+          "en": "Radical simplicity for the end user — anyone must be able to use it — with absolute rigor in checking prices, inventory and payment."
+        },
+        "papelItens": {
+          "pt": [
+            "App Flutter com fluxo de escaneamento, carrinho e pagamento",
+            "Integração com as regras comerciais do ERP (Firebird)",
+            "Telemetria e estabilidade com Firebase",
+            "CI/CD com GitHub Actions e publicação na Play Store"
+          ],
+          "en": [
+            "Flutter app with scanning, cart and payment workflow",
+            "Integration with the ERP's business rules (Firebird)",
+            "Telemetry and stability with Firebase",
+            "CI/CD with GitHub Actions and Play Store publishing"
+          ]
+        },
+        "stack": {
+          "pt": "Flutter + Dart + Firebase sobre a base de APIs .NET da empresa, com automação completa de build e publicação.",
+          "en": "Flutter + Dart + Firebase on the company's .NET API foundation, with fully automated build and publishing."
+        },
+        "destaques": {
+          "pt": [
+            "Experiência de compra em poucos toques, pensada para o público geral",
+            "Menos fila no caixa nas operações piloto",
+            "Publicação estável na Play Store"
+          ],
+          "en": [
+            "Purchase experience in a few taps, designed for the general public",
+            "Shorter checkout lines in pilot operations",
+            "Stable Play Store publishing"
+          ]
+        },
+        "aprendizados": {
+          "pt": "Projetar UX para o 'usuário de rua' é um exercício de empatia e contenção: menos opções, mais sinalização. E hardware e periféricos (leitores, impressoras) exigem camadas de tolerância a falhas.",
+          "en": "Designing UX for the everyday user is an exercise in empathy and restraint: fewer options, clearer cues. And hardware and peripherals (scanners, printers) demand layers of fault tolerance."
+        }
+      }
+    },
+    {
+      "slug": "catalogo-filmes",
+      "category": "estudos",
+      "title": "Catálogo de filmes",
+      "thumb": "/media/thumbs/proj3.webp",
+      "thumbWidth": 760,
+      "thumbHeight": 360,
+      "thumbAlt": {
+        "pt": "Tela do catálogo de filmes estilo Netflix com carrossel nativo e dados do TMDB",
+        "en": "Netflix-style movie catalog screen with native carousel and TMDB data"
+      },
+      "tags": [
+        { "nome": "HTML", "icon": "html5" },
+        { "nome": "CSS", "icon": "css" },
+        { "nome": "JavaScript", "icon": "javascript" },
+        { "nome": "TMDB", "icon": "themoviedatabase" }
+      ],
+      "summary": {
+        "pt": "Catálogo estilo Netflix em vanilla JS: carrossel nativo, filmes do TMDB via proxy serverless na Vercel (chave protegida + cache de edge) e modal de detalhes acessível.",
+        "en": "Netflix-style catalog in vanilla JS: native carousel, TMDB movies via a serverless proxy on Vercel (protected key + edge cache) and an accessible details modal."
+      },
+      "links": [
+        { "key": "demo", "href": "https://oliverlucasfer-catalogo-filmes.vercel.app/" },
+        { "key": "codigo", "href": "https://github.com/oliverlucasfer/Netflix" }
+      ],
+      "caseStudy": {
+        "anon": false,
+        "subtitle": {
+          "pt": "Catálogo de filmes estilo Netflix em JavaScript puro, com dados do TMDB.",
+          "en": "Netflix-style movie catalog in pure JavaScript, powered by TMDB data."
+        },
+        "periodo": { "pt": "2024", "en": "2024" },
+        "papel": { "pt": "Desenvolvimento individual", "en": "Solo project" },
+        "contexto": {
+          "pt": "Projeto de estudos para exercitar DOM, fetch, carrosséis nativos (scroll-snap) e arquitetura de frontend sem frameworks — replicando a experiência de um catálogo de streaming.",
+          "en": "A study project to practice DOM manipulation, fetch, native carousels (scroll-snap) and framework-free frontend architecture — replicating a streaming catalog experience."
+        },
+        "desafio": {
+          "pt": "Consumir a API do TMDB sem expor a chave no cliente. A solução foi um proxy serverless na Vercel, com a chave protegida em variável de ambiente e cache de edge para reduzir chamadas.",
+          "en": "Consume the TMDB API without exposing the key on the client. The solution was a serverless proxy on Vercel, with the key protected in an environment variable and edge caching to reduce calls."
+        },
+        "papelItens": {
+          "pt": [
+            "Arquitetura de componentes em vanilla JS (sem frameworks)",
+            "Carrosséis nativos com scroll-snap e navegação por teclado",
+            "Proxy serverless na Vercel com proteção de chave e cache de edge",
+            "Modal de detalhes acessível (foco preso, ESC, aria)"
+          ],
+          "en": [
+            "Component architecture in vanilla JS (no frameworks)",
+            "Native carousels with scroll-snap and keyboard navigation",
+            "Serverless proxy on Vercel with key protection and edge caching",
+            "Accessible details modal (focus trap, ESC, aria)"
+          ]
+        },
+        "stack": {
+          "pt": "HTML, CSS e JavaScript puros; Vercel Functions para o proxy; TMDB como fonte de dados.",
+          "en": "Pure HTML, CSS and JavaScript; Vercel Functions for the proxy; TMDB as the data source."
+        },
+        "destaques": {
+          "pt": [
+            "Zero dependências de frontend",
+            "Chave de API nunca exposta ao cliente",
+            "Deploy contínuo na Vercel a cada push"
+          ],
+          "en": [
+            "Zero frontend dependencies",
+            "API key never exposed to the client",
+            "Continuous deploy to Vercel on every push"
+          ]
+        },
+        "aprendizados": {
+          "pt": "Reconstruir na mão o que frameworks resolvem (estado, roteamento, acessibilidade) é o melhor jeito de entender o que eles fazem por você — e quando eles valem a pena.",
+          "en": "Rebuilding by hand what frameworks solve (state, routing, accessibility) is the best way to understand what they do for you — and when they are worth it."
+        }
+      }
+    },
+    {
+      "slug": "instagram-clone",
+      "category": "estudos",
+      "title": "Instagram Clone",
+      "thumb": "/media/thumbs/proj4.webp",
+      "thumbWidth": 760,
+      "thumbHeight": 360,
+      "thumbAlt": {
+        "pt": "Tela do mini-app Instagram com login, cadastro e feed",
+        "en": "Instagram mini-app screen with login, signup and feed"
+      },
+      "tags": [
+        { "nome": "HTML", "icon": "html5" },
+        { "nome": "CSS", "icon": "css" },
+        { "nome": "JavaScript", "icon": "javascript" }
+      ],
+      "summary": {
+        "pt": "Mini-app do Instagram: login e cadastro com senhas hasheadas (SHA-256), feed com stories e posts, hash router e i18n PT-BR/EN.",
+        "en": "Instagram mini-app: login and signup with hashed passwords (SHA-256), feed with stories and posts, hash router and PT-BR/EN i18n."
+      },
+      "links": [
+        { "key": "demo", "href": "https://oliverlucasfer-instagram.vercel.app/" },
+        { "key": "codigo", "href": "https://github.com/oliverlucasfer/Instagram" }
+      ],
+      "caseStudy": {
+        "anon": false,
+        "subtitle": {
+          "pt": "Mini-app de rede social em vanilla JS com autenticação, feed e i18n.",
+          "en": "Social network mini-app in vanilla JS with auth, feed and i18n."
+        },
+        "periodo": { "pt": "2024", "en": "2024" },
+        "papel": { "pt": "Desenvolvimento individual", "en": "Solo project" },
+        "contexto": {
+          "pt": "Estudo de caso sobre autenticação client-side, roteamento e persistência local, replicando os fluxos centrais do Instagram em uma SPA sem framework.",
+          "en": "A case study on client-side authentication, routing and local persistence, replicating Instagram's core flows in a framework-free SPA."
+        },
+        "desafio": {
+          "pt": "Implementar cadastro/login com hash de senha (SHA-256 via Web Crypto), sessão persistente, hash router próprio e internacionalização PT-BR/EN sem bibliotecas.",
+          "en": "Implement signup/login with password hashing (SHA-256 via Web Crypto), persistent session, a custom hash router and PT-BR/EN internationalization without libraries."
+        },
+        "papelItens": {
+          "pt": [
+            "Autenticação com hash de senhas e sessão persistida",
+            "Feed com stories, posts e interações",
+            "Hash router próprio com proteção de rotas privadas",
+            "i18n próprio para PT-BR e EN"
+          ],
+          "en": [
+            "Authentication with hashed passwords and persisted session",
+            "Feed with stories, posts and interactions",
+            "Custom hash router with private route protection",
+            "Custom i18n for PT-BR and EN"
+          ]
+        },
+        "stack": {
+          "pt": "HTML, CSS, JavaScript puro, Web Crypto API, LocalStorage.",
+          "en": "HTML, CSS, pure JavaScript, Web Crypto API, LocalStorage."
+        },
+        "destaques": {
+          "pt": [
+            "Hash router escrito do zero com rotas privadas",
+            "Senhas nunca armazenadas em texto puro",
+            "Troca de idioma instantânea em toda a interface"
+          ],
+          "en": [
+            "Hash router written from scratch with private routes",
+            "Passwords never stored in plain text",
+            "Instant language switching across the whole UI"
+          ]
+        },
+        "aprendizados": {
+          "pt": "Entender o ciclo completo de autenticação (mesmo que simulado) e escrever um router próprio mudou minha forma de avaliar soluções prontas: sei exatamente quais problemas cada camada resolve.",
+          "en": "Understanding the full authentication cycle (even if simulated) and writing my own router changed how I evaluate off-the-shelf solutions: I know exactly which problems each layer solves."
+        }
+      }
+    }
+  ]
+}
