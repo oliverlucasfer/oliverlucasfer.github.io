@@ -1,0 +1,50 @@
+name: Lighthouse CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build site
+        run: node build.mjs
+
+      - name: Serve dist
+        run: |
+          npx --yes http-server dist -p 8123 --silent &
+          echo $! > server.pid
+          sleep 5
+          curl -s -o /dev/null -w "%{http_code}" http://localhost:8123/
+
+      - name: Run Lighthouse
+        run: |
+          npx --yes lighthouse http://localhost:8123/ \
+            --output=json --output-path=./lighthouse-home.json \
+            --chrome-flags="--headless=new --no-sandbox" \
+            --only-categories=performance,accessibility,best-practices,seo \
+            --quiet
+          npx --yes lighthouse http://localhost:8123/projetos/cimobile-web/ \
+            --output=json --output-path=./lighthouse-case.json \
+            --chrome-flags="--headless=new --no-sandbox" \
+            --only-categories=performance,accessibility,best-practices,seo \
+            --quiet
+
+      - name: Check scores
+        run: node scripts/check-lighthouse.mjs
+
+      - name: Stop server
+        if: always()
+        run: kill $(cat server.pid) || true
