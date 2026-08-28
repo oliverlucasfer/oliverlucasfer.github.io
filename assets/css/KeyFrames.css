@@ -1,6 +1,6 @@
 @keyframes moveMenu{
     0%{
-        transform: translateX(10rem);
+        transform: translateX(-10rem);
     }
     100%{
         transform:translateX(0);

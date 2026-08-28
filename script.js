@@ -2,6 +2,75 @@ const prefersReducedMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)"
 ).matches;
 
+const safeStorage = {
+  get(key) {
+    try {
+      return localStorage.getItem(key);
+    } catch {
+      return null;
+    }
+  },
+  set(key, value) {
+    try {
+      localStorage.setItem(key, value);
+    } catch {}
+  }
+};
+
+const themeMeta = document.querySelector('meta[name="theme-color"]');
+
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  if (themeMeta) {
+    themeMeta.setAttribute("content", theme === "light" ? "#f4f5f9" : "#0e0e14");
+  }
+  document.querySelectorAll(".theme-toggle").forEach((btn) => {
+    btn.setAttribute(
+      "aria-label",
+      theme === "light" ? btn.dataset.labelDark : btn.dataset.labelLight
+    );
+  });
+}
+
+function initTheme() {
+  const stored = safeStorage.get("theme");
+  const schemeQuery = window.matchMedia("(prefers-color-scheme: light)");
+  const applyScheme = (event) =>
+    applyTheme(event.matches ? "light" : "dark");
+  applyTheme(
+    stored === "light" || stored === "dark"
+      ? stored
+      : schemeQuery.matches
+        ? "light"
+        : "dark"
+  );
+  if (!stored) {
+    if (schemeQuery.addEventListener) {
+      schemeQuery.addEventListener("change", applyScheme);
+    } else if (schemeQuery.addListener) {
+      schemeQuery.addListener(applyScheme);
+    }
+  }
+  document.querySelectorAll(".theme-toggle").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const next =
+        document.documentElement.dataset.theme === "light" ? "dark" : "light";
+      safeStorage.set("theme", next);
+      applyTheme(next);
+    });
+  });
+}
+
+initTheme();
+
+document.querySelectorAll(".bento-foto img").forEach((img) => {
+  const hide = () => {
+    img.style.display = "none";
+  };
+  img.addEventListener("error", hide);
+  if (img.complete && img.naturalWidth === 0) hide();
+});
+
 const container = document.querySelector(".container");
 const menuToggle = document.querySelector(".js-menu-toggle");
 
@@ -55,6 +124,7 @@ filterChips.forEach((chip) => {
 document.querySelectorAll(".tags").forEach((container) => {
   const tags = [...container.querySelectorAll(":scope > .tag")];
   if (tags.length <= 3) return;
+  const lessLabel = container.closest(".cards")?.dataset.less || "menos";
   tags.slice(3).forEach((tag) => tag.classList.add("extra"));
   const more = document.createElement("button");
   more.type = "button";
@@ -64,7 +134,7 @@ document.querySelectorAll(".tags").forEach((container) => {
   more.addEventListener("click", () => {
     const expanded = container.classList.toggle("expanded");
     more.setAttribute("aria-expanded", String(expanded));
-    more.textContent = expanded ? "menos" : "+" + tags.slice(3).length;
+    more.textContent = expanded ? lessLabel : "+" + tags.slice(3).length;
   });
   container.appendChild(more);
 });
