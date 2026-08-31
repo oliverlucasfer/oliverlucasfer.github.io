@@ -541,6 +541,92 @@
           "en": "Understanding the full authentication cycle (even if simulated) and writing my own router changed how I evaluate off-the-shelf solutions: I know exactly which problems each layer solves."
         }
       }
+    },
+    {
+      "slug": "smartschool",
+      "category": "estudos",
+      "title": "SmartSchool",
+      "thumb": "/media/thumbs/proj8.webp",
+      "thumbWidth": 760,
+      "thumbHeight": 360,
+      "thumbAlt": {
+        "pt": "Capa do SmartSchool, API de gestão escolar em ASP.NET Core",
+        "en": "SmartSchool cover, school management API built with ASP.NET Core"
+      },
+      "tags": [
+        { "nome": ".NET 10", "icon": "dotnet" },
+        { "nome": "EF Core", "icon": "database" },
+        { "nome": "SQLite", "icon": "database" },
+        { "nome": "JWT", "icon": "shield" },
+        { "nome": "xUnit", "icon": "check" },
+        { "nome": "Docker", "icon": "docker" },
+        { "nome": "GitHub Actions", "icon": "githubactions" }
+      ],
+      "summary": {
+        "pt": "Web API ASP.NET Core para gestão escolar (alunos, professores, cursos e disciplinas), com versionamento, autenticação JWT + refresh tokens e cobertura de testes.",
+        "en": "ASP.NET Core Web API for school management (students, teachers, courses and subjects), with versioning, JWT + refresh token authentication and test coverage."
+      },
+      "links": [
+        { "key": "demo", "href": "https://smartschool-u3aw.onrender.com/" },
+        { "key": "codigo", "href": "https://github.com/oliverlucasfer/SmartSchool" }
+      ],
+      "caseStudy": {
+        "anon": false,
+        "subtitle": {
+          "pt": "API de gestão escolar em ASP.NET Core, projetada com arquitetura em camadas e boas práticas de backend.",
+          "en": "School management API in ASP.NET Core, designed with layered architecture and backend best practices."
+        },
+        "periodo": { "pt": "2022 — 2026", "en": "2022 — 2026" },
+        "papel": { "pt": "Desenvolvimento individual", "en": "Solo project" },
+        "contexto": {
+          "pt": "Projeto pessoal criado para aprofundar o desenvolvimento de APIs backend: arquitetura em camadas, versionamento, autenticação robusta e testes. A API cobre o domínio de uma escola — alunos, professores, cursos e disciplinas.",
+          "en": "A personal project built to go deeper into backend API development: layered architecture, versioning, robust authentication and testing. The API covers a school's domain — students, teachers, courses and subjects."
+        },
+        "desafio": {
+          "pt": "Projetar uma API estável e segura: versionamento que não quebre consumidores (V1/V2), autenticação por JWT com refresh tokens rotativos, validação de entrada consistente, soft delete para preservar histórico e um pipeline de CI que rode os testes a cada push.",
+          "en": "Design a stable and secure API: versioning that does not break consumers (V1/V2), JWT authentication with rotating refresh tokens, consistent input validation, soft delete to preserve history and a CI pipeline that runs tests on every push."
+        },
+        "papelItens": {
+          "pt": [
+            "API REST em ASP.NET Core 10 com endpoints de CRUD para aluno, professor, curso e disciplina",
+            "Autenticação JWT + refresh tokens rotativos via ASP.NET Core Identity, com rate limiting no login",
+            "Versionamento de API (V1 deprecada / V2 ativa) e documentação Swagger",
+            "Validação de entrada com FluentValidation e erros no padrão Problem Details (RFC 7807)",
+            "Testes de unidade e integração com xUnit, NSubstitute e WebApplicationFactory",
+            "Containerização com Docker e deploy gratuito no Render"
+          ],
+          "en": [
+            "REST API in ASP.NET Core 10 with CRUD endpoints for students, teachers, courses and subjects",
+            "JWT authentication with rotating refresh tokens via ASP.NET Core Identity, with login rate limiting",
+            "API versioning (deprecated V1 / active V2) and Swagger documentation",
+            "Input validation with FluentValidation and Problem Details errors (RFC 7807)",
+            "Unit and integration tests with xUnit, NSubstitute and WebApplicationFactory",
+            "Containerization with Docker and free deployment on Render"
+          ]
+        },
+        "stack": {
+          "pt": ".NET 10, EF Core 10 + SQLite, ASP.NET Core Identity, JwtBearer, Mapster, FluentValidation, Swashbuckle, xUnit + NSubstitute; Docker e GitHub Actions no CI",
+          "en": ".NET 10, EF Core 10 + SQLite, ASP.NET Core Identity, JwtBearer, Mapster, FluentValidation, Swashbuckle, xUnit + NSubstitute; Docker and GitHub Actions for CI"
+        },
+        "destaques": {
+          "pt": [
+            "Refresh tokens rotativos com revogação do token antigo",
+            "Soft delete nos recursos para preservar o histórico",
+            "Versionamento V1/V2 sem quebrar consumidores existentes",
+            "Cobertura de testes cobrindo autenticação, autorização e CRUD"
+          ],
+          "en": [
+            "Rotating refresh tokens with revocation of the old token",
+            "Soft delete on resources to preserve history",
+            "V1/V2 versioning without breaking existing consumers",
+            "Test coverage across authentication, authorization and CRUD"
+          ]
+        },
+        "aprendizados": {
+          "pt": "Gerir sessões com refresh tokens, versionar API sem quebrar clientes e escrever testes de integração que sobem a API de verdade foram os aprendizados que mais mudaram minha abordagem de desenvolvimento backend: seguro, testável e com ciclo de release confiável.",
+          "en": "Managing sessions with refresh tokens, versioning an API without breaking clients and writing integration tests that actually boot the API transformed my backend approach: secure, testable and with a reliable release cycle."
+        }
+      }
     }
   ]
 }
