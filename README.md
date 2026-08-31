@@ -13,10 +13,11 @@ data/
   projects.json      # 7 projetos + páginas de projeto completas (PT/EN)
 assets/
   icons/             # SVGs de marca (base do sprite gerado no build)
-  css/               # estilos (tema claro/escuro via [data-theme])
+  fonts/             # woff2 das fontes (Inter + JetBrains Mono, variáveis)
+  js/app.js          # JS do cliente (tema, filtros, contadores, GitHub, formulário)
+  css/               # estilos (tema claro/escuro via [data-theme], fonte e keyframes inclusos)
   vendor/lenis.min.js
 build.mjs            # gerador do site (Node puro, zero dependências)
-script.js            # JS do cliente (tema, filtros, contadores, GitHub, formulário)
 scripts/
   check-lighthouse.mjs
 .github/workflows/
@@ -49,19 +50,18 @@ npx http-server dist    # http://localhost:8080
 
 ## Deploy
 
-O workflow `.github/workflows/deploy.yml` faz build e publica `dist/` no GitHub Pages a cada push em `main`.
+O workflow `.github/workflows/deploy.yml` faz build e publica `dist/` no GitHub Pages a cada push em `master`.
 
 > **Configuração única necessária:** em *Settings → Pages*, mudar **Source** para **"GitHub Actions"** (em vez de "Deploy from a branch"). Sem isso o deploy novo não sobe.
 
 ## Lighthouse
 
-`.github/workflows/lighthouse.yml` roda a cada PR/push em `main`, mede as páginas home e um case study e valida os budgets em `scripts/check-lighthouse.mjs` (Performance ≥ 90, Acessibilidade ≥ 95, SEO = 100). Está com `continue-on-error` — após estabilizar, remova a linha para bloquear merges abaixo do budget.
+`.github/workflows/lighthouse.yml` roda a cada push em `master`/PR, mede as páginas home e um projeto e valida os budgets em `scripts/check-lighthouse.mjs` (Performance ≥ 90, Acessibilidade ≥ 95, SEO = 100). Falhas no budget bloqueiam o fluxo.
 
 ## Checklist antes de publicar
 
 - [ ] **Revisar `data/projects.json`**: as páginas dos projetos da empresa estão anonimizadas (sem cliente, sem métricas internas) — confirme que nada fere confidencialidade.
 - [ ] (Opcional) **Formulário de contato**: crie uma conta gratuita no [Formspree](https://formspree.io), copie o endpoint (`https://formspree.io/f/xxxx`) e preencha `"formspreeEndpoint"` no `data/site.json`. Sem endpoint, o site mostra o fallback por e-mail.
-- [ ] Mudar o Source do GitHub Pages para "GitHub Actions".
 - [ ] Conferir `data/site.json`: `careerStartYear`, e-mail e links sociais.
 
 ## Recursos
@@ -72,10 +72,10 @@ O workflow `.github/workflows/deploy.yml` faz build e publica `dist/` no GitHub 
 - Ícones de tecnologia em sprite SVG local (zero requests externos de ícone)
 - Scroll suave (Lenis local), reveal on scroll, tipografia animada — todos desativados com `prefers-reduced-motion`
 - Card do GitHub com dados da API pública (some graciosamente offline)
+- Fontes self-hosted (woff2) — sem dependência externa de fonts
 - Página 404 e `robots.txt`
 
 ## Ajustes futuros (ideias)
 
 - Service worker (PWA)
 - Blog/seção de artigos
-- Remover os arquivos legados da raiz (`index.html`, `en/`, `404.html`, `script.js` antigos) depois que o deploy via Actions estiver validado

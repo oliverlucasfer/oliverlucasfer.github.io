@@ -4,8 +4,7 @@ import {
   rmSync,
   mkdirSync,
   cpSync,
-  readdirSync,
-  existsSync
+  readdirSync
 } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -877,34 +876,9 @@ function main() {
   rmSync(dist, { recursive: true, force: true });
   mkdirSync(dist, { recursive: true });
 
-  mkdirSync(join(dist, "assets", "js"), { recursive: true });
   cpSync(join(root, "assets"), join(dist, "assets"), { recursive: true });
-  cpSync(join(root, "script.js"), join(dist, "assets", "js", "app.js"));
   cpSync(join(root, "media"), join(dist, "media"), { recursive: true });
   cpSync(join(root, ".nojekyll"), join(dist, ".nojekyll"));
-
-  // Arquivos legados sem referência no site — não vão para o deploy
-  const legacy = [
-    "assets/images/backgroundimg.jpg",
-    "assets/images/bgleft.jpg",
-    "assets/images/Angular.svg",
-    "assets/images/Docker.svg",
-    "assets/images/Git.svg",
-    "assets/images/MongoDB.svg",
-    "assets/images/NET core.svg",
-    "assets/images/PostgresSQL.svg",
-    "media/proj1.jpeg",
-    "media/proj2.jpeg",
-    "media/proj3.jpeg",
-    "media/proj3.png",
-    "media/proj4.jpeg",
-    "media/proj4.png",
-    "media/proj7.png"
-  ];
-  for (const rel of legacy) {
-    const target = join(dist, rel);
-    if (existsSync(target)) rmSync(target);
-  }
 
   writeFileSync(join(dist, "index.html"), renderHome("pt"));
   mkdirSync(join(dist, "en"), { recursive: true });
