@@ -16,7 +16,6 @@ const dist = join(root, "dist");
 const site = JSON.parse(readFileSync(join(root, "data", "site.json"), "utf8"));
 const skillsData = JSON.parse(readFileSync(join(root, "data", "skills.json"), "utf8"));
 const projectsData = JSON.parse(readFileSync(join(root, "data", "projects.json"), "utf8"));
-const testimonialsData = JSON.parse(readFileSync(join(root, "data", "testimonials.json"), "utf8"));
 
 const projects = projectsData.projetos;
 const locales = site.locales;
@@ -108,7 +107,7 @@ function buildSprite() {
 const sprite = buildSprite();
 
 function icon(name, cls = "") {
-  const kind = brandIcons[name] ? "ic-brand" : "ic-line";
+  const kind = brandIcons[name] || socialIcons[name] ? "ic-brand" : "ic-line";
   return `<svg class="ic ${kind} ${cls}" aria-hidden="true" focusable="false"><use href="#icon-${name}"/></svg>`;
 }
 
@@ -324,7 +323,7 @@ function renderCards(locale) {
   const labels = locale.projetos;
   return projects
     .map((p) => {
-      const caseUrl = locale.prefix === "/en/"
+      const projectUrl = locale.prefix === "/en/"
         ? `/en/projects/${p.slug}/`
         : `/projetos/${p.slug}/`;
       const tags = p.tags
@@ -333,16 +332,15 @@ function renderCards(locale) {
           return `                <span class="tag">${ic}${esc(tag.nome)}</span>`;
         })
         .join("\n");
-      const links = p.links
-        .map((link) =>
-          cardLinkButton(
-            labels[link.key] ?? link.key,
-            link.href,
-            link.key === "codigo"
+      const external = p.links.length
+        ? cardLinkButton(
+            labels[p.links[0].key] ?? p.links[0].key,
+            p.links[0].href,
+            false
           )
-        )
-        .join("\n");
+        : "";
       return `        <article class="card" data-anime="up" data-category="${p.category}">
+          <a class="card-link" href="${projectUrl}" aria-label="${esc(t(p.thumbAlt, locale))}">
           <div class="card-img-wrapper">
             <img
               src="${p.thumb}"
@@ -354,55 +352,23 @@ function renderCards(locale) {
             />
             <span class="card-badge">${esc(labels.badges[p.category])}</span>
           </div>
+          </a>
           <div class="card-body">
-            <h3>${esc(p.title)}</h3>
+            <h3><a class="card-title-link" href="${projectUrl}">${esc(p.title)}</a></h3>
             <div class="tags">
 ${tags}
             </div>
             <p>${esc(t(p.summary, locale))}</p>
             <div class="card-actions">
-              <a class="ButtonSend" href="${caseUrl}">${esc(labels.verCase)}
+              <a class="ButtonSend" href="${projectUrl}">${esc(labels.verProjeto)}
                 ${icon("arrow-up-right", "btn-icon")}
               </a>
-${links}
+${external}
             </div>
           </div>
         </article>`;
     })
     .join("\n\n");
-}
-
-function renderTestimonials(locale) {
-  const itens = testimonialsData.itens ?? [];
-  if (!itens.length) return "";
-  const cards = itens
-    .map(
-      (d) => `        <figure class="depoimento-card${d.placeholder ? " is-placeholder" : ""}" data-anime="up">
-          <blockquote>&ldquo;${esc(t(d.quote, locale))}&rdquo;</blockquote>
-          <figcaption>
-            <span class="depoimento-autor">${esc(d.autor)}</span>
-            <span class="depoimento-cargo">${esc(t(d.cargo, locale))}</span>
-            <a
-              class="depoimento-link"
-              href="${d.link}"
-              target="_blank"
-              rel="noopener noreferrer"
-              >LinkedIn ${icon("arrow-up-right", "btn-icon")}</a
-            >
-          </figcaption>
-        </figure>`
-    )
-    .join("\n");
-  const id = locale.prefix === "/en/" ? "testimonials" : "depoimentos";
-  return `      <section class="sessao-depoimentos" id="${id}">
-        <div class="sessao-header" data-anime="up">
-          <h2>${esc(locale.depoimentos.titulo)}</h2>
-        </div>
-        <p class="depoimentos-intro" data-anime="up">${esc(locale.depoimentos.intro)}</p>
-        <div class="depoimentos-grid">
-${cards}
-        </div>
-      </section>`;
 }
 
 function renderContact(locale) {
@@ -606,10 +572,6 @@ ${stats}
                 <span class="stat-num" data-gh="repos">–</span>
                 <span class="stat-label">${esc(locale.sobre.github.repos)}</span>
               </div>
-              <div class="gh-stat">
-                <span class="stat-num" data-gh="followers">–</span>
-                <span class="stat-label">${esc(locale.sobre.github.seguidores)}</span>
-              </div>
             </div>
             <a
               class="ButtonSend outline"
@@ -655,8 +617,6 @@ ${filtros}
 ${renderCards(locale)}
         </div>
       </section>
-
-${renderTestimonials(locale)}
 
 ${renderContact(locale)}
       </main>
@@ -851,7 +811,7 @@ ${footer(locale)}`;
     locale,
     ptPath,
     enPath,
-    title: `${p.title} - Case Study | ${isEn ? "Lucas Oliveira" : "Lucas Oliveira"}`,
+    title: `${p.title} - Projeto | Lucas Oliveira`,
     description: t(cs.subtitle, locale),
     ogType: "article",
     jsonLd,

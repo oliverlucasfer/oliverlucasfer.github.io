@@ -627,8 +627,9 @@ section {
   color: #fff;
 }
 .gh-avatar {
-  width: 26px;
-  height: 26px;
+  width: 28px;
+  height: 28px;
+  color: #fff;
 }
 .bento-github h3 {
   font-family: var(--font-mono);
@@ -857,6 +858,20 @@ section {
   height: 180px;
   overflow: hidden;
 }
+.card-link {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+}
+.card-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+.card-link .card-img-wrapper {
+  height: 100%;
+}
 .card-badge {
   display: inline-flex;
   align-items: center;
@@ -898,6 +913,18 @@ section {
   font-family: var(--font-mono);
   font-size: 1.25rem;
   color: var(--text);
+}
+.card-title-link {
+  color: var(--text);
+  transition: color 0.25s;
+}
+.card-title-link:hover {
+  color: var(--accent);
+}
+.card-title-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 .tags {
   display: flex;
@@ -945,7 +972,13 @@ section {
 }
 .card-actions {
   display: flex;
-  gap: 0.8rem;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.7rem;
+}
+.card-actions .ButtonSend {
+  padding: 0.75em 1.5em;
+  font-size: 0.74rem;
 }
 
 /* ====================== CONTATO ====================== */
@@ -1035,72 +1068,6 @@ section {
 .form-fallback-note {
   color: var(--muted);
   margin-bottom: 2rem;
-}
-
-/* ====================== DEPOIMENTOS ====================== */
-.sessao-depoimentos {
-  background-color: var(--bg-elev);
-  padding-bottom: 5rem;
-}
-.depoimentos-intro {
-  text-align: center;
-  color: var(--muted);
-  max-width: 60ch;
-  margin: 0 auto;
-  padding: 1rem 2rem 0;
-}
-.depoimentos-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-.depoimento-card {
-  background-color: var(--bg-elev-2);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 1.8rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-.depoimento-card blockquote {
-  color: var(--text);
-  font-size: 0.98rem;
-  line-height: 1.7;
-  flex: 1;
-}
-.depoimento-card figcaption {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-}
-.depoimento-autor {
-  font-family: var(--font-mono);
-  color: var(--accent);
-  font-weight: 500;
-}
-.depoimento-cargo {
-  color: var(--muted);
-  font-size: 0.85rem;
-}
-.depoimento-link {
-  margin-top: 0.4rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--accent-2);
-}
-.depoimento-link:hover {
-  color: var(--accent);
-}
-.depoimento-card.is-placeholder {
-  opacity: 0.55;
-  border-style: dashed;
 }
 
 /* ====================== FOOTER ====================== */
@@ -1612,6 +1579,9 @@ html.lenis body {
     padding: 1.2rem;
   }
   .card-img-wrapper {
+    height: 200px;
+  }
+  .card-link {
     height: 200px;
   }
   .card-actions .ButtonSend {

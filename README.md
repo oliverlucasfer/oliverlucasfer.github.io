@@ -10,8 +10,7 @@ Portfólio pessoal estático (HTML/CSS/JS puro no final), com **build local que 
 data/
   site.json          # textos da interface, nav, hero, experiência, contato (PT/EN)
   skills.json        # grupos de conhecimentos (chips, sem percentuais)
-  projects.json      # 7 projetos + case studies completos (PT/EN)
-  testimonials.json  # depoimentos (substituir placeholders!)
+  projects.json      # 7 projetos + páginas de projeto completas (PT/EN)
 assets/
   icons/             # SVGs de marca (base do sprite gerado no build)
   css/               # estilos (tema claro/escuro via [data-theme])
@@ -34,9 +33,8 @@ dist/                # saída do build (não versionada)
 **Não edite os HTML gerados.** Todo o conteúdo vem de `data/`:
 
 - Textos gerais e experiência: `data/site.json` (chaves `pt` e `en`)
-- Projetos e case studies: `data/projects.json`
+- Projetos e páginas de projeto: `data/projects.json`
 - Skills: `data/skills.json`
-- Depoimentos: `data/testimonials.json`
 
 Depois rode o build (abaixo). Ícones: adicione o SVG em `assets/icons/<nome>.svg` e use `"icon": "<nome>"` no dado.
 
@@ -61,8 +59,7 @@ O workflow `.github/workflows/deploy.yml` faz build e publica `dist/` no GitHub 
 
 ## Checklist antes de publicar
 
-- [ ] **Revisar `data/projects.json`**: os case studies dos projetos da empresa estão anonimizados (sem cliente, sem métricas internas) — confirme que nada fere confidencialidade.
-- [ ] **Substituir os depoimentos** de exemplo em `data/testimonials.json` por recomendações reais (LinkedIn → Perfil → Recomendações) e remover `"placeholder": true`.
+- [ ] **Revisar `data/projects.json`**: as páginas dos projetos da empresa estão anonimizadas (sem cliente, sem métricas internas) — confirme que nada fere confidencialidade.
 - [ ] (Opcional) **Formulário de contato**: crie uma conta gratuita no [Formspree](https://formspree.io), copie o endpoint (`https://formspree.io/f/xxxx`) e preencha `"formspreeEndpoint"` no `data/site.json`. Sem endpoint, o site mostra o fallback por e-mail.
 - [ ] Mudar o Source do GitHub Pages para "GitHub Actions".
 - [ ] Conferir `data/site.json`: `careerStartYear`, e-mail e links sociais.
@@ -71,7 +68,7 @@ O workflow `.github/workflows/deploy.yml` faz build e publica `dist/` no GitHub 
 
 - Tema claro/escuro com preferência salva (`localStorage`) e respeito ao `prefers-color-scheme`
 - Versão EN com URLs próprias (`/en/`) + `hreflang` + `sitemap.xml` + JSON-LD (schema.org Person/CreativeWork)
-- Case studies por projeto em `/projetos/<slug>/` e `/en/projects/<slug>/`
+- Página de projeto em `/projetos/<slug>/` e `/en/projects/<slug>/`
 - Ícones de tecnologia em sprite SVG local (zero requests externos de ícone)
 - Scroll suave (Lenis local), reveal on scroll, tipografia animada — todos desativados com `prefers-reduced-motion`
 - Card do GitHub com dados da API pública (some graciosamente offline)

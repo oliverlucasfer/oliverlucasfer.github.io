@@ -38,7 +38,6 @@
         { "id": "conhecimentos", "label": "Conhecimentos" },
         { "id": "experiencia", "label": "Experiência" },
         { "id": "projetos", "label": "Projetos" },
-        { "id": "depoimentos", "label": "Depoimentos" },
         { "id": "contato", "label": "Contato" }
       ],
       "hero": {
@@ -73,7 +72,6 @@
           "titulo": "GitHub",
           "texto": "Código, experimentos e contribuições — tudo aberto no meu perfil.",
           "repos": "repositórios públicos",
-          "seguidores": "seguidores",
           "botao": "Ver perfil"
         }
       },
@@ -124,16 +122,12 @@
           { "id": "estudos", "label": "Estudos" }
         ],
         "badges": { "web": "Web", "mobile": "Mobile", "estudos": "Estudos" },
-        "verCase": "Ver case study",
-        "verPost": "Ver post",
+        "verProjeto": "Ver projeto",
+        "site": "Site",
         "playStore": "Play Store",
         "demo": "Demo",
         "codigo": "Código",
         "menos": "menos"
-      },
-      "depoimentos": {
-        "titulo": "Depoimentos",
-        "intro": "O que colegas e clientes dizem sobre trabalhar comigo."
       },
       "contato": {
         "titulo": "Contato",
@@ -209,7 +203,6 @@
         { "id": "skills", "label": "Skills" },
         { "id": "experience", "label": "Experience" },
         { "id": "projects", "label": "Projects" },
-        { "id": "testimonials", "label": "Testimonials" },
         { "id": "contact", "label": "Contact" }
       ],
       "hero": {
@@ -244,7 +237,6 @@
           "titulo": "GitHub",
           "texto": "Code, experiments and contributions — all open on my profile.",
           "repos": "public repositories",
-          "seguidores": "followers",
           "botao": "View profile"
         }
       },
@@ -295,16 +287,12 @@
           { "id": "estudos", "label": "Studies" }
         ],
         "badges": { "web": "Web", "mobile": "Mobile", "estudos": "Studies" },
-        "verCase": "View case study",
-        "verPost": "See post",
+        "verProjeto": "View project",
+        "site": "Website",
         "playStore": "Play Store",
         "demo": "Demo",
         "codigo": "Code",
         "menos": "less"
-      },
-      "depoimentos": {
-        "titulo": "Testimonials",
-        "intro": "What colleagues and clients say about working with me."
       },
       "contato": {
         "titulo": "Contact",

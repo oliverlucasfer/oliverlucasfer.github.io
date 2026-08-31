@@ -323,9 +323,7 @@ if (githubCard && siteConfig.githubUser) {
     .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
     .then((user) => {
       const repos = githubCard.querySelector('[data-gh="repos"]');
-      const followers = githubCard.querySelector('[data-gh="followers"]');
       if (repos) repos.textContent = user.public_repos ?? "–";
-      if (followers) followers.textContent = user.followers ?? "–";
       githubCard.hidden = false;
     })
     .catch(() => {
