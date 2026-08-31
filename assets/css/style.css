@@ -370,8 +370,9 @@ button:focus-visible {
 .aurora-blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(90px);
+  filter: blur(60px);
   will-change: transform;
+  contain: paint;
 }
 .aurora-1 {
   width: 46vw;
@@ -999,11 +1000,6 @@ section {
   border: 1px solid rgba(124, 92, 255, 0.3);
   padding: 0.25rem 0.6rem;
   border-radius: var(--radius-pill);
-}
-.tag-icon {
-  width: 12px;
-  height: 12px;
-  flex: none;
 }
 .tag.extra {
   display: none;
