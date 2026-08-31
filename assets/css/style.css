@@ -918,7 +918,13 @@ section {
   color: var(--text);
   transition: color 0.25s;
 }
+.card-title-link:visited {
+  color: var(--text);
+}
 .card-title-link:hover {
+  color: var(--accent);
+}
+.card-title-link:visited:hover {
   color: var(--accent);
 }
 .card-title-link:focus-visible {

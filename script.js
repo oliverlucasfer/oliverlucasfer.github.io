@@ -249,6 +249,7 @@ if ("IntersectionObserver" in window) {
         if (!entry.isIntersecting) return;
         const el = entry.target;
         counterObserver.unobserve(el);
+        if (!el.dataset.target) return;
         const target = Number(el.dataset.target);
         const suffix = el.dataset.suffix || "";
         if (prefersReducedMotion) {
