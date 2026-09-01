@@ -627,6 +627,93 @@
           "en": "Managing sessions with refresh tokens, versioning an API without breaking clients and writing integration tests that actually boot the API transformed my backend approach: secure, testable and with a reliable release cycle."
         }
       }
+    },
+    {
+      "slug": "prodocs",
+      "category": "estudos",
+      "title": "ProDocs",
+      "thumb": "/media/thumbs/proj9.webp",
+      "thumbWidth": 760,
+      "thumbHeight": 360,
+      "thumbAlt": {
+        "pt": "Tela do ProDocs, biblioteca de documentos acadêmicos com busca full-text em PDFs",
+        "en": "ProDocs screen, academic document library with full-text search over PDFs"
+      },
+      "tags": [
+        { "nome": "Angular 20", "icon": "angular" },
+        { "nome": ".NET 10", "icon": "dotnet" },
+        { "nome": "EF Core", "icon": "database" },
+        { "nome": "SQLite", "icon": "database" },
+        { "nome": "JWT", "icon": "shield" },
+        { "nome": "Bootstrap 5", "icon": "bootstrap" },
+        { "nome": "Docker", "icon": "docker" },
+        { "nome": "GitHub Actions", "icon": "githubactions" }
+      ],
+      "summary": {
+        "pt": "TCC transformado em produto: biblioteca de documentos acadêmicos (TCCs, artigos, teses) com busca full-text dentro dos PDFs (SQLite FTS5), upload, autenticação JWT e deploy em um único serviço.",
+        "en": "Thesis project turned product: academic document library (theses, papers) with full-text search inside PDFs (SQLite FTS5), upload, JWT authentication and single-service deployment."
+      },
+      "links": [
+        { "key": "demo", "href": "https://prodocs-fimt.onrender.com/" },
+        { "key": "codigo", "href": "https://github.com/oliverlucasfer/TCC" }
+      ],
+      "caseStudy": {
+        "anon": false,
+        "subtitle": {
+          "pt": "Biblioteca de documentos acadêmicos em .NET + Angular, com busca full-text no conteúdo dos PDFs — meu TCC revisitado e modernizado.",
+          "en": "Academic document library in .NET + Angular, with full-text search inside PDF content — my thesis project revisited and modernized."
+        },
+        "periodo": { "pt": "2022 — 2026", "en": "2022 — 2026" },
+        "papel": { "pt": "Desenvolvimento individual", "en": "Solo project" },
+        "contexto": {
+          "pt": "Nasceu como Trabalho de Conclusão de Curso da graduação em Engenharia de Computação (2022): uma biblioteca digital para catalogar, buscar e baixar TCCs, artigos, monografias, dissertações e teses. Em 2026 retomei o projeto como estudo de caso de evolução de software — reestruturei a arquitetura, reforcei a segurança e redesenhei a interface.",
+          "en": "It started as my Computer Engineering final year project (2022): a digital library to catalog, search and download theses and academic papers. In 2026 I revisited it as a case study in software evolution — restructuring the architecture, hardening security and redesigning the UI."
+        },
+        "desafio": {
+          "pt": "Permitir busca no conteúdo integral dos PDFs (não só título e resumo) sem infraestrutura de busca dedicada, com permissões por perfil de usuário e tudo rodando em um único serviço no plano gratuito do Render.",
+          "en": "Enable search over the full content of PDFs (not just title and abstract) without dedicated search infrastructure, with role-based permissions and everything running on a single Render free-tier service."
+        },
+        "papelItens": {
+          "pt": [
+            "Extração de texto de PDFs com PdfPig e índice de busca full-text com SQLite FTS5 (tabela virtual + triggers)",
+            "Autenticação JWT (HS512, chave fora do versionamento) com ASP.NET Core Identity e três perfis: comum, avançado e administrador",
+            "Arquitetura em N-camadas com inversão de dependência: Application define contratos, persistência implementa",
+            "Frontend Angular 20 com guards de rota, interceptor de JWT, paginação e modal via ngx-bootstrap",
+            "Cadastro sempre cria usuário comum no backend, ignorando o tipo enviado pelo cliente (defesa contra escalação de privilégio)",
+            "Docker multi-stage + Blueprint do Render: a API serve a própria SPA em produção, um serviço só"
+          ],
+          "en": [
+            "PDF text extraction with PdfPig and full-text search index with SQLite FTS5 (virtual table + triggers)",
+            "JWT authentication (HS512, key kept out of version control) with ASP.NET Core Identity and three roles: common, advanced and administrator",
+            "N-layer architecture with dependency inversion: Application defines contracts, persistence implements them",
+            "Angular 20 frontend with route guards, JWT interceptor, pagination and modals via ngx-bootstrap",
+            "Signup always creates a common user on the backend, ignoring the client-sent role (privilege escalation defense)",
+            "Multi-stage Docker + Render Blueprint: the API serves the SPA itself in production, one single service"
+          ]
+        },
+        "stack": {
+          "pt": ".NET 10 (Web API) + EF Core 10 + SQLite (FTS5) no backend; Angular 20 + ngx-bootstrap + Bootstrap 5 (Bootswatch Cosmo) no frontend; PdfPig para PDFs; xUnit e Karma nos testes; Docker e GitHub Actions no CI.",
+          "en": ".NET 10 (Web API) + EF Core 10 + SQLite (FTS5) on the backend; Angular 20 + ngx-bootstrap + Bootstrap 5 (Bootswatch Cosmo) on the frontend; PdfPig for PDFs; xUnit and Karma for tests; Docker and GitHub Actions for CI."
+        },
+        "destaques": {
+          "pt": [
+            "Busca full-text dentro do conteúdo dos PDFs, não apenas nos metadados",
+            "Backup completo (banco + arquivos) via ZIP gerado no servidor",
+            "Texto integral dos PDFs nunca exposto pela API — usado apenas no índice de busca",
+            "Do TCC acadêmico a produto moderno: arquitetura, segurança e UI evoluídas"
+          ],
+          "en": [
+            "Full-text search inside PDF content, not just metadata",
+            "Complete backup (database + files) via server-generated ZIP",
+            "Full PDF text never exposed by the API — used only in the search index",
+            "From academic thesis to modern product: evolved architecture, security and UI"
+          ]
+        },
+        "aprendizados": {
+          "pt": "Revisitar meu próprio TCC anos depois foi um exercício raro de evolução de software: enxerguei exatamente o que a pressão de prazo deixou passar e corrigi com o que aprendi desde então — arquitetura em camadas, segurança real de autenticação e busca full-text sem servidores dedicados.",
+          "en": "Revisiting my own thesis years later was a rare software evolution exercise: I could see exactly what deadline pressure had let slip and fix it with everything I learned since — layered architecture, real authentication security and full-text search without dedicated servers."
+        }
+      }
     }
   ]
 }

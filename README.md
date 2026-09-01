@@ -10,7 +10,7 @@ Portfólio pessoal estático (HTML/CSS/JS puro no final), com **build local que 
 data/
   site.json          # textos da interface, nav, hero, experiência, contato (PT/EN)
   skills.json        # grupos de conhecimentos (chips, sem percentuais)
-  projects.json      # 7 projetos + páginas de projeto completas (PT/EN)
+  projects.json      # 9 projetos + páginas de projeto completas (PT/EN)
 assets/
   icons/             # SVGs de marca (base do sprite gerado no build)
   fonts/             # woff2 das fontes (Inter + JetBrains Mono, variáveis)
