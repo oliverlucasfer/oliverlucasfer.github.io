@@ -137,6 +137,8 @@ function head({
     <link rel="alternate" hreflang="x-default" href="${site.siteUrl}/${ptPath}" />
     <meta name="theme-color" content="#0e0e14" />
     ${themeScript}
+    <link rel="preload" href="/assets/fonts/jetbrains-mono.woff2" as="font" type="font/woff2" crossorigin />
+    ${themeScript}
     <meta property="og:type" content="${ogType}" />
     <meta property="og:url" content="${url}" />
     <meta property="og:title" content="${esc(title)}" />
@@ -495,7 +497,12 @@ ${themeToggle(locale, true)}
         </div>
         <div class="banner">
           <p class="banner-ola">${esc(locale.hero.ola)}</p>
-          <h1>Lucas Oliveira</h1>
+          <h1 aria-label="Lucas Oliveira">${["Lucas", "Oliveira"]
+            .map(
+              (word, i) =>
+                `<span class="word" style="animation-delay:${(0.25 + i * 0.12).toFixed(2)}s" aria-hidden="true">${word}</span>`
+            )
+            .join(" ")}</h1>
           <p class="banner-typing">
             ${esc(locale.hero.typedPrefix)}
             <span class="typewriter" id="typewriter">${esc(locale.hero.typedWords[0])}</span><span
@@ -870,6 +877,29 @@ ${urls}
 `;
 }
 
+/* ---------------- minificação ---------------- */
+
+function minifyHtml(html) {
+  return html
+    .replace(/<!--(?!\[if)[\s\S]*?-->/g, "")
+    .replace(/\n\s+/g, "\n")
+    .replace(/>\s*\n\s*</g, "><")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
+function minifyCss(css) {
+  return css
+    .replace(/\/\*[\s\S]*?\*\//g, "")
+    .replace(/\s*\{\s*/g, "{")
+    .replace(/\s*;\s*/g, ";")
+    .replace(/\s*:\s*/g, ":")
+    .replace(/\s*,\s*/g, ",")
+    .replace(/;}/g, "}")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 /* ---------------- main ---------------- */
 
 function main() {
@@ -877,21 +907,23 @@ function main() {
   mkdirSync(dist, { recursive: true });
 
   cpSync(join(root, "assets"), join(dist, "assets"), { recursive: true });
+  const cssPath = join(dist, "assets", "css", "style.css");
+  writeFileSync(cssPath, minifyCss(readFileSync(cssPath, "utf8")));
   cpSync(join(root, "media"), join(dist, "media"), { recursive: true });
   cpSync(join(root, ".nojekyll"), join(dist, ".nojekyll"));
 
-  writeFileSync(join(dist, "index.html"), renderHome("pt"));
+  writeFileSync(join(dist, "index.html"), minifyHtml(renderHome("pt")));
   mkdirSync(join(dist, "en"), { recursive: true });
-  writeFileSync(join(dist, "en", "index.html"), renderHome("en"));
+  writeFileSync(join(dist, "en", "index.html"), minifyHtml(renderHome("en")));
 
   for (const p of projects) {
     mkdirSync(join(dist, "projetos", p.slug), { recursive: true });
-    writeFileSync(join(dist, "projetos", p.slug, "index.html"), renderCaseStudy(p, "pt"));
+    writeFileSync(join(dist, "projetos", p.slug, "index.html"), minifyHtml(renderCaseStudy(p, "pt")));
     mkdirSync(join(dist, "en", "projects", p.slug), { recursive: true });
-    writeFileSync(join(dist, "en", "projects", p.slug, "index.html"), renderCaseStudy(p, "en"));
+    writeFileSync(join(dist, "en", "projects", p.slug, "index.html"), minifyHtml(renderCaseStudy(p, "en")));
   }
 
-  writeFileSync(join(dist, "404.html"), render404());
+  writeFileSync(join(dist, "404.html"), minifyHtml(render404()));
   writeFileSync(join(dist, "sitemap.xml"), renderSitemap());
   writeFileSync(
     join(dist, "robots.txt"),

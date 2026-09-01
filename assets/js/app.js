@@ -196,17 +196,6 @@ if (typeEl) {
   }
 }
 
-const heroTitle = document.querySelector(".banner h1");
-if (heroTitle) {
-  const words = heroTitle.textContent.trim().split(/\s+/);
-  heroTitle.innerHTML = words
-    .map(
-      (word, i) =>
-        `<span class="word" style="animation-delay:${0.25 + i * 0.12}s">${word}</span>`
-    )
-    .join(" ");
-}
-
 document.querySelectorAll(".card").forEach((card) => {
   card.addEventListener("mousemove", (event) => {
     const rect = card.getBoundingClientRect();

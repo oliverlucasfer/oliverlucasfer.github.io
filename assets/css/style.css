@@ -425,9 +425,8 @@ button:focus-visible {
 }
 .banner h1 .word {
   display: inline-block;
-  opacity: 0;
   color: var(--hero-title-solid);
-  animation: wordReveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: wordRise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
   .banner h1 .word {
@@ -1724,6 +1723,15 @@ html.lenis body {
   }
   100% {
     opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes wordRise {
+  0% {
+    transform: translateY(24px);
+  }
+  100% {
     transform: translateY(0);
   }
 }
