@@ -23,7 +23,7 @@ jobs:
 
       - name: Serve dist
         run: |
-          npx --yes http-server dist -p 8123 --silent &
+          npx --yes http-server dist -p 8123 -g --silent &
           echo $! > server.pid
           sleep 5
           curl -s -o /dev/null -w "%{http_code}" http://localhost:8123/
