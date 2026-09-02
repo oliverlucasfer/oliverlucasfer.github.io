@@ -518,10 +518,10 @@ ${themeToggle(locale, true)}
         </div>
         <img
           class="hero-logo"
-          src="/assets/images/android-chrome-512x512.png"
+          src="/assets/images/hero-logo.png"
           alt=""
           aria-hidden="true"
-          width="512"
+          width="374"
           height="512"
           loading="lazy"
           decoding="async"
@@ -536,16 +536,6 @@ ${renderMarquee(locale.marquee)}
           <h2>${esc(locale.sobre.titulo)}</h2>
         </div>
         <div class="bento">
-          <div class="bento-item bento-foto" data-anime="left">
-            <img
-              src="/media/foto.jpg"
-              alt="${isEn ? "Photo of Lucas Oliveira" : "Foto de Lucas Oliveira"}"
-              width="640"
-              height="800"
-              loading="eager"
-              decoding="async"
-            />
-          </div>
           <div class="bento-item bento-bio" data-anime="up">
             <h3>${esc(locale.sobre.cargo)}</h3>
             <p>${locale.sobre.bioP1}</p>
