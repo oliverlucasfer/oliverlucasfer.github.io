@@ -166,7 +166,7 @@ function configScript(locale) {
     email: site.email,
     sendingLabel: locale.contato.form.enviando,
     sentLabel: locale.contato.form.sucesso,
-    errorLabel: locale.contato.form.erro
+    errorLabel: locale.contato.form.erroEnvio
   };
   return `    <script>window.__SITE__ = ${JSON.stringify(cfg)};<\/script>`;
 }
@@ -376,7 +376,7 @@ function renderContact(locale) {
             <button class="ButtonSend" type="submit">${esc(f.enviar)}</button>
             <p class="form-status" role="status" aria-live="polite"></p>
           </form>`
-    : `          <p class="form-fallback-note">${esc(f.erro)}</p>`;
+    : "";
   return `      <section class="sessao-contato" id="${id}">
         <div class="sessao-header" data-anime="up">
           <h2>${esc(locale.contato.titulo)}</h2>
@@ -516,6 +516,16 @@ ${themeToggle(locale, true)}
             <a class="ButtonSend outline banner-cta-secondary" href="#${ids.contato}">${esc(locale.hero.ctaSecundario)}</a>
           </div>
         </div>
+        <img
+          class="hero-logo"
+          src="/assets/images/android-chrome-512x512.png"
+          alt=""
+          aria-hidden="true"
+          width="512"
+          height="512"
+          loading="lazy"
+          decoding="async"
+        />
       </header>
 
 ${renderMarquee(locale.marquee)}
@@ -543,17 +553,6 @@ ${renderMarquee(locale.marquee)}
           </div>
           <div class="bento-item bento-stats" data-anime="up">
 ${stats}
-          </div>
-          <div class="bento-item bento-cv" data-anime="right">
-            <h3>${esc(locale.sobre.cv.titulo)}</h3>
-            <p>${esc(locale.sobre.cv.texto)}</p>
-            <a
-              class="ButtonSend"
-              href="/media/Curriculo.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              >${esc(locale.sobre.cv.botao)}</a
-            >
           </div>
           <div class="bento-item bento-github" data-anime="up" hidden>
             <div class="gh-identity">

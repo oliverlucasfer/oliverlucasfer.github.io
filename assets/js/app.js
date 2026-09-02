@@ -350,7 +350,7 @@ if (contactForm && contactForm.dataset.endpoint) {
       }
     } catch {
       if (status) {
-        status.textContent = `${siteConfig.errorLabel || "Erro:"} ${siteConfig.email || ""}`;
+        status.textContent = siteConfig.errorLabel || "Erro ao enviar.";
       }
       submitBtn.textContent = defaultLabel;
     } finally {

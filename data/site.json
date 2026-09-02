@@ -63,11 +63,6 @@
           { "target": "projetos", "label": "projetos no portfólio" },
           { "target": 2, "label": "apps na Play Store" }
         ],
-        "cv": {
-          "titulo": "Currículo",
-          "texto": "Baixe meu CV completo com experiência, formação e skills.",
-          "botao": "Baixar CV"
-        },
         "github": {
           "titulo": "GitHub",
           "texto": "Código, experimentos e contribuições — tudo aberto no meu perfil.",
@@ -139,7 +134,7 @@
           "enviar": "Enviar mensagem",
           "enviando": "Enviando…",
           "sucesso": "Mensagem enviada! Obrigado pelo contato.",
-          "erro": "Não foi possível enviar. Tente direto pelo e-mail:",
+          "erroEnvio": "Erro ao enviar. Tente novamente.",
           "aria": "Formulário de contato"
         }
       },
@@ -228,11 +223,6 @@
           { "target": "projetos", "label": "projects in this portfolio" },
           { "target": 2, "label": "apps on the Play Store" }
         ],
-        "cv": {
-          "titulo": "Resume",
-          "texto": "Download my full resume with experience, education and skills.",
-          "botao": "Download CV"
-        },
         "github": {
           "titulo": "GitHub",
           "texto": "Code, experiments and contributions — all open on my profile.",
@@ -304,7 +294,7 @@
           "enviar": "Send message",
           "enviando": "Sending…",
           "sucesso": "Message sent! Thanks for reaching out.",
-          "erro": "Could not send. Try directly via e-mail:",
+          "erroEnvio": "Failed to send. Please try again.",
           "aria": "Contact form"
         }
       },
