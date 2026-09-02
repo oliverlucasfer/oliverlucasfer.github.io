@@ -406,7 +406,7 @@ button:focus-visible {
 }
 .hero-logo {
   position: absolute;
-  right: 6%;
+  right: 16%;
   top: 50%;
   translate: 0 -50%;
   width: clamp(240px, 24vw, 360px);
@@ -1095,6 +1095,48 @@ section {
   font-size: 0.9rem;
   color: var(--accent-2);
   min-height: 1.2em;
+}
+
+/* ====================== BACK TO TOP ====================== */
+.back-to-top {
+  position: fixed;
+  bottom: 1.4rem;
+  right: 1.4rem;
+  width: 2.8rem;
+  height: 2.8rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--topbar-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  color: var(--muted);
+  cursor: pointer;
+  z-index: 90;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.3s, transform 0.3s, visibility 0.3s, color 0.25s, border-color 0.25s;
+}
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+.back-to-top:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.back-to-top svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 /* ====================== FOOTER ====================== */

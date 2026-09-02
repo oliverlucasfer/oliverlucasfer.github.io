@@ -66,6 +66,7 @@ const lineIcons = {
   waves:
     '<path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>',
   "arrow-up-right": '<path d="M7 17L17 7"/><path d="M7 7h10v10"/>',
+  "arrow-up": '<path d="M12 19V5"/><polyline points="5 12 12 5 19 12"/>',
   "arrow-left": '<path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/>',
   "chevron-left": '<polyline points="15 18 9 12 15 6"/>',
   "chevron-right": '<polyline points="9 18 15 12 9 6"/>',
@@ -232,6 +233,9 @@ ${head({ locale, ptPath, enPath, title, description, ogType, jsonLd })}
     <div class="container">
 ${body}
     </div>
+    <button class="back-to-top" type="button" aria-label="${esc(locale.aria.voltarTopo)}">
+      ${icon("arrow-up")}
+    </button>
 ${withConfig ? configScript(locale) + "\n" : ""}    <script src="/assets/vendor/lenis.min.js" defer><\/script>
     <script src="/assets/js/app.js" defer><\/script>
   </body>
@@ -522,7 +526,7 @@ ${themeToggle(locale, true)}
           alt=""
           aria-hidden="true"
           width="374"
-          height="512"
+          height="479"
           loading="lazy"
           decoding="async"
         />

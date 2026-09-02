@@ -148,11 +148,28 @@ document.querySelectorAll(".tags").forEach((container) => {
 
 if (window.Lenis && !prefersReducedMotion) {
   const lenis = new Lenis({ anchors: true });
+  window.__lenis = lenis;
   const raf = (time) => {
     lenis.raf(time);
     requestAnimationFrame(raf);
   };
   requestAnimationFrame(raf);
+}
+
+const backToTop = document.querySelector(".back-to-top");
+if (backToTop) {
+  const toggleVisible = () => {
+    backToTop.classList.toggle("visible", window.scrollY > 400);
+  };
+  document.addEventListener("scroll", toggleVisible, { passive: true });
+  toggleVisible();
+  backToTop.addEventListener("click", () => {
+    if (window.__lenis) {
+      window.__lenis.scrollTo(0);
+    } else {
+      window.scrollTo({ top: 0, behavior: prefersReducedMotion ? "auto" : "smooth" });
+    }
+  });
 }
 
 const progressBar = document.querySelector(".scroll-progress");

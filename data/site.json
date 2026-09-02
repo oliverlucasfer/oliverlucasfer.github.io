@@ -30,7 +30,8 @@
         "temaClaro": "Ativar tema claro",
         "github": "GitHub de Lucas Oliveira",
         "linkedin": "LinkedIn de Lucas Oliveira",
-        "email": "Enviar e-mail para Lucas Oliveira"
+        "email": "Enviar e-mail para Lucas Oliveira",
+        "voltarTopo": "Voltar ao topo"
       },
       "nav": [
         { "id": "top", "label": "Início" },
@@ -190,7 +191,8 @@
         "temaClaro": "Switch to light theme",
         "github": "Lucas Oliveira's GitHub",
         "linkedin": "Lucas Oliveira's LinkedIn",
-        "email": "Email Lucas Oliveira"
+        "email": "Email Lucas Oliveira",
+        "voltarTopo": "Back to top"
       },
       "nav": [
         { "id": "top", "label": "Home" },
