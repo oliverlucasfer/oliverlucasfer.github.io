@@ -426,7 +426,7 @@ button:focus-visible {
 .banner h1 .word {
   display: inline-block;
   color: var(--hero-title-solid);
-  animation: wordRise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: wordRise 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
   .banner h1 .word {

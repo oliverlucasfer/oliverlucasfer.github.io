@@ -107,7 +107,7 @@ const sprite = buildSprite();
 
 function icon(name, cls = "") {
   const kind = brandIcons[name] || socialIcons[name] ? "ic-brand" : "ic-line";
-  return `<svg class="ic ${kind} ${cls}" aria-hidden="true" focusable="false"><use href="#icon-${name}"/></svg>`;
+  return `<svg class="ic ${kind} ${cls}" aria-hidden="true" focusable="false"><use href="/assets/sprite.svg#icon-${name}"/></svg>`;
 }
 
 /* ---------------- page shell ---------------- */
@@ -138,7 +138,6 @@ function head({
     <meta name="theme-color" content="#0e0e14" />
     ${themeScript}
     <link rel="preload" href="/assets/fonts/jetbrains-mono.woff2" as="font" type="font/woff2" crossorigin />
-    ${themeScript}
     <meta property="og:type" content="${ogType}" />
     <meta property="og:url" content="${url}" />
     <meta property="og:title" content="${esc(title)}" />
@@ -175,13 +174,13 @@ function configScript(locale) {
 function socialLinks(locale, cls = "") {
   return `        <div class="social-media ${cls}">
           <a href="${site.github}" target="_blank" rel="noopener noreferrer" aria-label="${esc(locale.aria.github)}">
-            <svg viewBox="0 0 496 512" fill="currentColor" aria-hidden="true" focusable="false"><use href="#icon-github"/></svg>
+            <svg viewBox="0 0 496 512" fill="currentColor" aria-hidden="true" focusable="false"><use href="/assets/sprite.svg#icon-github"/></svg>
           </a>
           <a href="${site.linkedin}" target="_blank" rel="noopener noreferrer" aria-label="${esc(locale.aria.linkedin)}">
-            <svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true" focusable="false"><use href="#icon-linkedin"/></svg>
+            <svg viewBox="0 0 448 512" fill="currentColor" aria-hidden="true" focusable="false"><use href="/assets/sprite.svg#icon-linkedin"/></svg>
           </a>
           <a href="mailto:${site.email}" aria-label="${esc(locale.aria.email)}">
-            <svg viewBox="0 0 512 512" fill="currentColor" aria-hidden="true" focusable="false"><use href="#icon-email"/></svg>
+            <svg viewBox="0 0 512 512" fill="currentColor" aria-hidden="true" focusable="false"><use href="/assets/sprite.svg#icon-email"/></svg>
           </a>
         </div>`;
 }
@@ -194,8 +193,8 @@ function themeToggle(locale, fixed = false) {
         data-label-light="${esc(locale.aria.temaEscuro)}"
         aria-label="${esc(locale.aria.temaEscuro)}"
       >
-        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#icon-sun"/></svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#icon-moon"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/assets/sprite.svg#icon-sun"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/assets/sprite.svg#icon-moon"/></svg>
       </button>`;
 }
 
@@ -228,7 +227,6 @@ function page({ locale, ptPath, enPath, title, description, jsonLd, body, withCo
 ${head({ locale, ptPath, enPath, title, description, ogType, jsonLd })}
   <body>
     <a class="skip-link" href="#conteudo">${esc(locale.aria.pular)}</a>
-    ${sprite}
     <div class="scroll-progress" aria-hidden="true"></div>
     <div class="grain" aria-hidden="true"></div>
     <div class="container">
@@ -500,7 +498,7 @@ ${themeToggle(locale, true)}
           <h1 aria-label="Lucas Oliveira">${["Lucas", "Oliveira"]
             .map(
               (word, i) =>
-                `<span class="word" style="animation-delay:${(0.25 + i * 0.12).toFixed(2)}s" aria-hidden="true">${word}</span>`
+                `<span class="word" style="animation-delay:${(0.1 + i * 0.08).toFixed(2)}s" aria-hidden="true">${word}</span>`
             )
             .join(" ")}</h1>
           <p class="banner-typing">
@@ -909,6 +907,7 @@ function main() {
   cpSync(join(root, "assets"), join(dist, "assets"), { recursive: true });
   const cssPath = join(dist, "assets", "css", "style.css");
   writeFileSync(cssPath, minifyCss(readFileSync(cssPath, "utf8")));
+  writeFileSync(join(dist, "assets", "sprite.svg"), sprite);
   cpSync(join(root, "media"), join(dist, "media"), { recursive: true });
   cpSync(join(root, ".nojekyll"), join(dist, ".nojekyll"));
 
