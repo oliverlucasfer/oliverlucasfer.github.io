@@ -136,9 +136,9 @@ function head({
     <link rel="alternate" hreflang="pt-BR" href="${site.siteUrl}/${ptPath}" />
     <link rel="alternate" hreflang="en" href="${enUrl}" />
     <link rel="alternate" hreflang="x-default" href="${site.siteUrl}/${ptPath}" />
-    <meta name="theme-color" content="#0e0e14" />
+    <meta name="theme-color" content="#0D1117" />
     ${themeScript}
-    <link rel="preload" href="/assets/fonts/jetbrains-mono.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
     <meta property="og:type" content="${ogType}" />
     <meta property="og:url" content="${url}" />
     <meta property="og:title" content="${esc(title)}" />
@@ -228,16 +228,13 @@ function page({ locale, ptPath, enPath, title, description, jsonLd, body, withCo
 ${head({ locale, ptPath, enPath, title, description, ogType, jsonLd })}
   <body>
     <a class="skip-link" href="#conteudo">${esc(locale.aria.pular)}</a>
-    <div class="scroll-progress" aria-hidden="true"></div>
-    <div class="grain" aria-hidden="true"></div>
     <div class="container">
 ${body}
     </div>
     <button class="back-to-top" type="button" aria-label="${esc(locale.aria.voltarTopo)}">
       ${icon("arrow-up")}
     </button>
-${withConfig ? configScript(locale) + "\n" : ""}    <script src="/assets/vendor/lenis.min.js" defer><\/script>
-    <script src="/assets/js/app.js" defer><\/script>
+${withConfig ? configScript(locale) + "\n" : ""}    <script src="/assets/js/app.js" defer><\/script>
   </body>
 </html>
 `;

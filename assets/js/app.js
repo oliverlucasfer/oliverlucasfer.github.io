@@ -24,7 +24,7 @@ const themeMeta = document.querySelector('meta[name="theme-color"]');
 function applyTheme(theme) {
   document.documentElement.dataset.theme = theme;
   if (themeMeta) {
-    themeMeta.setAttribute("content", theme === "light" ? "#f4f5f9" : "#0e0e14");
+    themeMeta.setAttribute("content", theme === "light" ? "#FFFFFF" : "#0D1117");
   }
   document.querySelectorAll(".theme-toggle").forEach((btn) => {
     btn.setAttribute(
@@ -146,16 +146,6 @@ document.querySelectorAll(".tags").forEach((container) => {
   container.appendChild(more);
 });
 
-if (window.Lenis && !prefersReducedMotion) {
-  const lenis = new Lenis({ anchors: true });
-  window.__lenis = lenis;
-  const raf = (time) => {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  };
-  requestAnimationFrame(raf);
-}
-
 const backToTop = document.querySelector(".back-to-top");
 if (backToTop) {
   const toggleVisible = () => {
@@ -164,23 +154,11 @@ if (backToTop) {
   document.addEventListener("scroll", toggleVisible, { passive: true });
   toggleVisible();
   backToTop.addEventListener("click", () => {
-    if (window.__lenis) {
-      window.__lenis.scrollTo(0);
-    } else {
-      window.scrollTo({ top: 0, behavior: prefersReducedMotion ? "auto" : "smooth" });
-    }
+    window.scrollTo({
+      top: 0,
+      behavior: prefersReducedMotion ? "auto" : "smooth"
+    });
   });
-}
-
-const progressBar = document.querySelector(".scroll-progress");
-if (progressBar) {
-  const updateProgress = () => {
-    const doc = document.documentElement;
-    const max = doc.scrollHeight - doc.clientHeight;
-    progressBar.style.transform = `scaleX(${max > 0 ? doc.scrollTop / max : 0})`;
-  };
-  document.addEventListener("scroll", updateProgress, { passive: true });
-  updateProgress();
 }
 
 const typeEl = document.getElementById("typewriter");
@@ -211,28 +189,6 @@ if (typeEl) {
     };
     setTimeout(step, 1600);
   }
-}
-
-document.querySelectorAll(".card").forEach((card) => {
-  card.addEventListener("mousemove", (event) => {
-    const rect = card.getBoundingClientRect();
-    card.style.setProperty("--mx", `${event.clientX - rect.left}px`);
-    card.style.setProperty("--my", `${event.clientY - rect.top}px`);
-  });
-});
-
-if (!prefersReducedMotion && window.matchMedia("(hover: hover)").matches) {
-  document.querySelectorAll(".ButtonCustom, .ButtonSend").forEach((btn) => {
-    btn.addEventListener("mousemove", (event) => {
-      const rect = btn.getBoundingClientRect();
-      const x = (event.clientX - rect.left - rect.width / 2) * 0.25;
-      const y = (event.clientY - rect.top - rect.height / 2) * 0.35;
-      btn.style.transform = `translate(${x}px, ${y}px)`;
-    });
-    btn.addEventListener("mouseleave", () => {
-      btn.style.transform = "";
-    });
-  });
 }
 
 const statNums = document.querySelectorAll(".stat-num");

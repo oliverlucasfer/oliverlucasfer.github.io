@@ -16,39 +16,66 @@
 
 /* ====================== VARIABLES ====================== */
 :root {
-  --bg: #0e0e14;
-  --bg-elev: #16161f;
-  --bg-elev-2: #1d1d28;
-  --text: #e8e8f0;
-  --muted: #9a9aab;
-  --accent: #7c5cff;
-  --accent-2: #a78bfa;
-  --border: rgba(255, 255, 255, 0.08);
+  --bg: #0D1117;
+  --bg-elev: #161B22;
+  --bg-elev-2: #1C2128;
+  --bg-inset: #010409;
+  --text: #E6EDF3;
+  --muted: #8B949E;
+  --accent: #58A6FF;
+  --accent-2: #79C0FF;
+  --accent-strong: #1F6FEB;
+  --accent-hover: #388BFD;
+  --accent-soft: rgba(56, 139, 253, 0.12);
+  --accent-border: rgba(56, 139, 253, 0.4);
+  --border: #30363D;
+  --border-strong: #484F58;
+  --success: #3FB950;
+  --warning: #D29922;
+  --danger: #F85149;
 
-  --topbar-bg: rgba(14, 14, 20, 0.72);
-  --hero-text: #d9d9e3;
-  --hero-title-solid: #ffffff;
-  --hero-title-grad: linear-gradient(180deg, #ffffff 25%, #d7cfff 75%, #b9a8ff 100%);
-  --radius-pill: 99px;
+  --topbar-bg: rgba(13, 17, 23, 0.82);
+  --hero-text: #C9D1D9;
+  --hero-title-solid: #E6EDF3;
+  --hero-title-grad: linear-gradient(180deg, #E6EDF3 25%, #E6EDF3 100%);
+  --radius-pill: 999px;
+  --radius-card: 6px;
+  --radius-btn: 6px;
+  --radius-input: 6px;
+  --shadow-card: none;
+  --shadow-hover: 0 8px 24px rgba(1, 4, 9, 0.35);
 
   --font-primary: "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
+  color-scheme: dark;
 }
 
 :root[data-theme="light"] {
-  --bg: #f4f5f9;
-  --bg-elev: #ffffff;
-  --bg-elev-2: #ffffff;
-  --text: #1a1a24;
-  --muted: #56576a;
-  --accent: #5b2ee0;
-  --accent-2: #7c3aed;
-  --border: rgba(20, 20, 40, 0.12);
+  --bg: #FFFFFF;
+  --bg-elev: #F6F8FA;
+  --bg-elev-2: #FFFFFF;
+  --bg-inset: #EAEEF2;
+  --text: #1F2328;
+  --muted: #59636E;
+  --accent: #0969DA;
+  --accent-2: #0550AE;
+  --accent-strong: #0969DA;
+  --accent-hover: #0550AE;
+  --accent-soft: #DDF4FF;
+  --accent-border: #B6E3FF;
+  --border: #D0D7DE;
+  --border-strong: #AFB8C1;
+  --success: #1A7F37;
+  --warning: #9A6700;
+  --danger: #CF222E;
 
-  --topbar-bg: rgba(255, 255, 255, 0.78);
-  --hero-text: #44444f;
-  --hero-title-solid: #1a1a24;
-  --hero-title-grad: linear-gradient(180deg, #22222e 15%, #503d91 65%, #5b2ee0 100%);
+  --topbar-bg: rgba(255, 255, 255, 0.84);
+  --hero-text: #1F2328;
+  --hero-title-solid: #1F2328;
+  --hero-title-grad: linear-gradient(180deg, #1F2328 25%, #1F2328 100%);
+  --shadow-card: 0 1px 0 rgba(31, 35, 40, 0.04);
+  --shadow-hover: 0 8px 24px rgba(31, 35, 40, 0.08);
+  color-scheme: light;
 }
 
 * {
@@ -59,19 +86,32 @@
   text-decoration: none;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
 body {
   background-color: var(--bg);
   color: var(--text);
   font-family: var(--font-primary);
   line-height: 1.6;
   overflow-x: hidden;
-  scroll-behavior: smooth;
 }
 
 a:focus-visible,
-button:focus-visible {
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
+  border-radius: calc(var(--radius-btn) + 2px);
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
 }
 
 .skip-link {
@@ -80,11 +120,11 @@ button:focus-visible {
   left: 1rem;
   z-index: 1000;
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #fff;
-  background-color: var(--accent);
+  background-color: var(--accent-strong);
   padding: 0.6em 1.2em;
-  border-radius: 0 0 12px 12px;
+  border-radius: 0 0 var(--radius-btn) var(--radius-btn);
   transition: top 0.2s;
 }
 .skip-link:focus {
@@ -133,7 +173,7 @@ button:focus-visible {
 .topbar-logo {
   font-family: var(--font-mono);
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   color: var(--text);
 }
 .topbar-logo span {
@@ -142,40 +182,40 @@ button:focus-visible {
 
 .topbar-menu {
   display: flex;
-  gap: 1.8rem;
+  gap: 1.35rem;
 }
 
 .topbar-menu a {
-  font-family: var(--font-mono);
-  font-size: 0.95rem;
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
   color: var(--muted);
-  transition: color 0.25s;
+  transition: color 0.18s;
 }
 .topbar-menu a:hover,
 .topbar-menu a.active {
-  color: var(--accent);
+  color: var(--text);
 }
 
 .theme-toggle {
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 2rem;
+  height: 2rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   background-color: transparent;
   border: 1px solid var(--border);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-btn);
   color: var(--muted);
   cursor: pointer;
-  transition: color 0.25s, border-color 0.25s;
+  transition: color 0.18s, border-color 0.18s;
 }
 .theme-toggle:hover {
   color: var(--accent);
-  border-color: var(--accent);
+  border-color: var(--border-strong);
 }
 .theme-toggle svg {
-  width: 1.15rem;
-  height: 1.15rem;
+  width: 1rem;
+  height: 1rem;
   stroke: currentColor;
   fill: none;
   stroke-width: 2;
@@ -200,17 +240,18 @@ button:focus-visible {
   gap: 0.8rem;
 }
 .lang-pill {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-family: var(--font-primary);
+  font-size: 0.7rem;
+  font-weight: 600;
   color: var(--muted);
   border: 1px solid var(--border);
-  border-radius: var(--radius-pill);
-  padding: 0.35em 0.75em;
-  transition: color 0.25s, border-color 0.25s;
+  border-radius: var(--radius-btn);
+  padding: 0.35em 0.65em;
+  transition: color 0.18s, border-color 0.18s;
 }
 .lang-pill:hover {
   color: var(--accent);
-  border-color: var(--accent);
+  border-color: var(--border-strong);
 }
 .lang-fixed {
   display: none;
@@ -308,14 +349,14 @@ button:focus-visible {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  text-transform: uppercase;
 }
 .menu-item {
   margin: 1.5em;
 }
 .menu-link {
-  font-family: var(--font-mono);
-  font-size: 1.6rem;
+  font-family: var(--font-primary);
+  font-size: 1.1rem;
+  font-weight: 500;
   color: var(--muted);
   transition: color 0.25s;
 }
@@ -493,25 +534,27 @@ button:focus-visible {
 
 /* ====================== BUTTONS ====================== */
 .ButtonCustom {
-  display: inline-block;
-  padding: 1em 2.4em;
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8em 1.4em;
+  font-family: var(--font-primary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
   color: #fff;
-  background-color: var(--accent);
-  border: none;
-  border-radius: var(--radius-pill);
-  box-shadow: 0 8px 24px rgba(124, 92, 255, 0.35);
-  transition: all 0.3s ease;
+  background-color: var(--accent-strong);
+  border: 1px solid transparent;
+  border-radius: var(--radius-btn);
+  box-shadow: none;
+  transition: background-color 0.18s, border-color 0.18s, transform 0.18s;
   cursor: pointer;
 }
 .ButtonCustom:hover {
-  background-color: var(--accent-2);
-  box-shadow: 0 12px 28px rgba(124, 92, 255, 0.5);
-  transform: translateY(-4px);
+  background-color: var(--accent-hover);
+  box-shadow: none;
+  transform: translateY(-1px);
   color: #fff;
 }
 
@@ -519,33 +562,34 @@ button:focus-visible {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  font-size: 0.78rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0;
+  text-transform: none;
   text-decoration: none;
-  padding: 0.8em 1.8em;
-  border-radius: 2em;
-  transition: all 0.25s;
-  border: none;
-  font-family: var(--font-mono);
-  font-weight: 500;
-  background-color: var(--accent);
+  padding: 0.7em 1.1em;
+  border-radius: var(--radius-btn);
+  transition: background-color 0.18s, border-color 0.18s, color 0.18s, transform 0.18s;
+  border: 1px solid transparent;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  background-color: var(--accent-strong);
   color: #fff;
   cursor: pointer;
 }
 .ButtonSend:hover {
-  background-color: var(--accent-2);
-  transform: translateY(-3px);
+  background-color: var(--accent-hover);
+  transform: translateY(-1px);
   color: #fff;
 }
 .ButtonSend.outline {
   background-color: transparent;
-  border: 1px solid var(--accent);
-  color: var(--accent);
+  border: 1px solid var(--border-strong);
+  color: var(--text);
 }
 .ButtonSend.outline:hover {
-  background-color: var(--accent);
-  color: #fff;
+  background-color: var(--accent-soft);
+  border-color: var(--accent-border);
+  color: var(--accent);
 }
 
 /* ====================== SESSION HEADERS ====================== */
@@ -1160,7 +1204,7 @@ section {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid var(--border);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-btn);
   color: var(--muted);
   cursor: pointer;
   z-index: 90;
