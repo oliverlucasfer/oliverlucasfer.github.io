@@ -441,7 +441,7 @@ function renderHome(localeKey) {
             : stat.target;
       const dataStat = stat.target === "anos" ? ' data-stat="anos"' : "";
       return `            <div class="stat">
-              <span class="stat-num"${dataStat} data-target="${target}">0</span>
+              <span class="stat-num"${dataStat} data-target="${target}">${target}</span>
               <span class="stat-label">${esc(stat.label)}</span>
             </div>`;
     })

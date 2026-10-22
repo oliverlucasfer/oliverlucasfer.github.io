@@ -18,6 +18,29 @@ for (const token of [
 ]) {
   check(css.includes(token), `token ausente: ${token}`);
 }
+
+const hexLuminance = (hex) => {
+  const channels = [1, 3, 5].map((index) => {
+    const value = parseInt(hex.slice(index, index + 2), 16) / 255;
+    return value <= 0.03928 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
+  });
+  return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
+};
+const contrast = (a, b) => {
+  const [light, dark] = [hexLuminance(a), hexLuminance(b)].sort((x, y) => y - x);
+  return (light + 0.05) / (dark + 0.05);
+};
+const hoverMatch = css.match(/--accent-hover:\s*(#[0-9A-Fa-f]{6})/);
+check(hoverMatch, "accent-hover ausente");
+if (hoverMatch) {
+  check(contrast(hoverMatch[1], "#FFFFFF") >= 4.5, `hover do primário abaixo de 4.5:1 (${hoverMatch[1]})`);
+}
+check(css.includes(".pagina-404 > p:not(.codigo-404)"), "404: codigo pode ser sobrescrito");
+check(/\.card:hover\s*\{[^}]*translate:\s*0\s+-3px/.test(css), "hover do card sem translate");
+check(/\.skills-group:hover\s*\{[^}]*translate:\s*0\s+-3px/.test(css), "hover de skills sem translate");
+check(css.includes("list-style: disc"), "listas de case/timeline sem bullets");
+check(css.includes(".timeline-card p.timeline-empresa"), "cor da empresa na timeline sobrescrita");
+check(css.includes(".case-section p.case-aprendizado"), "cor do aprendizado sobrescrita");
 for (const legacy of ["#7c5cff", "#8b5cf6", "rgba(124, 92, 255", "rgba(139, 92, 246"]) {
   check(!css.includes(legacy), `cor antiga no CSS: ${legacy}`);
 }
@@ -26,6 +49,8 @@ check(css.includes("animation: marquee 42s linear infinite"), "marquee 42s ausen
 
 const pt = fs.readFileSync("dist/index.html", "utf8");
 const en = fs.readFileSync("dist/en/index.html", "utf8");
+check(/data-target="5">5<\/span>/.test(pt), "stats sem valor final no HTML (no-JS)");
+check(/data-target="10">10<\/span>/.test(pt), "projetos sem valor final no HTML (no-JS)");
 for (const legacy of ["hero-logo.png", "scroll-progress", "grain", "lenis.min.js"]) {
   check(!pt.includes(legacy), `legado no HTML: ${legacy}`);
 }

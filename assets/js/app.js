@@ -193,6 +193,9 @@ if (typeEl) {
 }
 
 const statNums = document.querySelectorAll(".stat-num");
+statNums.forEach((el) => {
+  if (el.dataset.target) el.textContent = "0";
+});
 
 const yearsExp = Math.max(
   1,
