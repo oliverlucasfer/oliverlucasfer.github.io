@@ -84,7 +84,7 @@ Arquivo: `data/projects.json`, entrada acrescentada ao final da lista (padrão u
 | `slug` | `minhas-listas` |
 | `category` | `mobile` |
 | `title` | `Minhas Listas` |
-| `thumb` | `/media/thumbs/proj10.webp` (760×360) |
+| `thumb` | `/media/thumbs/proj10.webp` (1520×720, 2× para telas retina) |
 | `periodo` | `2026` |
 | `papel` | Desenvolvimento individual / Solo project |
 | `links` | `demo` → `https://oliverlucasfer.github.io/listacompras/`; `codigo` → `https://github.com/oliverlucasfer/listacompras`; `privacidade` → `https://oliverlucasfer.github.io/listacompras/privacidade.html` |
@@ -106,7 +106,7 @@ O link `privacidade` é novo e exige o rótulo correspondente em `data/site.json
 - aprendizados: local-first simplifica a infraestrutura, mas exige disciplina de migração, backup e UX;
 - estado: app completo, **ainda não publicado nas lojas** (declarado no texto, sem eufemismo).
 
-**Capa:** composição 760×360 em WebP, gerada com Pillow a partir de `store/screenshots/04-lista-itens.png` e `05-modo-mercado.png` sobre fundo índigo `#4F46E5`, no espírito do feature graphic. Meta de peso ≤ 30 KB. Alt textual em PT/EN.
+**Capa:** composição 1520×720 em WebP (2× de 760×360, para telas retina), gerada com Pillow a partir de `store/screenshots/04-lista-itens.png` e `05-modo-mercado.png` sobre fundo índigo `#4F46E5`, no espírito do feature graphic. Meta de peso ≤ 60 KB. Alt textual em PT/EN.
 
 **README do portfólio:** atualizar a contagem de projetos de 9 para 10. O contador da home já é calculado a partir de `projects.length`, então se ajusta sozinho.
 
