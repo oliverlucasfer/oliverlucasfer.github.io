@@ -714,6 +714,91 @@
           "en": "Revisiting my own thesis years later was a rare software evolution exercise: I could see exactly what deadline pressure had let slip and fix it with everything I learned since — layered architecture, real authentication security and full-text search without dedicated servers."
         }
       }
+    },
+    {
+      "slug": "minhas-listas",
+      "category": "mobile",
+      "title": "Minhas Listas",
+      "thumb": "/media/thumbs/proj10.webp",
+      "thumbWidth": 760,
+      "thumbHeight": 360,
+      "thumbAlt": {
+        "pt": "Telas do Minhas Listas, app de lista de compras com itens organizados por categoria e modo mercado",
+        "en": "Minhas Listas screens, shopping list app with items grouped by category and store mode"
+      },
+      "tags": [
+        { "nome": "Flutter", "icon": "flutter" },
+        { "nome": "Dart", "icon": "dart" },
+        { "nome": "Drift + SQLite", "icon": "database" },
+        { "nome": "Material 3", "icon": "materialdesign" },
+        { "nome": "GitHub Actions", "icon": "githubactions" }
+      ],
+      "summary": {
+        "pt": "App de lista de compras 100% local e offline-first: sem conta, nuvem ou rastreamento. Categorização automática, importação por texto, voz, modo mercado e histórico de preços por mercado, em Android, iOS, Web e desktop.",
+        "en": "A 100% local, offline-first shopping list app: no account, cloud or tracking. Automatic categorization, text import, voice input, store mode and price history by store, on Android, iOS, Web and desktop."
+      },
+      "links": [
+        { "key": "demo", "href": "https://oliverlucasfer.github.io/listacompras/" },
+        { "key": "codigo", "href": "https://github.com/oliverlucasfer/listacompras" },
+        { "key": "privacidade", "href": "https://oliverlucasfer.github.io/listacompras/privacidade.html" }
+      ],
+      "caseStudy": {
+        "anon": false,
+        "subtitle": {
+          "pt": "Lista de compras offline-first em Flutter + Drift: sem conta, sem nuvem e com os dados 100% no aparelho.",
+          "en": "Offline-first shopping list built with Flutter + Drift: no account, no cloud, and all data on the device."
+        },
+        "periodo": { "pt": "2026", "en": "2026" },
+        "papel": { "pt": "Desenvolvimento individual", "en": "Solo project" },
+        "contexto": {
+          "pt": "Começou como exercício de arquitetura local-first: um app que resolvesse a lista de compras sem conta e sem servidor. Virou um produto único e multiplataforma (Android, iOS, Web e desktop), com documentação de produto, design system, testes e CI. O app está completo, mas ainda não foi publicado nas lojas.",
+          "en": "It started as an exercise in local-first architecture: a shopping list app that worked without an account or a server. It became a single, multiplatform product (Android, iOS, Web and desktop) with product documentation, a design system, tests and CI. The app is complete but has not been published to any store yet."
+        },
+        "desafio": {
+          "pt": "Manter o mesmo modelo de dados e a mesma experiência em quatro plataformas, com o banco local como única fonte da verdade — incluindo migrações, backup fiel, categorização automática sem serviço externo e privacidade por padrão. No navegador, isso significa rodar SQLite via WASM e persistir sem backend.",
+          "en": "Keep the same data model and experience across four platforms, with the local database as the single source of truth — including migrations, faithful backups, automatic categorization without an external service and privacy by default. In the browser, that means running SQLite through WASM and persisting without a backend."
+        },
+        "papelItens": {
+          "pt": [
+            "Arquitetura offline-first com Drift/SQLite como fonte da verdade; escrita sempre local e IDs UUID gerados no cliente",
+            "Modelo de domínio com quantidades fracionárias, enum fechado de unidades, categorias e ordenação personalizável",
+            "Categorização local em camadas (memória por nome → dicionário estático → 'outros'), sem chamadas de rede",
+            "Importação por texto com parser determinístico e pré-visualização editável; adição por voz com o reconhecedor do sistema",
+            "Histórico de compras com snapshot por ida, estatísticas de gasto e comparação de preços por mercado",
+            "O mesmo banco em Android, iOS, desktop e Web (WASM com OPFS/IndexedDB), além de backup e restauração em JSON"
+          ],
+          "en": [
+            "Offline-first architecture with Drift/SQLite as the source of truth; writes always local and UUIDs generated on the client",
+            "Domain model with fractional quantities, a closed unit enum, categories and custom ordering",
+            "Layered local categorization (name memory → static dictionary → 'others'), with no network calls",
+            "Text import with a deterministic parser and editable preview; voice input through the system recognizer",
+            "Purchase history with a snapshot per trip, spending statistics and price comparison by store",
+            "The same database on Android, iOS, desktop and Web (WASM with OPFS/IndexedDB), plus JSON backup and restore"
+          ]
+        },
+        "stack": {
+          "pt": "Flutter 3.44 + Dart 3.12 no app; Drift 2.34 sobre SQLite no armazenamento local (WASM no navegador); Material 3; speech_to_text, share_plus e qr_flutter nos recursos de voz e compartilhamento; GitHub Actions para CI.",
+          "en": "Flutter 3.44 + Dart 3.12 in the app; Drift 2.34 over SQLite for local storage (WASM in the browser); Material 3; speech_to_text, share_plus and qr_flutter for voice and sharing; GitHub Actions for CI."
+        },
+        "destaques": {
+          "pt": [
+            "Privacidade radical: sem conta, analytics, anúncios ou chamadas de rede — os dados não saem do aparelho",
+            "Um único modelo de dados rodando em mobile, desktop e navegador, com o mesmo Drift e fallback de persistência",
+            "Categorização e importação resolvidas localmente, sem IA ou serviço externo",
+            "Produto tratado como produto: design system, onboarding com tour, alvos de 48dp, contraste AA e documentação normativa"
+          ],
+          "en": [
+            "Radical privacy: no account, analytics or ads, and no network calls — data never leaves the device",
+            "One data model running on mobile, desktop and browser, with the same Drift stack and persistence fallback",
+            "Categorization and import handled locally, without AI or an external service",
+            "Treated as a product: design system, onboarding tour, 48dp targets, AA contrast and normative documentation"
+          ]
+        },
+        "aprendizados": {
+          "pt": "Local-first simplifica a infraestrutura — não há backend para operar — mas desloca a complexidade para migrações, backup e experiência de recuperação. Aprendi que privacidade por padrão é uma decisão de arquitetura, não uma tela de configurações.",
+          "en": "Local-first simplifies infrastructure — there is no backend to operate — but moves the complexity into migrations, backups and recovery UX. I learned that privacy by default is an architecture decision, not a settings screen."
+        }
+      }
     }
   ]
 }
