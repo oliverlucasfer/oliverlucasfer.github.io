@@ -36,12 +36,13 @@
 
 **Files:**
 - Modify: `ListaCompras/lib/core/web/url_strategy_web.dart`
+- Modify: `ListaCompras/lib/drift/conexao/conexao_web.dart`
 
 **Interfaces:**
-- Consumes: `usePathUrlStrategy()` e `useHashUrlStrategy()` de `package:flutter_web_plugins/url_strategy.dart`.
-- Produces: `void usarPathUrlStrategy()` com assinatura inalterada; comportamento definido pela constante de ambiente `DEMO`.
+- Consumes: `usePathUrlStrategy()`/`setUrlStrategy(HashUrlStrategy())` de `package:flutter_web_plugins/url_strategy.dart`; `QueryExecutor.runCustom` do Drift.
+- Produces: `void usarPathUrlStrategy()` com assinatura inalterada; comportamento definido pela constante de ambiente `DEMO`; flush periódico do VFS apenas no build de demo.
 
-- [ ] **Step 1: Implementar a condicional**
+- [ ] **Step 1: Implementar a condicional de URL**
 
 Substitua o corpo de `lib/core/web/url_strategy_web.dart` por:
 
@@ -52,10 +53,54 @@ import 'package:flutter_web_plugins/url_strategy.dart';
 /// publicado no GitHub Pages (`--dart-define=DEMO=true`), onde não há rewrite.
 void usarPathUrlStrategy() {
   if (const bool.fromEnvironment('DEMO')) {
-    useHashUrlStrategy();
+    setUrlStrategy(HashUrlStrategy());
     return;
   }
   usePathUrlStrategy();
+}
+```
+
+`useHashUrlStrategy()` não existe no SDK 3.44; `HashUrlStrategy` é a classe exportada pelo mesmo pacote.
+
+- [ ] **Step 1b: Forçar o flush do VFS no build de demo**
+
+Substitua `lib/drift/conexao/conexao_web.dart` por:
+
+```dart
+import 'dart:async';
+
+import 'package:drift/drift.dart';
+import 'package:drift/wasm.dart';
+
+/// Banco local no navegador via Drift/WASM (OPFS quando disponível;
+/// IndexedDB como fallback) — doc 05 §2, ADR-012.
+QueryExecutor abrirBancoLocal() {
+  return LazyDatabase(() async {
+    final result = await WasmDatabase.open(
+      databaseName: 'lista_compras',
+      sqlite3Uri: Uri.parse('sqlite3.wasm'),
+      driftWorkerUri: Uri.parse('drift_worker.js'),
+    );
+    final executor = result.resolvedExecutor;
+    if (const bool.fromEnvironment('DEMO')) {
+      _agendarFlushPeriodico(executor);
+    }
+    return executor;
+  });
+}
+
+/// O VFS IndexedDB do sqlite3 grava de forma assíncrona e, sem COOP/COEP não
+/// há OPFS; escritas dentro de transações só chegam ao IndexedDB quando outra
+/// escrita fora de transação acontece. Um `SELECT 1` periódico força o flush
+/// no build de demo, evitando perder dados ao recarregar a página.
+void _agendarFlushPeriodico(QueryExecutor executor) {
+  Timer.periodic(const Duration(seconds: 1), (_) async {
+    try {
+      await executor.runCustom('SELECT 1');
+    } catch (_) {
+      // Banco já fechado durante o encerramento da página.
+    }
+  });
 }
 ```
 
@@ -85,8 +130,8 @@ Copy-Item -Recurse -Force build\web\* _preview\listacompras
 python -m http.server 8099 --directory _preview
 ```
 
-Abra `http://localhost:8099/listacompras/`, crie uma lista e navegue até ela.
-Expected: a URL passa a conter `#/listas` (ou `#/lista/<uuid>`); recarregar mantém a mesma tela e a lista continua lá. Feche o servidor e apague `_preview`.
+Abra `http://localhost:8099/listacompras/`, crie uma lista, adicione um item e navegue até a lista.
+Expected: a URL passa a conter `#/listas` (ou `#/lista/<uuid>`); após pelo menos 2 segundos, recarregar mantém a mesma tela e o item continua lá. Feche o servidor e apague `_preview`.
 
 - [ ] **Step 6: Validar que o build normal continua com rotas por caminho**
 
@@ -96,8 +141,8 @@ Expected: ao navegar, a URL não contém `#` e o app funciona como antes.
 - [ ] **Step 7: Commit**
 
 ```powershell
-git add lib/core/web/url_strategy_web.dart
-git commit -m "feat(demo): roteamento por hash apenas no build publicado"
+git add lib/core/web/url_strategy_web.dart lib/drift/conexao/conexao_web.dart
+git commit -m "feat(demo): roteamento por hash e flush de persistência no build publicado"
 ```
 
 ---
@@ -107,8 +152,10 @@ git commit -m "feat(demo): roteamento por hash apenas no build publicado"
 **Files:**
 - Modify: `ListaCompras/.github/workflows/pages.yml`
 - Modify: `ListaCompras/docs/00-visao-geral.md` (tabela de ADRs e linha de escopo)
+- Modify: `ListaCompras/docs/05-app-flutter.md` (§2.1)
 - Modify: `ListaCompras/docs/06-mvp-entregas.md` (§3.4.1 e §4)
 - Modify: `ListaCompras/docs/09-runbook-operacoes.md` (nova seção de demo)
+- Modify: `ListaCompras/docs/13-premodelo-tecnico.md` (tabela de ADRs)
 
 **Interfaces:**
 - Consumes: build de Task 1 (`DEMO=true` → hash).

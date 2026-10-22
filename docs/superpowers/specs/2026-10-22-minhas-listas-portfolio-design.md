@@ -25,7 +25,7 @@ O site hoje é gerado a partir de `data/projects.json` e já possui nove projeto
 ## 3. Não-objetivos
 
 - Publicar o app na Play Store ou App Store.
-- Alterar funcionalidades, banco ou interface do app (a única exceção é a estratégia de URL do build de demo).
+- Alterar funcionalidades, banco ou interface do app (as exceções são a estratégia de URL e o flush de persistência, ambos restritos ao build de demo).
 - Criar galeria de screenshots no template do portfólio (o template atual mostra apenas a capa).
 - Adicionar analytics, cookies, conta ou qualquer backend ao demo.
 - Traduzir a interface do app para inglês.
@@ -128,7 +128,7 @@ Alterações em `ListaCompras`:
 
 **Roteamento:** com hash, a URL inicial continua `/listacompras/` e as rotas internas ficam `/listacompras/#/listas`, `/listacompras/#/lista/<uuid>`. O navegador nunca pede essas rotas ao servidor, então recarregar, favoritar e compartilhar funcionam sem `404.html` e sem status de erro. O `base href` absoluto continua necessário para os assets.
 
-**Persistência:** o GitHub Pages não permite cabeçalhos COOP/COEP, então o caminho OPFS do Drift não estará disponível. O app já usa `WasmDatabase.open`, que cai para IndexedDB nesse cenário — os dados persistem no navegador da pessoa. A demo precisa ser validada recarregando a página após criar uma lista, inclusive a partir de uma rota interna.
+**Persistência:** o GitHub Pages não permite cabeçalhos COOP/COEP, então o caminho OPFS do Drift não estará disponível. O app já usa `WasmDatabase.open`, que cai para IndexedDB nesse cenário. Porém o VFS IndexedDB do sqlite3 não dá garantia de durabilidade e não persiste escritas feitas dentro de transações até que outra escrita fora de transação ocorra — na prática, itens sumiam após recarregar. Para o build de demo, `lib/drift/conexao/conexao_web.dart` passa a rodar um `SELECT 1` por segundo fora de transação, o que força o flush do VFS. O timer é ativado apenas com `DEMO=true`, portanto o app local e o produto não mudam. A demo precisa ser validada criando lista e item, recarregando e conferindo que ambos continuam.
 
 **Descoberta da privacidade:** a página pública não será linkada dentro do canvas do app; o link fica no case study do portfólio e na documentação. Isso evita sobrepor elementos ao app em tela cheia.
 
@@ -137,8 +137,10 @@ Alterações em `ListaCompras`:
 ### 6.3 Documentação do app (doc dono)
 
 - `docs/00-visao-geral.md`: novo **ADR-016 — demo web público como vitrine** (revisa o ADR-013 apenas no que diz respeito a publicar o Web; o Web continua fora dos canais de distribuição do produto). Atualizar a linha de escopo.
-- `docs/06-mvp-entregas.md`: atualizar a tabela de publicação para incluir o demo e a nota de cabeçalhos, explicando o fallback IndexedDB no Pages.
+- `docs/05-app-flutter.md`: registrar que o build de demo usa hash e flush periódico, e que o comportamento local/produto não muda.
+- `docs/06-mvp-entregas.md`: atualizar a tabela de publicação para incluir o demo e a nota de cabeçalhos, explicando o fallback IndexedDB e o flush no Pages.
 - `docs/09-runbook-operacoes.md`: registrar a URL do demo, o gatilho do workflow, a estratégia de hash (`--dart-define=DEMO=true`) e como diagnosticar falha de deploy.
+- `docs/13-premodelo-tecnico.md`: atualizar a linha-resumo dos ADRs para citar o ADR-016.
 
 ### 6.4 Ordem de implementação
 
@@ -161,7 +163,8 @@ Alterações em `ListaCompras`:
 
 | Risco | Mitigação |
 | --- | --- |
-| Drift não inicializa sem COOP/COEP no Pages | Validar localmente servindo `build/web` sem esses cabeçalhos e recarregar; se IndexedDB não bastar, não publicar o demo até resolver |
+| Drift não inicializa sem COOP/COEP no Pages | Validar localmente servindo `build/web` sem esses cabeçalhos; o fallback IndexedDB inicializa |
+| Escritas em transação não chegam ao IndexedDB | Flush periódico (`SELECT 1`/s) ativado só no build de demo; validar item sobrevivendo ao reload |
 | Build Flutter quebra e impede o deploy da privacidade | O conteúdo de `site/` não muda; a URL antiga continua no ar. Investigar e corrigir antes de novo deploy |
 | Peso do primeiro carregamento | Aceito; a demo é opcional e o portfólio não a embute |
 | Service worker servir build antigo | Testar em janela anônima após deploy; se necessário, ajustar estratégia de cache |
