@@ -400,7 +400,7 @@ html.js [data-anime].animate {
 /* ====================== HERO ====================== */
 #top {
   width: 100%;
-  min-height: min(100svh, 780px);
+  min-height: min(100svh, 720px);
   position: relative;
   display: grid;
   grid-template-columns: 1.08fr 0.92fr;
