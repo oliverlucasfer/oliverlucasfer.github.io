@@ -47,7 +47,9 @@
         "typedWords": ["Full Stack", "Mobile", "Flutter"],
         "desc": "anos construindo produtos web e mobile que estendem o ERP da Conceito Tecnologia, do banco de dados ao deploy em produção.",
         "ctaPrimario": "Conheça meu trabalho",
-        "ctaSecundario": "Fale comigo"
+        "ctaSecundario": "Fale comigo",
+        "metaLocal": "Barreiras, BA",
+        "metaStatus": "Disponível para conversar"
       },
       "marquee": [
         "ASP.NET Core", "Angular", "Flutter", "TypeScript", "PostgreSQL",
@@ -210,7 +212,9 @@
         "typedWords": ["Full Stack", "Mobile", "Flutter"],
         "desc": "years building web and mobile products that extend Conceito Tecnologia's ERP, from database to production deployment.",
         "ctaPrimario": "Check out my work",
-        "ctaSecundario": "Get in touch"
+        "ctaSecundario": "Get in touch",
+        "metaLocal": "Barreiras, BA",
+        "metaStatus": "Open to a conversation"
       },
       "marquee": [
         "ASP.NET Core", "Angular", "Flutter", "TypeScript", "PostgreSQL",

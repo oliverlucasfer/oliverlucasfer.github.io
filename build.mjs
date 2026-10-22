@@ -382,9 +382,7 @@ function renderContact(locale) {
           </form>`
     : "";
   return `      <section class="sessao-contato" id="${id}">
-        <div class="sessao-header" data-anime="up">
-          <h2>${esc(locale.contato.titulo)}</h2>
-        </div>
+${sectionHeader(5, locale.contato.titulo)}
         <div class="contato-conteudo" data-anime="up">
           <p>${esc(locale.contato.intro)}</p>
           <a class="contato-email" href="mailto:${site.email}">${site.email}</a>
@@ -392,6 +390,13 @@ ${form}
 ${socialLinks(locale)}
         </div>
       </section>`;
+}
+
+function sectionHeader(index, title) {
+  return `        <div class="sessao-header" data-anime="up">
+          <span class="section-kicker" aria-hidden="true">${String(index).padStart(2, "0")}</span>
+          <h2>${esc(title)}</h2>
+        </div>`;
 }
 
 function renderHome(localeKey) {
@@ -492,19 +497,9 @@ ${themeToggle(locale, true)}
 
       <main id="conteudo">
       <header id="top">
-        <div class="aurora" aria-hidden="true">
-          <span class="aurora-blob aurora-1"></span>
-          <span class="aurora-blob aurora-2"></span>
-          <span class="aurora-blob aurora-3"></span>
-        </div>
         <div class="banner">
           <p class="banner-ola">${esc(locale.hero.ola)}</p>
-          <h1 aria-label="Lucas Oliveira">${["Lucas", "Oliveira"]
-            .map(
-              (word, i) =>
-                `<span class="word" style="animation-delay:${(0.1 + i * 0.08).toFixed(2)}s" aria-hidden="true">${word}</span>`
-            )
-            .join(" ")}</h1>
+          <h1 aria-label="Lucas Oliveira">Lucas Oliveira</h1>
           <p class="banner-typing">
             ${esc(locale.hero.typedPrefix)}
             <span class="typewriter" id="typewriter">${esc(locale.hero.typedWords[0])}</span><span
@@ -519,26 +514,32 @@ ${themeToggle(locale, true)}
             <a class="ButtonCustom" href="#${ids.sobre}">${esc(locale.hero.ctaPrimario)}</a>
             <a class="ButtonSend outline banner-cta-secondary" href="#${ids.contato}">${esc(locale.hero.ctaSecundario)}</a>
           </div>
+          <p class="hero-meta">
+            <span>${esc(locale.hero.metaLocal)}</span>
+            <i>·</i>
+            <span>${esc(locale.hero.metaStatus)}</span>
+          </p>
         </div>
-        <img
-          class="hero-logo"
-          src="/assets/images/hero-logo.png"
-          alt=""
-          aria-hidden="true"
-          width="374"
-          height="479"
-          loading="lazy"
-          decoding="async"
-        />
+
+        <div class="hero-terminal" aria-hidden="true">
+          <div class="hero-terminal-bar">
+            <span></span><span></span><span></span>
+            <em>lucas@portfolio: ~</em>
+          </div>
+          <div class="hero-terminal-body">
+            <p><b>$</b> node build.mjs</p>
+            <p class="ok">✓ dist/</p>
+            <p><b>$</b> git push origin master</p>
+            <p class="ok">✓ deploy</p>
+          </div>
+        </div>
       </header>
 
 ${renderMarquee(locale.marquee)}
 
       <!-- Sobre -->
       <section class="sessao-sobre" id="${ids.sobre}">
-        <div class="sessao-header" data-anime="up">
-          <h2>${esc(locale.sobre.titulo)}</h2>
-        </div>
+${sectionHeader(1, locale.sobre.titulo)}
         <div class="bento">
           <div class="bento-item bento-bio" data-anime="up">
             <h3>${esc(locale.sobre.cargo)}</h3>
@@ -576,9 +577,7 @@ ${stats}
 
       <!-- Conhecimentos -->
       <section class="sessao-conhecimentos" id="${ids.conhecimentos}">
-        <div class="sessao-header" data-anime="up">
-          <h2>${esc(locale.conhecimentos.titulo)}</h2>
-        </div>
+${sectionHeader(2, locale.conhecimentos.titulo)}
         <div class="conhecimentos">
 ${renderSkills(locale)}
         </div>
@@ -586,9 +585,7 @@ ${renderSkills(locale)}
 
       <!-- Experiência -->
       <section class="sessao-experiencia" id="${ids.experiencia}">
-        <div class="sessao-header" data-anime="up">
-          <h2>${esc(locale.experiencia.titulo)}</h2>
-        </div>
+${sectionHeader(3, locale.experiencia.titulo)}
         <div class="timeline">
 ${renderTimeline(locale)}
         </div>
@@ -596,9 +593,7 @@ ${renderTimeline(locale)}
 
       <!-- Projetos -->
       <section class="sessao-projetos" id="${ids.projetos}">
-        <div class="sessao-header" data-anime="up">
-          <h2>${esc(locale.projetos.titulo)}</h2>
-        </div>
+${sectionHeader(4, locale.projetos.titulo)}
         <div class="filter-bar" role="group" aria-label="${esc(locale.aria.filtro)}">
 ${filtros}
         </div>
