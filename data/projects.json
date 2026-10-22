@@ -6,8 +6,8 @@
       "destaque": true,
       "title": "Minhas Listas",
       "thumb": "/media/thumbs/proj10.webp",
-      "thumbWidth": 760,
-      "thumbHeight": 360,
+      "thumbWidth": 1520,
+      "thumbHeight": 720,
       "thumbAlt": {
         "pt": "Tela do Minhas Listas, app de lista de compras com itens organizados por categoria",
         "en": "Minhas Listas screen, shopping list app with items grouped by category"
