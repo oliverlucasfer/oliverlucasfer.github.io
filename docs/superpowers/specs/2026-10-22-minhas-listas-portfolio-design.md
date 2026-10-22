@@ -1,7 +1,7 @@
 # Design — Minhas Listas no portfólio, com demo web
 
 **Data:** 2026-10-22
-**Status:** aguardando aprovação do dono
+**Status:** aprovado e implementado; deploy pendente
 **Repositórios envolvidos:**
 
 - `oliverlucasfer.github.io` (site do portfólio)
@@ -65,7 +65,7 @@ Rejeitada. O gerador sempre cria a página; um projeto pessoal deste porte merec
 O app usa rotas por caminho (`usarPathUrlStrategy()`), e o GitHub Pages não reescreve URLs. Sem tratamento, recarregar `/listacompras/listas` retorna 404.
 
 **A — Hash routing apenas no build de demo (escolhida).**
-Uma condicional ativada por `--dart-define=DEMO=true` faz o build publicado usar `useHashUrlStrategy()`. As rotas viram `/listacompras/#/listas`, recarregar e compartilhar funcionam nativamente, sem página de erro e sem status 404. O build local e o produto mantêm as rotas normais. Trade-off: `#` na URL e uma pequena mudança em `lib/core/web/url_strategy_web.dart`.
+Uma condicional ativada por `--dart-define=DEMO=true` faz o build publicado usar `setUrlStrategy(HashUrlStrategy())`. As rotas viram `/listacompras/#/listas`, recarregar e compartilhar funcionam nativamente, sem página de erro e sem status 404. O build local e o produto mantêm as rotas normais. Trade-off: `#` na URL e uma pequena mudança em `lib/core/web/url_strategy_web.dart`.
 
 **B — `404.html` com o app.**
 Rejeitada. URLs limpas e zero mudança no app, mas todo deep link responde HTTP 404, prejudicando prévia de link e compartilhamento.
@@ -114,7 +114,7 @@ O link `privacidade` é novo e exige o rótulo correspondente em `data/site.json
 
 Alterações em `ListaCompras`:
 
-1. `lib/core/web/url_strategy_web.dart`: a função `usarPathUrlStrategy()` já é o ponto único de configuração no Web. Ela passa a checar `bool.fromEnvironment('DEMO')` e chamar `useHashUrlStrategy()` quando verdadeiro; caso contrário, mantém `usePathUrlStrategy()`. É a única mudança em `lib/`; `url_strategy_nativa.dart`, `bootstrap.dart` e o restante do app ficam intocados.
+1. `lib/core/web/url_strategy_web.dart`: a função `usarPathUrlStrategy()` já é o ponto único de configuração no Web. Ela passa a checar `bool.fromEnvironment('DEMO')` e chamar `setUrlStrategy(HashUrlStrategy())` quando verdadeiro; caso contrário, mantém `usePathUrlStrategy()`. `url_strategy_nativa.dart`, `bootstrap.dart` e o restante do app ficam intocados.
 
 2. `.github/workflows/pages.yml`:
    - instalar Flutter 3.44.5 (mesma versão do badge e do CI) via action oficial de setup;
@@ -126,7 +126,7 @@ Alterações em `ListaCompras`:
 
 3. Nenhuma mudança no banco, nas telas ou na versão do app. Sem bump de versão, portanto sem alteração em `web/version.json`. Rodar `flutter analyze` e `flutter test` antes do merge.
 
-**Roteamento:** com hash, a URL inicial continua `/listacompras/` e as rotas internas ficam `/listacompras/#/listas`, `/listacompras/#/lista/<uuid>`. O navegador nunca pede essas rotas ao servidor, então recarregar, favoritar e compartilhar funcionam sem `404.html` e sem status de erro. O `base href` absoluto continua necessário para os assets.
+**Roteamento:** com hash, a URL inicial continua `/listacompras/` e as rotas de shell ficam `/listacompras/#/listas`, `/listacompras/#/historico`, `/listacompras/#/configuracoes`. Abrir uma lista usa `context.push('/lista/<uuid>')` (go_router), que não altera a URL — comportamento pré-existente, idêntico ao path strategy; recarregar a partir daí volta ao índice. Uma URL fria com `#/lista/<uuid>` abre a lista correta. O navegador nunca pede essas rotas ao servidor, então nada retorna 404. O `base href` absoluto continua necessário para os assets.
 
 **Persistência:** o GitHub Pages não permite cabeçalhos COOP/COEP, então o caminho OPFS do Drift não estará disponível. O app já usa `WasmDatabase.open`, que cai para IndexedDB nesse cenário. Porém o VFS IndexedDB do sqlite3 não dá garantia de durabilidade e não persiste escritas feitas dentro de transações até que outra escrita fora de transação ocorra — na prática, itens sumiam após recarregar. Para o build de demo, `lib/drift/conexao/conexao_web.dart` passa a rodar um `SELECT 1` por segundo fora de transação, o que força o flush do VFS. O timer é ativado apenas com `DEMO=true`, portanto o app local e o produto não mudam. A demo precisa ser validada criando lista e item, recarregando e conferindo que ambos continuam.
 

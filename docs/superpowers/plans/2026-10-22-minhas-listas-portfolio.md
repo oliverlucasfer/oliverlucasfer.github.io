@@ -24,7 +24,7 @@
 
 ## Review Focus
 
-1. **Recarregar uma rota interna da demo** (`#/listas`, `#/lista/<id>`) deve reabrir a mesma tela, sem 404 — Task 1 (steps 5–6) e Task 2 (steps 3 e 10).
+1. **Recarregar a demo em uma rota de shell** (`#/listas`, `#/historico`) deve reabrir a mesma tela, sem 404; URL fria com `#/lista/<id>` abre a lista. Abrir lista pelo app não altera a URL (push imperativo do go_router, pré-existente) — Task 1 (steps 5–6) e Task 2 (steps 3 e 10).
 2. **Persistência do Drift sem COOP/COEP** no Pages: criar lista, recarregar e os dados continuam (fallback IndexedDB) — Task 2 (steps 3 e 10).
 3. **CSP não pode quebrar o Flutter**: bootstrap, CanvasKit e service worker carregam sem erro de console — Task 2 (steps 3 e 10).
 4. **Build local/produto não pode herdar o hash**: sem `DEMO`, as rotas continuam por caminho — Task 1 (step 6).
@@ -131,7 +131,7 @@ python -m http.server 8099 --directory _preview
 ```
 
 Abra `http://localhost:8099/listacompras/`, crie uma lista, adicione um item e navegue até a lista.
-Expected: a URL passa a conter `#/listas` (ou `#/lista/<uuid>`); após pelo menos 2 segundos, recarregar mantém a mesma tela e o item continua lá. Feche o servidor e apague `_preview`.
+Expected: a URL passa a conter `#/listas`; após pelo menos 2 segundos, recarregar volta ao índice (o push da lista não muda a URL) e o item continua lá. Feche o servidor e apague `_preview`.
 
 - [ ] **Step 6: Validar que o build normal continua com rotas por caminho**
 
@@ -446,7 +446,7 @@ Em `README.md`, troque `# 9 projetos + páginas de projeto completas (PT/EN)` po
 - [ ] **Step 5: Gerar o site**
 
 Run: `node build.mjs`
-Expected: build conclui e informa `Páginas: 2 home + 22 case studies + 404` (11 projetos × 2).
+Expected: build conclui e informa `Páginas: 2 home + 20 case studies + 404` (10 projetos × 2).
 
 - [ ] **Step 6: Verificar o resultado**
 
