@@ -895,72 +895,75 @@ section {
 /* ====================== EXPERIÊNCIA (timeline) ====================== */
 .sessao-experiencia {
   background-color: var(--bg);
-  padding-bottom: 5rem;
+  padding: 88px 6% 88px;
+  border-top: 1px solid var(--border);
 }
 .timeline {
-  max-width: 820px;
+  max-width: 1120px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 0 0 24px;
   position: relative;
-}
-.timeline::before {
-  content: "";
-  position: absolute;
-  left: 24px;
-  top: 2rem;
-  bottom: 2rem;
-  width: 2px;
-  background: var(--border);
+  border-left: 1px solid var(--border);
 }
 .timeline-item {
   position: relative;
-  padding-left: 4rem;
-  margin-bottom: 2.5rem;
+  padding: 0 0 34px 24px;
+}
+.timeline-item:last-child {
+  padding-bottom: 0;
 }
 .timeline-dot {
   position: absolute;
-  left: 17px;
-  top: 6px;
-  width: 16px;
-  height: 16px;
+  left: -5px;
+  top: 5px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 0 4px rgba(124, 92, 255, 0.25);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 16%, transparent);
 }
 .timeline-card {
-  background-color: var(--bg-elev);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 1.4rem 1.6rem;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
 }
 .timeline-periodo {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--accent);
+  font-size: 0.625rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
 }
 .timeline-card h3 {
-  font-size: 1.2rem;
-  margin: 0.3rem 0;
+  font-family: var(--font-primary);
+  font-size: 1.125rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  margin: 6px 0 4px;
   color: var(--text);
 }
 .timeline-empresa {
-  color: var(--accent-2);
+  color: var(--accent);
+  font-size: 0.6875rem;
   font-weight: 500;
-  margin-bottom: 0.6rem;
+  margin-bottom: 10px;
 }
 .timeline-card p {
   color: var(--muted);
+  font-size: 0.8125rem;
+  line-height: 1.65;
 }
 .timeline-card ul {
-  margin-top: 0.6rem;
-  padding-left: 1.2rem;
+  margin-top: 8px;
+  padding-left: 16px;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 4px;
 }
 .timeline-card li {
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 0.75rem;
+  line-height: 1.65;
 }
 .timeline-card li::marker {
   color: var(--accent);
@@ -1432,7 +1435,7 @@ footer {
   overflow: hidden;
   background: var(--bg-elev);
   border-block: 1px solid var(--border);
-  padding: 1.4rem 0;
+  padding: 12px 0;
   -webkit-mask-image: linear-gradient(
     90deg,
     transparent,
@@ -1445,23 +1448,25 @@ footer {
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 32s linear infinite;
+  animation: marquee 42s linear infinite;
 }
 .marquee-group {
   display: flex;
   align-items: center;
-  gap: 2.6rem;
-  padding-right: 2.6rem;
+  gap: 2rem;
+  padding-right: 2rem;
 }
 .marquee-item {
   font-family: var(--font-mono);
-  font-size: 0.95rem;
+  font-size: 0.625rem;
+  letter-spacing: 0.04em;
   color: var(--muted);
+  text-transform: uppercase;
   white-space: nowrap;
 }
 .marquee-dot {
-  width: 6px;
-  height: 6px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
   background: var(--accent);
   flex: none;
