@@ -1011,6 +1011,55 @@ section {
   padding: 0.75em 1.5em;
   font-size: 0.74rem;
 }
+.card--destaque {
+  grid-column: 1 / -1;
+  flex-direction: row;
+}
+.card--destaque .card-link {
+  width: 55%;
+  height: auto;
+  min-height: 300px;
+  flex-shrink: 0;
+}
+.card--destaque .card-img-wrapper {
+  height: 100%;
+}
+.card--destaque .card-img-wrapper img {
+  object-position: left center;
+}
+.card--destaque .card-body {
+  padding: 2.2rem 2.4rem;
+  justify-content: center;
+}
+.card--destaque .card-body h3 {
+  font-size: 1.8rem;
+}
+.card--destaque .card-body p {
+  font-size: 1rem;
+  max-width: 48ch;
+}
+.card-badge--destaque {
+  left: auto;
+  right: 0.8rem;
+  background-color: rgba(124, 92, 255, 0.9);
+  border-color: transparent;
+}
+@media (max-width: 820px) {
+  .card--destaque {
+    flex-direction: column;
+  }
+  .card--destaque .card-link {
+    width: 100%;
+    min-height: 0;
+    height: 200px;
+  }
+  .card--destaque .card-body {
+    padding: 1.4rem;
+  }
+  .card--destaque .card-body h3 {
+    font-size: 1.4rem;
+  }
+}
 
 /* ====================== CONTATO ====================== */
 .sessao-contato {

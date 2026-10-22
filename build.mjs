@@ -334,7 +334,10 @@ function renderCards(locale) {
             false
           )
         : "";
-      return `        <article class="card" data-anime="up" data-category="${p.category}">
+      const selo = p.destaque
+        ? `\n            <span class="card-badge card-badge--destaque">${esc(labels.destaque)}</span>`
+        : "";
+      return `        <article class="card${p.destaque ? " card--destaque" : ""}" data-anime="up" data-category="${p.category}">
           <a class="card-link" href="${projectUrl}" aria-label="${esc(t(p.thumbAlt, locale))}">
           <div class="card-img-wrapper">
             <img
@@ -345,7 +348,7 @@ function renderCards(locale) {
               loading="lazy"
               decoding="async"
             />
-            <span class="card-badge">${esc(labels.badges[p.category])}</span>
+            <span class="card-badge">${esc(labels.badges[p.category])}</span>${selo}
           </div>
           </a>
           <div class="card-body">
