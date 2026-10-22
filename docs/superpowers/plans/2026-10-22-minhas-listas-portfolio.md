@@ -519,3 +519,25 @@ Confirme, um a um, os itens de `## 9. Verificação` do spec nas seções Portf�
 git add data/projects.json data/site.json
 git commit -m "fix: ajusta textos do projeto Minhas Listas após revisão"
 ```
+
+## Follow-ups pós-merge (2026-10-22)
+
+Execução concluída e publicada em 22/10/2026 (PRs [#26](https://github.com/oliverlucasfer/listacompras/pull/26) e [#1](https://github.com/oliverlucasfer/oliverlucasfer.github.io/pull/1)). Os checkboxes acima ficaram desmarcados de propósito; a fonte é o histórico do git e as decisões abaixo.
+
+Itens adiados na revisão final, com impacto:
+
+1. **CSP em dois lugares** — `.github/workflows/pages.yml` e `docs/06 §3.4.1` do app. Já divergiu uma vez (`fonts.gstatic.com`). Risco médio de manutenção; extrair para um arquivo único lido pelo workflow ou falhar o CI quando divergirem.
+2. **Build `DEMO` fora do CI** — `ci.yml` compila o web sem o define; a variante publicada só é exercitada no deploy da `main`. Risco médio; adicionar `flutter build web --release --dart-define=DEMO=true` ao CI.
+3. **Flush só por timer** — janela de até ~1s de escrita perdida em fechamento abrupto. Risco baixo (demo); avaliar flush em `pagehide`/`visibilitychange`.
+4. **Checkboxes do plano** — cosmético; este follow-up e o histórico do git são a fonte.
+
+Registro operacional no app: `docs/09-runbook-operacoes.md §2.16`.
+
+### Decisões (rulings) da execução
+
+- SDK 3.44 não tem `useHashUrlStrategy()`; usado `setUrlStrategy(HashUrlStrategy())`.
+- Flush `SELECT 1` encadeado, DEMO-only, para o VFS IndexedDB não perder escritas transacionais.
+- CSP precisa de `fonts.gstatic.com` em `connect-src` (Roboto via `fetch`).
+- Build de demo sem CDN (`--no-web-resources-cdn`), com `script-src 'self'`.
+- Ordem de release: app primeiro, portfólio depois.
+- Plano previa 22 case studies; correto é 20 (10 projetos × 2).
