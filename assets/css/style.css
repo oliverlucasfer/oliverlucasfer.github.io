@@ -636,38 +636,42 @@ section {
 /* ====================== SOBRE (bento) ====================== */
 .sessao-sobre {
   background-color: var(--bg);
-  padding-bottom: 5rem;
+  padding: 88px 6% 88px;
 }
 .bento {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: repeat(12, 1fr);
   grid-template-areas:
-    "bio stats"
-    "github github";
-  gap: 1.2rem;
-  max-width: 1100px;
+    "bio bio bio bio bio bio bio stats stats stats stats stats"
+    "github github github github github github github stack stack stack stack stack";
+  gap: 16px;
+  max-width: 1120px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0;
 }
 .bento-item {
-  background-color: var(--bg-elev-2);
+  background-color: var(--bg-elev);
   border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 1.6rem;
+  border-radius: var(--radius-card);
+  padding: 32px;
+  box-shadow: var(--shadow-card);
 }
 .bento-bio {
   grid-area: bio;
 }
 .bento-bio h3 {
-  font-family: var(--font-mono);
-  color: var(--accent);
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
-  font-weight: 500;
+  font-family: var(--font-primary);
+  color: var(--text);
+  font-size: 1.375rem;
+  margin-bottom: 14px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
 }
 .bento-bio p {
   color: var(--muted);
-  margin-bottom: 1rem;
+  margin-bottom: 13px;
+  font-size: 0.875rem;
+  line-height: 1.7;
 }
 .bento-bio strong {
   color: var(--text);
@@ -677,19 +681,21 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1.1rem;
+  gap: 20px;
 }
 .stat-num {
   display: block;
-  font-family: var(--font-mono);
-  font-size: 2.1rem;
+  font-family: var(--font-primary);
+  font-size: 2rem;
   font-weight: 700;
   color: var(--accent);
-  line-height: 1.1;
+  line-height: 1;
+  letter-spacing: -0.04em;
 }
 .stat-label {
   color: var(--muted);
-  font-size: 0.85rem;
+  font-size: 0.625rem;
+  line-height: 1.4;
 }
 .bento-github {
   grid-area: github;
@@ -697,7 +703,7 @@ section {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 1.4rem;
+  gap: 16px;
 }
 .bento-github[hidden] {
   display: none;
@@ -705,97 +711,160 @@ section {
 .gh-identity {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  flex: 1 1 320px;
+  gap: 12px;
+  flex: 1 1 300px;
 }
 .gh-avatar-wrap {
-  width: 52px;
-  height: 52px;
+  width: 40px;
+  height: 40px;
   flex: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  color: #fff;
+  background: var(--accent-soft);
+  color: var(--accent);
 }
 .gh-avatar {
-  width: 28px;
-  height: 28px;
-  color: #fff;
+  width: 22px;
+  height: 22px;
+  color: var(--accent);
 }
 .bento-github h3 {
-  font-family: var(--font-mono);
-  font-weight: 500;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: 1rem;
   color: var(--text);
-  margin-bottom: 0.2rem;
+  margin-bottom: 2px;
 }
 .bento-github p {
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
   max-width: 52ch;
 }
 .gh-stats {
   display: flex;
-  gap: 2.2rem;
+  gap: 24px;
 }
 .gh-stat .stat-num {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
+}
+.bento-stack {
+  grid-area: stack;
+}
+.bento-github[hidden] + .bento-stack {
+  grid-column: 1 / -1;
+}
+.bento-stack h3 {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.stack-value {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  color: var(--text);
 }
 
 /* ====================== CONHECIMENTOS (skills) ====================== */
 .sessao-conhecimentos {
-  background-color: var(--bg-elev);
-  padding-bottom: 5rem;
+  background-color: var(--bg);
+  padding: 88px 6% 88px;
+  border-top: 1px solid var(--border);
 }
 .conhecimentos {
   display: grid;
-  grid-template-columns: repeat(2, minmax(260px, 1fr));
-  gap: 2.5rem;
-  max-width: 1000px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 1120px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0;
 }
 .skills-group {
-  background-color: var(--bg-elev-2);
+  background-color: var(--bg-elev);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 1.8rem;
+  border-radius: var(--radius-card);
+  padding: 24px;
+  transition: transform 0.18s, border-color 0.18s;
+}
+.skills-group:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-strong);
 }
 .skills-title {
-  font-family: var(--font-mono);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-primary);
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+}
+.skills-icon {
+  width: 18px;
+  height: 18px;
   color: var(--accent);
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 0.4rem;
+  flex: none;
 }
 .skills-desc {
   color: var(--muted);
-  font-size: 0.85rem;
-  margin-bottom: 1.4rem;
+  font-size: 0.75rem;
+  line-height: 1.55;
+  margin-bottom: 16px;
 }
 .skills-chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.55rem;
+  gap: 6px;
 }
 .chip {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  font-size: 0.82rem;
+  gap: 4px;
+  height: 24px;
+  font-size: 0.5625rem;
   font-family: var(--font-mono);
-  color: var(--text);
-  background-color: var(--bg);
-  border: 1px solid var(--border);
-  padding: 0.42rem 0.8rem;
+  color: var(--accent);
+  background-color: var(--accent-soft);
+  border: 1px solid var(--accent-border);
+  padding: 0 9px;
   border-radius: var(--radius-pill);
-  transition: border-color 0.25s, color 0.25s;
+  transition: border-color 0.18s, color 0.18s;
 }
 .chip:hover {
   border-color: var(--accent);
   color: var(--accent);
+}
+.chip .ic {
+  width: 13px;
+  height: 13px;
+}
+
+@media (max-width: 991px) {
+  .bento {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "bio"
+      "stats"
+      "github"
+      "stack";
+  }
+  .bento-stats {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 28px;
+  }
+  .conhecimentos {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ====================== ICONES (sprite local) ====================== */

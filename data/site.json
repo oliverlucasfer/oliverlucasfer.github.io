@@ -61,6 +61,8 @@
         "cargo": "Desenvolvedor Full Stack",
         "bioP1": "Sou desenvolvedor há cerca de 5 anos, com foco em aplicações web robustas usando <strong>ASP.NET Core</strong> no backend e <strong>Angular</strong> no frontend. Gosto de construir produtos de ponta a ponta, do banco de dados ao deploy em produção com containers e pipelines de CI/CD.",
         "bioP2": "Também atuo no desenvolvimento mobile com <strong>Flutter</strong>, criando apps multiplataforma (Android/iOS) integrados aos sistemas da empresa.",
+        "stackLabel": "Stack atual",
+        "stackValue": ".NET · Angular · Flutter · PostgreSQL",
         "stats": [
           { "target": "anos", "label": "anos de experiência" },
           { "target": "projetos", "label": "projetos no portfólio" },
@@ -226,6 +228,8 @@
         "cargo": "Full Stack Developer",
         "bioP1": "I've been a developer for about 5 years, focused on robust web applications using <strong>ASP.NET Core</strong> on the backend and <strong>Angular</strong> on the frontend. I enjoy building products end to end, from the database to production deployment with containers and CI/CD pipelines.",
         "bioP2": "I also work with mobile development using <strong>Flutter</strong>, creating cross-platform apps (Android/iOS) integrated with the company's systems.",
+        "stackLabel": "Current stack",
+        "stackValue": ".NET · Angular · Flutter · PostgreSQL",
         "stats": [
           { "target": "anos", "label": "years of experience" },
           { "target": "projetos", "label": "projects in this portfolio" },

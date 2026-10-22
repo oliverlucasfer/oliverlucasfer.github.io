@@ -267,7 +267,7 @@ function renderSkills(locale) {
         )
         .join("\n");
       return `        <div class="skills-group" data-anime="${dirs[i % dirs.length]}">
-          <h3 class="skills-title">${esc(t(group.nome, locale))}</h3>
+          <h3 class="skills-title">${icon(group.icon ?? "check", "skills-icon")}${esc(t(group.nome, locale))}</h3>
           <p class="skills-desc">${esc(t(group.descricao, locale))}</p>
           <div class="skills-chips">
 ${chips}
@@ -571,6 +571,10 @@ ${stats}
               >${esc(locale.sobre.github.botao)}
               ${icon("arrow-up-right", "btn-icon")}</a
             >
+          </div>
+          <div class="bento-item bento-stack" data-anime="up">
+            <h3>${esc(locale.sobre.stackLabel)}</h3>
+            <p class="stack-value">${esc(locale.sobre.stackValue)}</p>
           </div>
         </div>
       </section>
