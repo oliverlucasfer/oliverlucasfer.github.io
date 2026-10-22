@@ -79,6 +79,7 @@ const menuToggle = document.querySelector(".js-menu-toggle");
 function setMenu(open) {
   if (!container || !menuToggle) return;
   container.classList.toggle("show-menu", open);
+  document.body.classList.toggle("menu-open", open);
   menuToggle.setAttribute("aria-expanded", String(open));
   menuToggle.setAttribute(
     "aria-label",
@@ -178,7 +179,7 @@ if (typeEl) {
       typeEl.textContent = word.slice(0, charIndex);
       let delay = deleting ? 45 : 90;
       if (!deleting && charIndex >= word.length) {
-        delay = 2000;
+        delay = 1200;
         deleting = true;
       } else if (deleting && charIndex <= 0) {
         deleting = false;
@@ -218,7 +219,7 @@ if ("IntersectionObserver" in window) {
           el.textContent = target + suffix;
           return;
         }
-        const duration = 1300;
+        const duration = 900;
         const start = performance.now();
         const tick = (now) => {
           const progress = Math.min((now - start) / duration, 1);
@@ -229,7 +230,7 @@ if ("IntersectionObserver" in window) {
         requestAnimationFrame(tick);
       });
     },
-    { threshold: 0.5 }
+    { threshold: 0.6 }
   );
   statNums.forEach((el) => counterObserver.observe(el));
 } else {
@@ -250,7 +251,7 @@ if ("IntersectionObserver" in window) {
         }
       });
     },
-    { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
+    { threshold: 0.15, rootMargin: "0px 0px -8% 0px" }
   );
   animatedElements.forEach((element) => revealObserver.observe(element));
 

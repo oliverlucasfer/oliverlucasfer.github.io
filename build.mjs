@@ -113,7 +113,7 @@ function icon(name, cls = "") {
 
 /* ---------------- page shell ---------------- */
 
-const themeScript = `<script>(function(){var t=null;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}document.documentElement.dataset.theme=t})();<\/script>`;
+const themeScript = `<script>(function(){document.documentElement.classList.add("js");var t=null;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}document.documentElement.dataset.theme=t})();<\/script>`;
 
 function head({
   locale,
