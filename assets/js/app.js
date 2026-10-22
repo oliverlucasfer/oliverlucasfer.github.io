@@ -307,7 +307,10 @@ if (contactForm && contactForm.dataset.endpoint) {
     if (!submitBtn) return;
     submitBtn.disabled = true;
     submitBtn.textContent = siteConfig.sendingLabel || "…";
-    if (status) status.textContent = "";
+    if (status) {
+      status.textContent = "";
+      status.dataset.state = "";
+    }
     try {
       const res = await fetch(contactForm.dataset.endpoint, {
         method: "POST",
@@ -316,7 +319,10 @@ if (contactForm && contactForm.dataset.endpoint) {
       });
       if (res.ok) {
         contactForm.reset();
-        if (status) status.textContent = siteConfig.sentLabel || "OK";
+        if (status) {
+          status.textContent = siteConfig.sentLabel || "OK";
+          status.dataset.state = "success";
+        }
         submitBtn.textContent = defaultLabel;
       } else {
         throw new Error(res.status);
@@ -324,6 +330,7 @@ if (contactForm && contactForm.dataset.endpoint) {
     } catch {
       if (status) {
         status.textContent = siteConfig.errorLabel || "Erro ao enviar.";
+        status.dataset.state = "error";
       }
       submitBtn.textContent = defaultLabel;
     } finally {

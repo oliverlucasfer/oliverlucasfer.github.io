@@ -349,6 +349,7 @@ function renderCards(locale) {
           </div>
           </a>
           <div class="card-body">
+            <span class="card-period">${esc(t(p.caseStudy.periodo, locale))}</span>
             <h3><a class="card-title-link" href="${projectUrl}">${esc(p.title)}</a></h3>
             <div class="tags">
 ${tags}
@@ -383,7 +384,7 @@ function renderContact(locale) {
     : "";
   return `      <section class="sessao-contato" id="${id}">
 ${sectionHeader(5, locale.contato.titulo)}
-        <div class="contato-conteudo" data-anime="up">
+        <div class="contato-conteudo${endpoint ? " has-form" : ""}" data-anime="up">
           <p>${esc(locale.contato.intro)}</p>
           <a class="contato-email" href="mailto:${site.email}">${site.email}</a>
 ${form}
