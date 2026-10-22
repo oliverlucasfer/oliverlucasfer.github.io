@@ -16,10 +16,11 @@ assets/
   fonts/             # woff2 das fontes (Inter + JetBrains Mono, variáveis)
   js/app.js          # JS do cliente (tema, filtros, contadores, GitHub, formulário)
   css/               # estilos (tema claro/escuro via [data-theme], fonte e keyframes inclusos)
-  vendor/lenis.min.js
 build.mjs            # gerador do site (Node puro, zero dependências)
 scripts/
   check-lighthouse.mjs
+  check-ui.mjs       # regressões de estrutura, tokens e conteúdo
+  make-og.py         # gera o OG cover 1200x630
 .github/workflows/
   deploy.yml         # build + deploy no GitHub Pages
   lighthouse.yml     # auditoria de performance/acessibilidade/SEO
@@ -58,6 +59,10 @@ O workflow `.github/workflows/deploy.yml` faz build e publica `dist/` no GitHub 
 
 `.github/workflows/lighthouse.yml` roda a cada push em `master`/PR, mede as páginas home e um projeto e valida os budgets em `scripts/check-lighthouse.mjs` (Performance ≥ 90, Acessibilidade ≥ 95, SEO = 100). Falhas no budget bloqueiam o fluxo.
 
+## Check de UI
+
+`node build.mjs && node scripts/check-ui.mjs` valida tokens, estrutura das seções, 20 case pages, 404, temas e ausência do legado visual (Lenis, grain, scroll-progress, hero PNG).
+
 ## Checklist antes de publicar
 
 - [ ] **Revisar `data/projects.json`**: as páginas dos projetos da empresa estão anonimizadas (sem cliente, sem métricas internas) — confirme que nada fere confidencialidade.
@@ -70,7 +75,7 @@ O workflow `.github/workflows/deploy.yml` faz build e publica `dist/` no GitHub 
 - Versão EN com URLs próprias (`/en/`) + `hreflang` + `sitemap.xml` + JSON-LD (schema.org Person/CreativeWork)
 - Página de projeto em `/projetos/<slug>/` e `/en/projects/<slug>/`
 - Ícones de tecnologia em sprite SVG local (zero requests externos de ícone)
-- Scroll suave (Lenis local), reveal on scroll, tipografia animada — todos desativados com `prefers-reduced-motion`
+- Reveal on scroll, hover, typing e contadores — desativados com `prefers-reduced-motion`; conteúdo visível sem JS
 - Card do GitHub com dados da API pública (some graciosamente offline)
 - Fontes self-hosted (woff2) — sem dependência externa de fonts
 - Página 404 e `robots.txt`
