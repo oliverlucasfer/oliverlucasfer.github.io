@@ -276,20 +276,6 @@ if ("IntersectionObserver" in window) {
 
 /* ---------------- GitHub (card do bento) ---------------- */
 
-const githubCard = document.querySelector(".bento-github");
-if (githubCard && siteConfig.githubUser) {
-  fetch(`https://api.github.com/users/${siteConfig.githubUser}`)
-    .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
-    .then((user) => {
-      const repos = githubCard.querySelector('[data-gh="repos"]');
-      if (repos) repos.textContent = user.public_repos ?? "–";
-      githubCard.hidden = false;
-    })
-    .catch(() => {
-      githubCard.hidden = true;
-    });
-}
-
 /* ---------------- Copiar e-mail ---------------- */
 
 document.querySelectorAll(".contato-copy").forEach((btn) => {

@@ -716,9 +716,6 @@ html.js [data-anime].animate {
   justify-content: space-between;
   gap: 16px;
 }
-.bento-github[hidden] {
-  display: none;
-}
 .gh-identity {
   display: flex;
   align-items: center;
@@ -763,9 +760,6 @@ html.js [data-anime].animate {
 }
 .bento-stack {
   grid-area: stack;
-}
-.bento-github[hidden] + .bento-stack {
-  grid-column: 1 / -1;
 }
 .bento-stack h3 {
   font-family: var(--font-mono);

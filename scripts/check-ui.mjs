@@ -95,6 +95,12 @@ check(fs.readFileSync("assets/js/app.js", "utf8").includes("clipboard"), "clipbo
 check(en.includes("Open to a conversation"), "metaStatus EN ausente");
 check(en.includes("Current stack"), "stackLabel EN ausente");
 
+const appJs = fs.readFileSync("dist/assets/js/app.js", "utf8");
+check(!appJs.includes("api.github.com"), "app.js ainda busca api.github.com no carregamento");
+const githubCardTag = pt.match(/<div class="bento-item bento-github"[^>]*>/)?.[0] ?? "";
+check(githubCardTag && !githubCardTag.includes("hidden"), "card GitHub oculto no HTML");
+check(/<span class="stat-num">\d+<\/span>/.test(pt), "contagem de repositorios nao renderizada no build");
+
 for (const dir of ["dist/projetos", "dist/en/projects"]) {
   const entries = fs.readdirSync(dir, { withFileTypes: true }).filter((e) => e.isDirectory());
   check(entries.length === 10, `${dir}: esperados 10 cases, encontrados ${entries.length}`);

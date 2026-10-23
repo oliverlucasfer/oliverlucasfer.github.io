@@ -163,7 +163,6 @@ function configScript(locale) {
   const cfg = {
     careerStartYear: site.careerStartYear,
     typedWords: locale.hero.typedWords,
-    githubUser: site.githubUser,
     email: site.email,
     sendingLabel: locale.contato.form.enviando,
     sentLabel: locale.contato.form.sucesso,
@@ -612,7 +611,7 @@ ${sectionHeader(1, locale.sobre.titulo)}
           <div class="bento-item bento-stats" data-anime="up">
 ${stats}
           </div>
-          <div class="bento-item bento-github" data-anime="up" hidden>
+          <div class="bento-item bento-github" data-anime="up">
             <div class="gh-identity">
               <span class="gh-avatar-wrap">${icon("github", "gh-avatar")}</span>
               <div>
@@ -622,7 +621,7 @@ ${stats}
             </div>
             <div class="gh-stats">
               <div class="gh-stat">
-                <span class="stat-num" data-gh="repos">–</span>
+                <span class="stat-num">${site.githubRepos ?? "-"}</span>
                 <span class="stat-label">${esc(locale.sobre.github.repos)}</span>
               </div>
             </div>
