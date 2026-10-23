@@ -80,7 +80,7 @@ for (const selector of [".bento", ".timeline", ".cards", ".contato-shell", ".foo
   const pattern = new RegExp(`\\${selector}\\s*\\{[^}]*max-width:\\s*1500px`);
   check(pattern.test(css), `${selector} sem max-width 1500px`);
 }
-check(/#top\s*\{[^}]*padding:\s*96px 3%/.test(css), "hero sem padding 3%");
+check(/#top\s*\{[^}]*width:\s*min\(calc\(100% - 6%\), 1500px\)/.test(css), "hero sem largura alinhada");
 check((css.match(/padding:\s*88px 3% 88px/g) || []).length >= 5, "seções da home sem padding 3%");
 check(pt.includes("/projetos/minhas-listas/"), "evidência com link de projeto ausente");
 check(pt.includes("Copiar e-mail"), "copy email PT ausente");

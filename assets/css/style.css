@@ -166,7 +166,7 @@ html.js [data-anime].animate {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 2.5rem;
+  padding: 0 max(2.5rem, calc((100% - 1500px) / 2));
   background-color: var(--topbar-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -399,14 +399,15 @@ html.js [data-anime].animate {
 
 /* ====================== HERO ====================== */
 #top {
-  width: 100%;
+  width: min(calc(100% - 6%), 1500px);
   min-height: min(100svh, 720px);
+  margin: 0 auto;
   position: relative;
   display: grid;
   grid-template-columns: 1.08fr 0.92fr;
   align-items: center;
   gap: 32px;
-  padding: 96px 3% 64px;
+  padding: 96px 0 64px;
   overflow: hidden;
 }
 .banner {
@@ -625,10 +626,11 @@ html.js [data-anime].animate {
 
 @media (max-width: 1024px) {
   #top {
+    width: 100%;
     grid-template-columns: 1fr;
     min-height: auto;
     gap: 28px;
-    padding: 104px 6% 56px;
+    padding: 104px 3% 56px;
   }
   .hero-terminal {
     justify-self: start;
@@ -1959,6 +1961,9 @@ html.lenis body {
 
 /* ====================== RESPONSIVE ====================== */
 @media (max-width: 768px) {
+  #top {
+    padding: 104px 6% 56px;
+  }
   .topbar {
     display: none;
   }
