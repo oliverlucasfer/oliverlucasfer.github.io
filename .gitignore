@@ -4,3 +4,4 @@ node_modules/
 .superpowers/
 /v*-*.png
 /prodocs-raw.png
+lighthouse-*.json
