@@ -65,14 +65,6 @@ function initTheme() {
 
 initTheme();
 
-document.querySelectorAll(".bento-foto img").forEach((img) => {
-  const hide = () => {
-    img.style.display = "none";
-  };
-  img.addEventListener("error", hide);
-  if (img.complete && img.naturalWidth === 0) hide();
-});
-
 const container = document.querySelector(".container");
 const menuToggle = document.querySelector(".js-menu-toggle");
 

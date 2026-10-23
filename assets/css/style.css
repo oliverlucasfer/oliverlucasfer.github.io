@@ -35,9 +35,6 @@
   --danger: #F85149;
 
   --topbar-bg: rgba(13, 17, 23, 0.82);
-  --hero-text: #C9D1D9;
-  --hero-title-solid: #E6EDF3;
-  --hero-title-grad: linear-gradient(180deg, #E6EDF3 25%, #E6EDF3 100%);
   --radius-pill: 999px;
   --radius-card: 6px;
   --radius-btn: 6px;
@@ -70,9 +67,6 @@
   --danger: #CF222E;
 
   --topbar-bg: rgba(255, 255, 255, 0.84);
-  --hero-text: #1F2328;
-  --hero-title-solid: #1F2328;
-  --hero-title-grad: linear-gradient(180deg, #1F2328 25%, #1F2328 100%);
   --shadow-card: 0 1px 0 rgba(31, 35, 40, 0.04);
   --shadow-hover: 0 8px 24px rgba(31, 35, 40, 0.08);
   color-scheme: light;
@@ -156,8 +150,20 @@ html.js [data-anime].animate {
   transform: translate(0, 0);
 }
 
-/* ====================== TOPBAR ====================== */
-.topbar {
+.sessao-sobre,
+.sessao-conhecimentos,
+.sessao-experiencia,
+.sessao-projetos,
+.sessao-contato {
+  content-visibility: auto;
+}
+.sessao-sobre { contain-intrinsic-size: auto 800px; }
+.sessao-conhecimentos { contain-intrinsic-size: auto 900px; }
+.sessao-experiencia { contain-intrinsic-size: auto 700px; }
+.sessao-projetos { contain-intrinsic-size: auto 1600px; }
+.sessao-contato { contain-intrinsic-size: auto 600px; }
+
+/* ====================== TOPBAR ====================== */.topbar {
   position: fixed;
   top: 0;
   left: 0;
@@ -1612,25 +1618,6 @@ footer {
 }
 
 /* ====================== MODERN FX ====================== */
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  transform: scaleX(0);
-  transform-origin: 0 50%;
-  z-index: 200;
-}
-.grain {
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  pointer-events: none;
-  opacity: 0.05;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
 .marquee {
   overflow: hidden;
   background: var(--bg-elev);
@@ -1670,13 +1657,6 @@ footer {
   border-radius: 50%;
   background: var(--accent);
   flex: none;
-}
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-.lenis.lenis-stopped {
-  overflow: hidden;
 }
 
 /* ====================== 404 ====================== */
@@ -2242,37 +2222,6 @@ html.lenis body {
   }
 }
 
-@keyframes fadeUp {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes wordReveal {
-  0% {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes wordRise {
-  0% {
-    transform: translateY(24px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
 @keyframes blink {
   0%,
   49% {
@@ -2298,32 +2247,5 @@ html.lenis body {
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes auroraFloat1 {
-  from {
-    transform: translate(0, 0) scale(1);
-  }
-  to {
-    transform: translate(8vw, 6vh) scale(1.15);
-  }
-}
-
-@keyframes auroraFloat2 {
-  from {
-    transform: translate(0, 0) scale(1);
-  }
-  to {
-    transform: translate(-6vw, -8vh) scale(1.2);
-  }
-}
-
-@keyframes auroraFloat3 {
-  from {
-    transform: translate(0, 0) scale(1);
-  }
-  to {
-    transform: translate(4vw, -5vh) scale(0.9);
   }
 }
