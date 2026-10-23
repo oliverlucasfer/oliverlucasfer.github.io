@@ -298,6 +298,49 @@ if (githubCard && siteConfig.githubUser) {
     });
 }
 
+/* ---------------- Copiar e-mail ---------------- */
+
+document.querySelectorAll(".contato-copy").forEach((btn) => {
+  const status = btn.closest(".contato-panel")?.querySelector(".contato-copy-status");
+  const original = btn.textContent;
+  btn.addEventListener("click", async () => {
+    const email = btn.dataset.email || "";
+    let copied = false;
+    try {
+      await navigator.clipboard.writeText(email);
+      copied = true;
+    } catch {
+      const temp = document.createElement("textarea");
+      temp.value = email;
+      temp.setAttribute("readonly", "");
+      temp.style.position = "fixed";
+      temp.style.opacity = "0";
+      document.body.appendChild(temp);
+      temp.select();
+      try {
+        copied = document.execCommand("copy");
+      } catch {}
+      temp.remove();
+    }
+    if (!copied) {
+      if (status) status.textContent = btn.dataset.copyError || "";
+      setTimeout(() => {
+        if (status) status.textContent = "";
+      }, 2200);
+      return;
+    }
+    const label = btn.dataset.copied || "Copiado";
+    btn.textContent = label;
+    btn.classList.add("is-copied");
+    if (status) status.textContent = label;
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.classList.remove("is-copied");
+      if (status) status.textContent = "";
+    }, 2200);
+  });
+});
+
 /* ---------------- Formulário de contato (Formspree) ---------------- */
 
 const contactForm = document.querySelector(".contato-form");

@@ -134,6 +134,16 @@
       "contato": {
         "titulo": "Contato",
         "intro": "Vamos conversar? Ficarei feliz em responder.",
+        "copyEmail": "Copiar e-mail",
+        "copied": "E-mail copiado",
+        "copyError": "Não foi possível copiar",
+        "openEmail": "Abrir no meu e-mail",
+        "mailSubject": "Contato pelo portfólio",
+        "mailBody": "Olá, Lucas! Vi seu portfólio e gostaria de conversar sobre...",
+        "channels": "Canais",
+        "emailLabel": "E-mail",
+        "linkedinLabel": "LinkedIn",
+        "githubLabel": "GitHub",
         "form": {
           "nome": "Seu nome",
           "email": "Seu e-mail",
@@ -301,6 +311,16 @@
       "contato": {
         "titulo": "Contact",
         "intro": "Let's talk? I'll be glad to hear from you.",
+        "copyEmail": "Copy email",
+        "copied": "Email copied",
+        "copyError": "Couldn't copy",
+        "openEmail": "Open in email",
+        "mailSubject": "Portfolio contact",
+        "mailBody": "Hi Lucas! I saw your portfolio and would like to talk about...",
+        "channels": "Channels",
+        "emailLabel": "Email",
+        "linkedinLabel": "LinkedIn",
+        "githubLabel": "GitHub",
         "form": {
           "nome": "Your name",
           "email": "Your e-mail",

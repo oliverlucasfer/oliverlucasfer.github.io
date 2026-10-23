@@ -64,6 +64,14 @@ check((pt.match(/class="card(?:\s|")/g) || []).length === 10, "esperados 10 card
 check(pt.includes("Barreiras, BA"), "metaLocal PT ausente");
 check(pt.includes("Disponível para conversar"), "metaStatus PT ausente");
 check(pt.includes("Stack atual"), "stackLabel PT ausente");
+check(pt.includes("Copiar e-mail"), "copy email PT ausente");
+check(pt.includes("Abrir no meu e-mail"), "mailto PT ausente");
+check(en.includes("Copy email"), "copy email EN ausente");
+check(en.includes("Open in email"), "mailto EN ausente");
+for (const required of ["contato-shell", "contato-copy", "contato-mailto", "contato-canais"]) {
+  check(pt.includes(required), `contato ausente: ${required}`);
+}
+check(fs.readFileSync("assets/js/app.js", "utf8").includes("clipboard"), "clipboard JS ausente");
 check(en.includes("Open to a conversation"), "metaStatus EN ausente");
 check(en.includes("Current stack"), "stackLabel EN ausente");
 

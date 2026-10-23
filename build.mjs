@@ -370,7 +370,9 @@ ${external}
 function renderContact(locale) {
   const endpoint = site.formspreeEndpoint ?? "";
   const f = locale.contato.form;
+  const c = locale.contato;
   const id = locale.prefix === "/en/" ? "contact" : "contato";
+  const mailto = `mailto:${site.email}?subject=${encodeURIComponent(c.mailSubject)}&amp;body=${encodeURIComponent(c.mailBody)}`;
   const form = endpoint
     ? `          <form class="contato-form" data-endpoint="${esc(endpoint)}" aria-label="${esc(f.aria)}">
             <div class="form-row">
@@ -384,11 +386,40 @@ function renderContact(locale) {
     : "";
   return `      <section class="sessao-contato" id="${id}">
 ${sectionHeader(5, locale.contato.titulo)}
-        <div class="contato-conteudo${endpoint ? " has-form" : ""}" data-anime="up">
-          <p>${esc(locale.contato.intro)}</p>
-          <a class="contato-email" href="mailto:${site.email}">${site.email}</a>
+        <div class="contato-shell" data-anime="up">
+          <div class="contato-lead">
+            <p class="contato-intro">${esc(c.intro)}</p>
+            <span class="contato-status"><i aria-hidden="true"></i>${esc(locale.hero.metaStatus)}</span>
+          </div>
+          <div class="contato-panel">
+            <div class="contato-email-row">
+              <a class="contato-email" href="mailto:${site.email}">${site.email}</a>
+              <button
+                class="contato-copy"
+                type="button"
+                data-email="${esc(site.email)}"
+                data-copied="${esc(c.copied)}"
+                data-copy-error="${esc(c.copyError)}"
+              >${esc(c.copyEmail)}</button>
+            </div>
+            <span class="contato-copy-status" role="status" aria-live="polite"></span>
+            <a class="ButtonCustom contato-mailto" href="${mailto}">
+              ${esc(c.openEmail)} ${icon("arrow-up-right", "btn-icon")}
+            </a>
+            <div class="contato-canais">
+              <span class="contato-canais-label">${esc(c.channels)}</span>
+              <a href="mailto:${site.email}">
+                ${icon("email")}<span>${esc(c.emailLabel)}</span><span class="contato-canal-arrow">↗</span>
+              </a>
+              <a href="${site.linkedin}" target="_blank" rel="noopener noreferrer">
+                ${icon("linkedin")}<span>${esc(c.linkedinLabel)}</span><span class="contato-canal-arrow">↗</span>
+              </a>
+              <a href="${site.github}" target="_blank" rel="noopener noreferrer">
+                ${icon("github")}<span>${esc(c.githubLabel)}</span><span class="contato-canal-arrow">↗</span>
+              </a>
+            </div>
+          </div>
 ${form}
-${socialLinks(locale)}
         </div>
       </section>`;
 }

@@ -1207,64 +1207,155 @@ html.js [data-anime].animate {
   border-top: 1px solid var(--border);
   text-align: left;
 }
-.contato-conteudo {
+.contato-shell {
   max-width: 1120px;
   margin: 0 auto;
-  padding: 32px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px 32px;
+  gap: 16px;
+  align-items: stretch;
+}
+.contato-lead {
   background: var(--bg-elev);
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.contato-conteudo:not(.has-form) {
-  grid-template-columns: 1fr;
-  max-width: 720px;
+.contato-intro {
+  font-family: var(--font-primary);
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  max-width: 20ch;
+  margin: 0 0 22px;
 }
-.contato-conteudo p {
+.contato-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--muted);
-  font-size: 0.875rem;
-  line-height: 1.65;
-  margin-bottom: 4px;
-  grid-column: 1;
+}
+.contato-status i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--success) 18%, transparent);
+}
+.contato-panel {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+}
+.contato-email-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
 }
 .contato-email {
-  display: inline-block;
   font-family: var(--font-mono);
-  font-size: 0.9rem;
+  font-size: clamp(0.85rem, 1.4vw, 1.05rem);
   color: var(--accent);
-  margin-bottom: 12px;
   word-break: break-all;
-  grid-column: 1;
 }
 .contato-email:hover {
   color: var(--accent-2);
 }
-.sessao-contato .social-media {
-  justify-content: flex-start;
-  gap: 16px;
-  grid-column: 1;
+.contato-copy {
+  height: 30px;
+  padding: 0 10px;
+  border: 1px solid var(--border-strong);
+  background: transparent;
+  color: var(--text);
+  border-radius: var(--radius-btn);
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.18s, color 0.18s;
 }
-.sessao-contato .social-media a {
-  color: var(--muted);
-}
-.sessao-contato .social-media a:hover {
+.contato-copy:hover {
+  border-color: var(--accent);
   color: var(--accent);
 }
-.sessao-contato .social-media svg {
-  width: 20px;
-  height: 20px;
+.contato-copy.is-copied {
+  border-color: var(--success);
+  color: var(--success);
+}
+.contato-copy-status {
+  display: block;
+  min-height: 14px;
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  color: var(--success);
+}
+.contato-mailto {
+  width: 100%;
+  margin-top: 16px;
+  justify-content: center;
+}
+.contato-canais {
+  margin-top: 24px;
+  display: grid;
+  gap: 0;
+}
+.contato-canais-label {
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.contato-canais a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 0;
+  border-top: 1px solid var(--border);
+  color: var(--text);
+  font-size: 0.75rem;
+}
+.contato-canais a:hover {
+  color: var(--accent);
+}
+.contato-canais .ic {
+  width: 16px;
+  height: 16px;
+  color: var(--accent);
+}
+.contato-canal-arrow {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 0.6875rem;
 }
 .contato-form {
-  grid-column: 2;
-  grid-row: 1 / span 3;
+  grid-column: 1 / -1;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-bottom: 0;
+  margin-top: 0;
   text-align: left;
-  background: var(--bg);
+  background: var(--bg-elev);
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
   padding: 20px;
@@ -1916,13 +2007,17 @@ html.lenis body {
     align-items: flex-start;
     text-align: left;
   }
-  .contato-conteudo {
+  .contato-shell {
     grid-template-columns: 1fr;
+  }
+  .contato-lead {
+    padding: 28px;
+  }
+  .contato-panel {
     padding: 22px;
   }
   .contato-form {
     grid-column: 1;
-    grid-row: auto;
   }
   .contato-form .form-row {
     grid-template-columns: 1fr;

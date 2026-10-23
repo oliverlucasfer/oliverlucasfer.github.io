@@ -250,9 +250,10 @@ Terminal (decorativo, `aria-hidden`): `$ node build.mjs`, `✓ dist/`, `$ git pu
 
 ### Contato
 
-- Grid 1fr/1fr: texto + links à esquerda, formulário à direita.
-- Inputs com `bg-inset`, borda, foco azul; labels mono.
-- Status de sucesso/erro com `success`/`danger`, sem depender só de cor.
+- Fechamento em duas colunas: à esquerda, intro em destaque + status de disponibilidade; à direita, painel com e-mail, botão de copiar, CTA `mailto` e canais (E-mail, LinkedIn, GitHub).
+- E-mail é a ação principal; `mailto` com assunto e corpo pré-preenchidos. Copiar usa Clipboard API com fallback `execCommand` e feedback `aria-live`.
+- Formulário permanece condicional a `formspreeEndpoint`; quando existir, ocupa a largura toda abaixo do shell.
+- Inputs com `bg-inset`, borda, foco azul; labels mono. Status de sucesso/erro com `success`/`danger`, sem depender só de cor.
 
 ### Case study
 
@@ -364,3 +365,7 @@ Todas as questões do builder check foram resolvidas. O spec aguarda aprovação
 ## 19. Atualização 2026-10-23 — segundo destaque
 
 O humano pediu destaque para **ProDocs** junto com **Minhas Listas**. Decisão: dois cards card--destaque full-width empilhados, Minhas Listas primeiro e ProDocs em segundo, ambos com selo “Destaque”. O ProDocs foi movido para a segunda posição em data/projects.json; nenhum outro conteúdo mudou.
+
+## 20. Atualização 2026-10-23 — contato email-first
+
+A seção de contato virou um fechamento em duas colunas: intro e disponibilidade à esquerda; e-mail, copiar, mailto assistido e canais à direita. Sem endpoint Formspree, não há formulário vazio; se o endpoint existir, o form aparece abaixo. Textos novos: copyEmail, copied, copyError, openEmail, mailSubject, mailBody, channels, emailLabel, linkedinLabel, githubLabel (PT/EN).
