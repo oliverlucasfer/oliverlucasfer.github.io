@@ -776,14 +776,18 @@ html.js [data-anime].animate {
 /* ====================== CONHECIMENTOS (skills) ====================== */
 .sessao-conhecimentos {
   background-color: var(--bg);
-  padding: 88px 6% 88px;
+  padding: 88px 3% 88px;
   border-top: 1px solid var(--border);
+}
+.sessao-conhecimentos .sessao-header {
+  max-width: 1500px;
+  margin-inline: auto;
 }
 .conhecimentos {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
-  max-width: 1120px;
+  max-width: 1500px;
   margin: 0 auto;
   padding: 0;
 }
@@ -912,42 +916,6 @@ html.js [data-anime].animate {
   height: 13px;
 }
 
-.stack-completa {
-  max-width: 1120px;
-  margin: 16px auto 0;
-  padding: 22px 24px;
-  background: var(--bg-elev);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-card);
-}
-.stack-head {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 14px;
-}
-.stack-head p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.6563rem;
-  line-height: 1.45;
-}
-.stack-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-}
-.stack-group h3 {
-  margin: 0 0 8px;
-  font-family: var(--font-mono);
-  font-size: 0.5rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
 @media (max-width: 1024px) {
   .bento {
     grid-template-columns: 1fr;
@@ -961,12 +929,6 @@ html.js [data-anime].animate {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 28px;
-  }
-  .conhecimentos {
-    grid-template-columns: 1fr;
-  }
-  .stack-grid {
-    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -2129,9 +2091,6 @@ html.lenis body {
   .contato-form .form-row {
     grid-template-columns: 1fr;
   }
-  .stack-grid {
-    grid-template-columns: 1fr 1fr;
-  }
   .footer--item {
     flex-direction: column;
     align-items: flex-start;
@@ -2151,12 +2110,6 @@ html.lenis body {
   .sessao-projetos,
   .sessao-contato {
     padding: 64px 6% 64px;
-  }
-}
-
-@media (max-width: 480px) {
-  .stack-grid {
-    grid-template-columns: 1fr;
   }
 }
 

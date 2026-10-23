@@ -308,30 +308,6 @@ ${evidence}
     .join("\n\n");
 }
 
-function renderStackCompleta(locale) {
-  const lang = locale.prefix === "/en/" ? "en" : "pt";
-  const columns = skillsData.completa[lang];
-  const cols = columns
-    .map(
-      (column) => `            <div class="stack-group">
-              <h3>${esc(column.titulo)}</h3>
-              <div class="skills-chips">
-${column.itens.map((item) => `                <span class="chip">${esc(item)}</span>`).join("\n")}
-              </div>
-            </div>`
-    )
-    .join("\n");
-  return `        <div class="stack-completa" data-anime="up">
-          <div class="stack-head">
-            <span class="skills-label">${esc(locale.conhecimentos.stackCompleta)}</span>
-            <p>${esc(locale.conhecimentos.stackNota)}</p>
-          </div>
-          <div class="stack-grid">
-${cols}
-          </div>
-        </div>`;
-}
-
 function renderTimeline(locale) {
   const dirs = ["left", "right", "left"];
   return locale.experiencia.itens
@@ -672,7 +648,6 @@ ${sectionHeader(2, locale.conhecimentos.titulo)}
         <div class="conhecimentos">
 ${renderSkills(locale)}
         </div>
-${renderStackCompleta(locale)}
       </section>
 
       <!-- Experiência -->

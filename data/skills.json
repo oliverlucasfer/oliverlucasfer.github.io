@@ -123,43 +123,5 @@
         { "nome": "Firebase", "icon": "firebase" }
       ]
     }
-  ],
-  "completa": {
-    "pt": [
-      {
-        "titulo": "Linguagens",
-        "itens": ["C#", "TypeScript", "JavaScript", "Dart", "SQL", "HTML / CSS"]
-      },
-      {
-        "titulo": "Dados & busca",
-        "itens": ["PostgreSQL", "Firebird", "MongoDB", "SQLite", "Solr", "EF Core / Dapper"]
-      },
-      {
-        "titulo": "Práticas",
-        "itens": ["REST", "OAuth / JWT", "xUnit", "CI/CD", "Code review", "Mentoria"]
-      },
-      {
-        "titulo": "Ferramentas",
-        "itens": ["Angular", "RxJS", "NgRx / Akita / Elf", "Tailwind", "Angular Material", "Bootstrap", "Flutter", "Drift", "Firebase", "Docker", "GitHub Actions", "Jenkins", "Git"]
-      }
-    ],
-    "en": [
-      {
-        "titulo": "Languages",
-        "itens": ["C#", "TypeScript", "JavaScript", "Dart", "SQL", "HTML / CSS"]
-      },
-      {
-        "titulo": "Data & search",
-        "itens": ["PostgreSQL", "Firebird", "MongoDB", "SQLite", "Solr", "EF Core / Dapper"]
-      },
-      {
-        "titulo": "Practices",
-        "itens": ["REST", "OAuth / JWT", "xUnit", "CI/CD", "Code review", "Mentoring"]
-      },
-      {
-        "titulo": "Tools",
-        "itens": ["Angular", "RxJS", "NgRx / Akita / Elf", "Tailwind", "Angular Material", "Bootstrap", "Flutter", "Drift", "Firebase", "Docker", "GitHub Actions", "Jenkins", "Git"]
-      }
-    ]
-  }
+  ]
 }

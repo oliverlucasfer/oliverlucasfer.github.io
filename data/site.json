@@ -78,9 +78,7 @@
       "conhecimentos": {
         "titulo": "Conhecimentos",
         "comoUso": "Como uso",
-        "ondeAparece": "Onde aparece",
-        "stackCompleta": "Stack completa",
-        "stackNota": "Os cards acima mostram onde e como; esta faixa cobre o repertório inteiro."
+        "ondeAparece": "Onde aparece"
       },
       "experiencia": {
         "titulo": "Experiência",
@@ -259,9 +257,7 @@
       "conhecimentos": {
         "titulo": "Skills",
         "comoUso": "How I use",
-        "ondeAparece": "Where it appears",
-        "stackCompleta": "Full stack",
-        "stackNota": "The cards above show where and how; this strip covers the full repertoire."
+        "ondeAparece": "Where it appears"
       },
       "experiencia": {
         "titulo": "Experience",

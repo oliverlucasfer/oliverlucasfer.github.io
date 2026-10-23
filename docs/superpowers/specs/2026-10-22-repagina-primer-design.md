@@ -233,7 +233,7 @@ Terminal (decorativo, `aria-hidden`): `$ node build.mjs`, `✓ dist/`, `$ git pu
 
 - Grid 2×2; cada card tem ícone, título, kicker, descrição, “Como uso” (3 linhas), chips e “Onde aparece” com links para cases.
 - Chips pill com `accent-soft` e borda `accent-border`.
-- Faixa “Stack completa” full-width com 4 colunas: Linguagens, Dados & busca, Práticas e Ferramentas.
+- No desktop, a seção usa largura maior (max 1500px, padding 3%) para os cards ocuparem mais a tela.
 - Hover: elevação de 3px + borda forte.
 
 ### Experiência
@@ -374,3 +374,7 @@ A seção de contato virou um fechamento em duas colunas: intro e disponibilidad
 ## 21. Atualização 2026-10-23 — Conhecimentos A+B
 
 Implementada a variante D completa: os quatro cards ganharam kicker, “Como uso” (3 bullets) e “Onde aparece” com links para cases; abaixo deles entrou a faixa “Stack completa” em 4 colunas (Linguagens, Dados & busca, Práticas, Ferramentas). Dados em data/skills.json; labels PT/EN em site.json; links de evidência derivados de data/projects.json.
+
+## 22. Atualização 2026-10-23 — largura e remoção da faixa
+
+No desktop, Conhecimentos passou a usar max-width: 1500px e padding horizontal de 3%; o header acompanha a mesma largura. A faixa “Stack completa” foi removida (markup, CSS, labels e dados), deixando apenas os quatro cards com “Como uso” e “Onde aparece”.
