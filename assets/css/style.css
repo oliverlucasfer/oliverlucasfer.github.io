@@ -1964,6 +1964,9 @@ html.lenis body {
   #top {
     padding: 104px 6% 56px;
   }
+  .hero-terminal {
+    display: none;
+  }
   .topbar {
     display: none;
   }
@@ -2117,6 +2120,52 @@ html.lenis body {
   .sessao-projetos,
   .sessao-contato {
     padding: 64px 6% 64px;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-ctas {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .banner-ctas > * {
+    width: 100%;
+    justify-content: center;
+  }
+  .hero-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .hero-meta i {
+    display: none;
+  }
+  .sessao-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .skills-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+  }
+  .contato-email-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .contato-copy {
+    width: 100%;
+  }
+  .timeline {
+    padding-left: 12px;
+  }
+  .timeline-item {
+    padding-left: 16px;
+  }
+  .timeline-card p,
+  .timeline-card li {
+    overflow-wrap: anywhere;
   }
 }
 

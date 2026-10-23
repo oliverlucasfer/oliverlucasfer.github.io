@@ -76,6 +76,7 @@ check((pt.match(/skills-kicker/g) || []).length === 4, "esperados 4 kickers");
 check((pt.match(/skills-links/g) || []).length === 4, "esperados 4 blocos Onde aparece");
 check(!pt.includes("stack-completa"), "faixa Stack completa ainda presente");
 check(!pt.includes("Stack completa"), "label Stack completa ainda presente");
+check(/@media \(max-width: 768px\)[\s\S]*?\.hero-terminal\s*\{[^}]*display:\s*none/.test(css), "terminal não oculto no mobile");
 for (const selector of [".bento", ".timeline", ".cards", ".contato-shell", ".footer--item", ".filter-bar"]) {
   const pattern = new RegExp(`\\${selector}\\s*\\{[^}]*max-width:\\s*1500px`);
   check(pattern.test(css), `${selector} sem max-width 1500px`);
