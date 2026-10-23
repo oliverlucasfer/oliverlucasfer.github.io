@@ -29,6 +29,34 @@ for (const file of files) {
       `  ${category}: ${(score * 100).toFixed(0)} ${ok ? "OK" : `ABAIXO DO MINIMO (${min * 100})`}`
     );
   }
+
+  const metrics = {
+    FCP: "first-contentful-paint",
+    LCP: "largest-contentful-paint",
+    TBT: "total-blocking-time",
+    CLS: "cumulative-layout-shift",
+    SI: "speed-index"
+  };
+  const medidas = Object.entries(metrics).map(
+    ([rotulo, id]) => `${rotulo} ${report.audits?.[id]?.displayValue ?? "n/d"}`
+  );
+  console.log(`  metricas: ${medidas.join(" | ")}`);
+
+  const requests = report.audits?.["network-requests"]?.details?.items ?? [];
+  const bytes = requests.reduce((total, item) => total + (item.transferSize ?? 0), 0);
+  const origem = new URL(report.finalDisplayedUrl ?? "http://local").origin;
+  const terceiros = [
+    ...new Set(
+      requests
+        .filter((item) => item.url.startsWith("http"))
+        .map((item) => new URL(item.url).origin)
+        .filter((origemItem) => origemItem !== origem)
+    )
+  ];
+  console.log(
+    `  rede: ${requests.length} requisicoes, ${(bytes / 1024).toFixed(0)} KB` +
+      (terceiros.length ? `, terceiros: ${terceiros.join(", ")}` : "")
+  );
 }
 
 if (failed) {
