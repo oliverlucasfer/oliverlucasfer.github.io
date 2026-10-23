@@ -406,7 +406,7 @@ html.js [data-anime].animate {
   grid-template-columns: 1.08fr 0.92fr;
   align-items: center;
   gap: 32px;
-  padding: 96px 6% 64px;
+  padding: 96px 3% 64px;
   overflow: hidden;
 }
 .banner {
@@ -601,6 +601,8 @@ html.js [data-anime].animate {
   gap: 12px;
   padding-top: 0;
   margin-bottom: 36px;
+  max-width: 1500px;
+  margin-inline: auto;
 }
 .sessao-header h2 {
   font-family: var(--font-primary);
@@ -637,7 +639,7 @@ html.js [data-anime].animate {
 /* ====================== SOBRE (bento) ====================== */
 .sessao-sobre {
   background-color: var(--bg);
-  padding: 88px 6% 88px;
+  padding: 88px 3% 88px;
 }
 .bento {
   display: grid;
@@ -646,7 +648,7 @@ html.js [data-anime].animate {
     "bio bio bio bio bio bio bio stats stats stats stats stats"
     "github github github github github github github stack stack stack stack stack";
   gap: 16px;
-  max-width: 1120px;
+  max-width: 1500px;
   margin: 0 auto;
   padding: 0;
 }
@@ -960,11 +962,11 @@ html.js [data-anime].animate {
 /* ====================== EXPERIÊNCIA (timeline) ====================== */
 .sessao-experiencia {
   background-color: var(--bg);
-  padding: 88px 6% 88px;
+  padding: 88px 3% 88px;
   border-top: 1px solid var(--border);
 }
 .timeline {
-  max-width: 1120px;
+  max-width: 1500px;
   margin: 0 auto;
   padding: 0 0 0 24px;
   position: relative;
@@ -1048,14 +1050,14 @@ html.js [data-anime].animate {
 /* ====================== PROJETOS ====================== */
 .sessao-projetos {
   background-color: var(--bg);
-  padding: 88px 6% 88px;
+  padding: 88px 3% 88px;
   border-top: 1px solid var(--border);
 }
 .cards {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
-  max-width: 1120px;
+  max-width: 1500px;
   margin: 0 auto;
   padding: 0;
 }
@@ -1268,12 +1270,12 @@ html.js [data-anime].animate {
 /* ====================== CONTATO ====================== */
 .sessao-contato {
   background-color: var(--bg);
-  padding: 88px 6% 88px;
+  padding: 88px 3% 88px;
   border-top: 1px solid var(--border);
   text-align: left;
 }
 .contato-shell {
-  max-width: 1120px;
+  max-width: 1500px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1519,11 +1521,11 @@ footer {
   border-top: 1px solid var(--border);
   display: flex;
   justify-content: center;
-  padding: 24px 6%;
+  padding: 24px 3%;
 }
 .footer--item {
   width: 100%;
-  max-width: 1120px;
+  max-width: 1500px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1575,7 +1577,7 @@ footer {
   flex-wrap: wrap;
   justify-content: flex-start;
   gap: 6px;
-  max-width: 1120px;
+  max-width: 1500px;
   margin: 0 auto 16px;
   padding: 0;
 }

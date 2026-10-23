@@ -378,3 +378,7 @@ Implementada a variante D completa: os quatro cards ganharam kicker, “Como uso
 ## 22. Atualização 2026-10-23 — largura e remoção da faixa
 
 No desktop, Conhecimentos passou a usar max-width: 1500px e padding horizontal de 3%; o header acompanha a mesma largura. A faixa “Stack completa” foi removida (markup, CSS, labels e dados), deixando apenas os quatro cards com “Como uso” e “Onde aparece”.
+
+## 23. Atualização 2026-10-23 — largura consistente na home
+
+Todas as seções da home (hero, Sobre, Conhecimentos, Experiência, Projetos e Contato) passaram a usar padding horizontal de 3% e conteúdo com max-width: 1500px; o header acompanha a mesma largura. Os cards de projetos, Sobre e Contato ocupam a mesma faixa dos cards de Conhecimentos. Case studies mantêm a largura de leitura de 860px.

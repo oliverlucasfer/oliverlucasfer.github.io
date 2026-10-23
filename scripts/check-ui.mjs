@@ -76,6 +76,12 @@ check((pt.match(/skills-kicker/g) || []).length === 4, "esperados 4 kickers");
 check((pt.match(/skills-links/g) || []).length === 4, "esperados 4 blocos Onde aparece");
 check(!pt.includes("stack-completa"), "faixa Stack completa ainda presente");
 check(!pt.includes("Stack completa"), "label Stack completa ainda presente");
+for (const selector of [".bento", ".timeline", ".cards", ".contato-shell", ".footer--item", ".filter-bar"]) {
+  const pattern = new RegExp(`\\${selector}\\s*\\{[^}]*max-width:\\s*1500px`);
+  check(pattern.test(css), `${selector} sem max-width 1500px`);
+}
+check(/#top\s*\{[^}]*padding:\s*96px 3%/.test(css), "hero sem padding 3%");
+check((css.match(/padding:\s*88px 3% 88px/g) || []).length >= 5, "seções da home sem padding 3%");
 check(pt.includes("/projetos/minhas-listas/"), "evidência com link de projeto ausente");
 check(pt.includes("Copiar e-mail"), "copy email PT ausente");
 check(pt.includes("Abrir no meu e-mail"), "mailto PT ausente");
