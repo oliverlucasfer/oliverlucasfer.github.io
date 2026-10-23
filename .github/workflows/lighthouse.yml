@@ -11,31 +11,42 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Build site
         run: node build.mjs
 
-      - name: Serve dist
-        run: |
-          npx --yes http-server dist -p 8123 --silent &
-          echo $! > server.pid
-          sleep 5
-          curl -s -o /dev/null -w "%{http_code}" http://localhost:8123/
+      - name: Install http-server
+        run: npm install --global http-server
 
       - name: Run Lighthouse
         run: |
-          npx --yes lighthouse http://localhost:8123/ \
+          http-server dist -p 8123 --silent &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID 2>/dev/null || true' EXIT
+
+          for attempt in $(seq 1 30); do
+            if curl -sf -o /dev/null http://127.0.0.1:8123/; then
+              echo "Servidor pronto apos ${attempt}s."
+              break
+            fi
+            echo "Aguardando servidor... ${attempt}s"
+            sleep 1
+          done
+          curl -sf -o /dev/null http://127.0.0.1:8123/ \
+            || { echo "Servidor nao respondeu em 30s."; exit 1; }
+
+          npx --yes lighthouse http://127.0.0.1:8123/ \
             --output=json --output-path=./lighthouse-home.json \
             --chrome-flags="--headless=new --no-sandbox" \
             --only-categories=performance,accessibility,best-practices,seo \
             --quiet
-          npx --yes lighthouse http://localhost:8123/projetos/cimobile-web/ \
+          npx --yes lighthouse http://127.0.0.1:8123/projetos/cimobile-web/ \
             --output=json --output-path=./lighthouse-case.json \
             --chrome-flags="--headless=new --no-sandbox" \
             --only-categories=performance,accessibility,best-practices,seo \
@@ -43,7 +54,3 @@ jobs:
 
       - name: Check scores
         run: node scripts/check-lighthouse.mjs
-
-      - name: Stop server
-        if: always()
-        run: kill $(cat server.pid) || true
