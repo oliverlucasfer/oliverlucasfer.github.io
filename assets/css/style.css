@@ -2069,6 +2069,18 @@ html.lenis body {
       "github"
       "stack";
   }
+  .bento-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    align-items: start;
+  }
+  .bento-item {
+    padding: 24px;
+  }
+  .stat-label {
+    font-size: 0.5625rem;
+  }
   .gh-stats {
     width: 100%;
     justify-content: space-around;
@@ -2124,6 +2136,39 @@ html.lenis body {
 }
 
 @media (max-width: 480px) {
+  .bento-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .bento-stats .stat {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .bento-stats .stat-num {
+    font-size: 2rem;
+  }
+  .bento-stats .stat-label {
+    font-size: 0.5625rem;
+  }
+  .bento-github {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 14px 12px;
+    align-items: end;
+  }
+  .bento-github .gh-identity {
+    grid-column: 1 / -1;
+  }
+  .bento-github .gh-stats {
+    width: auto;
+    justify-content: flex-start;
+  }
+  .bento-github .ButtonSend {
+    justify-self: end;
+  }
   .banner-ctas {
     flex-direction: column;
     align-items: stretch;
