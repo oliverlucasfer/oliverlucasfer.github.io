@@ -57,6 +57,8 @@ for (const legacy of ["hero-logo.png", "scroll-progress", "grain", "lenis.min.js
 for (const required of ["hero-terminal", "hero-meta", "bento-stack", "card--destaque"]) {
   check(pt.includes(required), `estrutura ausente: ${required}`);
 }
+check((pt.match(/card--destaque/g) || []).length === 2, "esperados 2 cards em destaque");
+check(/Minhas Listas[\s\S]*ProDocs/.test(pt), "ProDocs deve vir depois de Minhas Listas");
 check((pt.match(/section-kicker/g) || []).length === 5, "esperados 5 section-kicker");
 check((pt.match(/class="card(?:\s|")/g) || []).length === 10, "esperados 10 cards");
 check(pt.includes("Barreiras, BA"), "metaLocal PT ausente");

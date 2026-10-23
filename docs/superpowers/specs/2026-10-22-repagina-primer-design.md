@@ -244,7 +244,7 @@ Terminal (decorativo, `aria-hidden`): `$ node build.mjs`, `✓ dist/`, `$ git pu
 ### Projetos
 
 - Filtros em pills; “Todos” ativo em `--text`/`--bg`.
-- Card em destaque full-width, capa à esquerda (52%) e conteúdo à direita; badge “Destaque” em azul.
+- Dois cards em destaque full-width, empilhados: **Minhas Listas** e **ProDocs**, nessa ordem; capa à esquerda (52%) e conteúdo à direita; badge "Destaque" em azul.
 - Demais cards em grid 2 colunas; capa 16:8.4; hover eleva 3px.
 - Badge de categoria e tags com tokens de acento.
 
@@ -361,3 +361,6 @@ Cada fase tem build verde e screenshot de referência antes de avançar.
 ## 18. Status
 
 Todas as questões do builder check foram resolvidas. O spec aguarda aprovação do humano antes de qualquer implementação.
+## 19. Atualização 2026-10-23 — segundo destaque
+
+O humano pediu destaque para **ProDocs** junto com **Minhas Listas**. Decisão: dois cards card--destaque full-width empilhados, Minhas Listas primeiro e ProDocs em segundo, ambos com selo “Destaque”. O ProDocs foi movido para a segunda posição em data/projects.json; nenhum outro conteúdo mudou.
