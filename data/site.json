@@ -76,7 +76,11 @@
         }
       },
       "conhecimentos": {
-        "titulo": "Conhecimentos"
+        "titulo": "Conhecimentos",
+        "comoUso": "Como uso",
+        "ondeAparece": "Onde aparece",
+        "stackCompleta": "Stack completa",
+        "stackNota": "Os cards acima mostram onde e como; esta faixa cobre o repertório inteiro."
       },
       "experiencia": {
         "titulo": "Experiência",
@@ -253,7 +257,11 @@
         }
       },
       "conhecimentos": {
-        "titulo": "Skills"
+        "titulo": "Skills",
+        "comoUso": "How I use",
+        "ondeAparece": "Where it appears",
+        "stackCompleta": "Full stack",
+        "stackNota": "The cards above show where and how; this strip covers the full repertoire."
       },
       "experiencia": {
         "titulo": "Experience",

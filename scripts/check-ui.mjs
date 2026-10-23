@@ -39,6 +39,9 @@ check(css.includes(".pagina-404 > p:not(.codigo-404)"), "404: codigo pode ser so
 check(/\.card:hover\s*\{[^}]*translate:\s*0\s+-3px/.test(css), "hover do card sem translate");
 check(/\.skills-group:hover\s*\{[^}]*translate:\s*0\s+-3px/.test(css), "hover de skills sem translate");
 check(css.includes("list-style: disc"), "listas de case/timeline sem bullets");
+check(/\.skills-how li\s*\{[^}]*list-style:\s*disc/.test(css), "bullets de Como uso ausentes");
+check(/\.timeline-card li\s*\{[^}]*list-style:\s*disc/.test(css), "bullets da timeline ausentes");
+check(/\.case-list li\s*\{[^}]*list-style:\s*disc/.test(css), "bullets de case ausentes");
 check(css.includes(".timeline-card p.timeline-empresa"), "cor da empresa na timeline sobrescrita");
 check(css.includes(".case-section p.case-aprendizado"), "cor do aprendizado sobrescrita");
 for (const legacy of ["#7c5cff", "#8b5cf6", "rgba(124, 92, 255", "rgba(139, 92, 246"]) {
@@ -64,6 +67,17 @@ check((pt.match(/class="card(?:\s|")/g) || []).length === 10, "esperados 10 card
 check(pt.includes("Barreiras, BA"), "metaLocal PT ausente");
 check(pt.includes("Disponível para conversar"), "metaStatus PT ausente");
 check(pt.includes("Stack atual"), "stackLabel PT ausente");
+check(pt.includes("Como uso"), "comoUso PT ausente");
+check(pt.includes("Onde aparece"), "ondeAparece PT ausente");
+check(pt.includes("Stack completa"), "stackCompleta PT ausente");
+check(en.includes("How I use"), "comoUso EN ausente");
+check(en.includes("Where it appears"), "ondeAparece EN ausente");
+check(en.includes("Full stack"), "stackCompleta EN ausente");
+check((pt.match(/skills-how/g) || []).length === 4, "esperados 4 blocos Como uso");
+check((pt.match(/skills-kicker/g) || []).length === 4, "esperados 4 kickers");
+check(pt.includes("stack-completa"), "faixa Stack completa ausente");
+check((pt.match(/skills-links/g) || []).length === 4, "esperados 4 blocos Onde aparece");
+check(pt.includes("/projetos/minhas-listas/"), "evidência com link de projeto ausente");
 check(pt.includes("Copiar e-mail"), "copy email PT ausente");
 check(pt.includes("Abrir no meu e-mail"), "mailto PT ausente");
 check(en.includes("Copy email"), "copy email EN ausente");

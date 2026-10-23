@@ -231,8 +231,9 @@ Terminal (decorativo, `aria-hidden`): `$ node build.mjs`, `✓ dist/`, `$ git pu
 
 ### Conhecimentos
 
-- Grid 2×2; cada card com ícone, título, descrição e chips.
+- Grid 2×2; cada card tem ícone, título, kicker, descrição, “Como uso” (3 linhas), chips e “Onde aparece” com links para cases.
 - Chips pill com `accent-soft` e borda `accent-border`.
+- Faixa “Stack completa” full-width com 4 colunas: Linguagens, Dados & busca, Práticas e Ferramentas.
 - Hover: elevação de 3px + borda forte.
 
 ### Experiência
@@ -369,3 +370,7 @@ O humano pediu destaque para **ProDocs** junto com **Minhas Listas**. Decisão: 
 ## 20. Atualização 2026-10-23 — contato email-first
 
 A seção de contato virou um fechamento em duas colunas: intro e disponibilidade à esquerda; e-mail, copiar, mailto assistido e canais à direita. Sem endpoint Formspree, não há formulário vazio; se o endpoint existir, o form aparece abaixo. Textos novos: copyEmail, copied, copyError, openEmail, mailSubject, mailBody, channels, emailLabel, linkedinLabel, githubLabel (PT/EN).
+
+## 21. Atualização 2026-10-23 — Conhecimentos A+B
+
+Implementada a variante D completa: os quatro cards ganharam kicker, “Como uso” (3 bullets) e “Onde aparece” com links para cases; abaixo deles entrou a faixa “Stack completa” em 4 colunas (Linguagens, Dados & busca, Práticas, Ferramentas). Dados em data/skills.json; labels PT/EN em site.json; links de evidência derivados de data/projects.json.

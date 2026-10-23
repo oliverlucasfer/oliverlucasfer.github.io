@@ -258,6 +258,8 @@ ${group}          </div>
 
 function renderSkills(locale) {
   const dirs = ["left", "up", "right", "up"];
+  const lang = locale.prefix === "/en/" ? "en" : "pt";
+  const labels = locale.conhecimentos;
   return skillsData.grupos
     .map((group, i) => {
       const chips = group.itens
@@ -266,15 +268,68 @@ function renderSkills(locale) {
             `              <span class="chip">${icon(item.icon ?? "check")}${esc(item.nome)}</span>`
         )
         .join("\n");
+      const how = group.comoUso[lang]
+        .map((li) => `                <li>${esc(li)}</li>`)
+        .join("\n");
+      const evidence = group.ondeAparece
+        .map((slug) => projects.find((p) => p.slug === slug))
+        .filter(Boolean)
+        .map((p) => {
+          const url =
+            locale.prefix === "/en/"
+              ? `/en/projects/${p.slug}/`
+              : `/projetos/${p.slug}/`;
+          return `                <a href="${url}">${esc(p.title)} ↗</a>`;
+        })
+        .join("\n");
       return `        <div class="skills-group" data-anime="${dirs[i % dirs.length]}">
-          <h3 class="skills-title">${icon(group.icon ?? "check", "skills-icon")}${esc(t(group.nome, locale))}</h3>
+          <div class="skills-title-row">
+            <h3 class="skills-title">${icon(group.icon ?? "check", "skills-icon")}${esc(t(group.nome, locale))}</h3>
+            <span class="skills-kicker">${esc(t(group.kicker, locale))}</span>
+          </div>
           <p class="skills-desc">${esc(t(group.descricao, locale))}</p>
+          <div class="skills-how">
+            <span class="skills-label">${esc(labels.comoUso)}</span>
+            <ul>
+${how}
+            </ul>
+          </div>
           <div class="skills-chips">
 ${chips}
+          </div>
+          <div class="skills-evidence">
+            <span class="skills-label">${esc(labels.ondeAparece)}</span>
+            <div class="skills-links">
+${evidence}
+            </div>
           </div>
         </div>`;
     })
     .join("\n\n");
+}
+
+function renderStackCompleta(locale) {
+  const lang = locale.prefix === "/en/" ? "en" : "pt";
+  const columns = skillsData.completa[lang];
+  const cols = columns
+    .map(
+      (column) => `            <div class="stack-group">
+              <h3>${esc(column.titulo)}</h3>
+              <div class="skills-chips">
+${column.itens.map((item) => `                <span class="chip">${esc(item)}</span>`).join("\n")}
+              </div>
+            </div>`
+    )
+    .join("\n");
+  return `        <div class="stack-completa" data-anime="up">
+          <div class="stack-head">
+            <span class="skills-label">${esc(locale.conhecimentos.stackCompleta)}</span>
+            <p>${esc(locale.conhecimentos.stackNota)}</p>
+          </div>
+          <div class="stack-grid">
+${cols}
+          </div>
+        </div>`;
 }
 
 function renderTimeline(locale) {
@@ -617,6 +672,7 @@ ${sectionHeader(2, locale.conhecimentos.titulo)}
         <div class="conhecimentos">
 ${renderSkills(locale)}
         </div>
+${renderStackCompleta(locale)}
       </section>
 
       <!-- Experiência -->
