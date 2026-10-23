@@ -24,7 +24,7 @@ const themeMeta = document.querySelector('meta[name="theme-color"]');
 function applyTheme(theme) {
   document.documentElement.dataset.theme = theme;
   if (themeMeta) {
-    themeMeta.setAttribute("content", theme === "light" ? "#f4f5f9" : "#0e0e14");
+    themeMeta.setAttribute("content", theme === "light" ? "#FFFFFF" : "#0D1117");
   }
   document.querySelectorAll(".theme-toggle").forEach((btn) => {
     btn.setAttribute(
@@ -65,20 +65,13 @@ function initTheme() {
 
 initTheme();
 
-document.querySelectorAll(".bento-foto img").forEach((img) => {
-  const hide = () => {
-    img.style.display = "none";
-  };
-  img.addEventListener("error", hide);
-  if (img.complete && img.naturalWidth === 0) hide();
-});
-
 const container = document.querySelector(".container");
 const menuToggle = document.querySelector(".js-menu-toggle");
 
 function setMenu(open) {
   if (!container || !menuToggle) return;
   container.classList.toggle("show-menu", open);
+  document.body.classList.toggle("menu-open", open);
   menuToggle.setAttribute("aria-expanded", String(open));
   menuToggle.setAttribute(
     "aria-label",
@@ -146,16 +139,6 @@ document.querySelectorAll(".tags").forEach((container) => {
   container.appendChild(more);
 });
 
-if (window.Lenis && !prefersReducedMotion) {
-  const lenis = new Lenis({ anchors: true });
-  window.__lenis = lenis;
-  const raf = (time) => {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  };
-  requestAnimationFrame(raf);
-}
-
 const backToTop = document.querySelector(".back-to-top");
 if (backToTop) {
   const toggleVisible = () => {
@@ -164,23 +147,11 @@ if (backToTop) {
   document.addEventListener("scroll", toggleVisible, { passive: true });
   toggleVisible();
   backToTop.addEventListener("click", () => {
-    if (window.__lenis) {
-      window.__lenis.scrollTo(0);
-    } else {
-      window.scrollTo({ top: 0, behavior: prefersReducedMotion ? "auto" : "smooth" });
-    }
+    window.scrollTo({
+      top: 0,
+      behavior: prefersReducedMotion ? "auto" : "smooth"
+    });
   });
-}
-
-const progressBar = document.querySelector(".scroll-progress");
-if (progressBar) {
-  const updateProgress = () => {
-    const doc = document.documentElement;
-    const max = doc.scrollHeight - doc.clientHeight;
-    progressBar.style.transform = `scaleX(${max > 0 ? doc.scrollTop / max : 0})`;
-  };
-  document.addEventListener("scroll", updateProgress, { passive: true });
-  updateProgress();
 }
 
 const typeEl = document.getElementById("typewriter");
@@ -200,7 +171,7 @@ if (typeEl) {
       typeEl.textContent = word.slice(0, charIndex);
       let delay = deleting ? 45 : 90;
       if (!deleting && charIndex >= word.length) {
-        delay = 2000;
+        delay = 1200;
         deleting = true;
       } else if (deleting && charIndex <= 0) {
         deleting = false;
@@ -213,29 +184,10 @@ if (typeEl) {
   }
 }
 
-document.querySelectorAll(".card").forEach((card) => {
-  card.addEventListener("mousemove", (event) => {
-    const rect = card.getBoundingClientRect();
-    card.style.setProperty("--mx", `${event.clientX - rect.left}px`);
-    card.style.setProperty("--my", `${event.clientY - rect.top}px`);
-  });
-});
-
-if (!prefersReducedMotion && window.matchMedia("(hover: hover)").matches) {
-  document.querySelectorAll(".ButtonCustom, .ButtonSend").forEach((btn) => {
-    btn.addEventListener("mousemove", (event) => {
-      const rect = btn.getBoundingClientRect();
-      const x = (event.clientX - rect.left - rect.width / 2) * 0.25;
-      const y = (event.clientY - rect.top - rect.height / 2) * 0.35;
-      btn.style.transform = `translate(${x}px, ${y}px)`;
-    });
-    btn.addEventListener("mouseleave", () => {
-      btn.style.transform = "";
-    });
-  });
-}
-
 const statNums = document.querySelectorAll(".stat-num");
+statNums.forEach((el) => {
+  if (el.dataset.target) el.textContent = "0";
+});
 
 const yearsExp = Math.max(
   1,
@@ -262,7 +214,7 @@ if ("IntersectionObserver" in window) {
           el.textContent = target + suffix;
           return;
         }
-        const duration = 1300;
+        const duration = 900;
         const start = performance.now();
         const tick = (now) => {
           const progress = Math.min((now - start) / duration, 1);
@@ -273,7 +225,7 @@ if ("IntersectionObserver" in window) {
         requestAnimationFrame(tick);
       });
     },
-    { threshold: 0.5 }
+    { threshold: 0.6 }
   );
   statNums.forEach((el) => counterObserver.observe(el));
 } else {
@@ -294,7 +246,7 @@ if ("IntersectionObserver" in window) {
         }
       });
     },
-    { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
+    { threshold: 0.15, rootMargin: "0px 0px -8% 0px" }
   );
   animatedElements.forEach((element) => revealObserver.observe(element));
 
@@ -338,6 +290,49 @@ if (githubCard && siteConfig.githubUser) {
     });
 }
 
+/* ---------------- Copiar e-mail ---------------- */
+
+document.querySelectorAll(".contato-copy").forEach((btn) => {
+  const status = btn.closest(".contato-panel")?.querySelector(".contato-copy-status");
+  const original = btn.textContent;
+  btn.addEventListener("click", async () => {
+    const email = btn.dataset.email || "";
+    let copied = false;
+    try {
+      await navigator.clipboard.writeText(email);
+      copied = true;
+    } catch {
+      const temp = document.createElement("textarea");
+      temp.value = email;
+      temp.setAttribute("readonly", "");
+      temp.style.position = "fixed";
+      temp.style.opacity = "0";
+      document.body.appendChild(temp);
+      temp.select();
+      try {
+        copied = document.execCommand("copy");
+      } catch {}
+      temp.remove();
+    }
+    if (!copied) {
+      if (status) status.textContent = btn.dataset.copyError || "";
+      setTimeout(() => {
+        if (status) status.textContent = "";
+      }, 2200);
+      return;
+    }
+    const label = btn.dataset.copied || "Copiado";
+    btn.textContent = label;
+    btn.classList.add("is-copied");
+    if (status) status.textContent = label;
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.classList.remove("is-copied");
+      if (status) status.textContent = "";
+    }, 2200);
+  });
+});
+
 /* ---------------- Formulário de contato (Formspree) ---------------- */
 
 const contactForm = document.querySelector(".contato-form");
@@ -351,7 +346,10 @@ if (contactForm && contactForm.dataset.endpoint) {
     if (!submitBtn) return;
     submitBtn.disabled = true;
     submitBtn.textContent = siteConfig.sendingLabel || "…";
-    if (status) status.textContent = "";
+    if (status) {
+      status.textContent = "";
+      status.dataset.state = "";
+    }
     try {
       const res = await fetch(contactForm.dataset.endpoint, {
         method: "POST",
@@ -360,7 +358,10 @@ if (contactForm && contactForm.dataset.endpoint) {
       });
       if (res.ok) {
         contactForm.reset();
-        if (status) status.textContent = siteConfig.sentLabel || "OK";
+        if (status) {
+          status.textContent = siteConfig.sentLabel || "OK";
+          status.dataset.state = "success";
+        }
         submitBtn.textContent = defaultLabel;
       } else {
         throw new Error(res.status);
@@ -368,6 +369,7 @@ if (contactForm && contactForm.dataset.endpoint) {
     } catch {
       if (status) {
         status.textContent = siteConfig.errorLabel || "Erro ao enviar.";
+        status.dataset.state = "error";
       }
       submitBtn.textContent = defaultLabel;
     } finally {

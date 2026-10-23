@@ -113,7 +113,7 @@ function icon(name, cls = "") {
 
 /* ---------------- page shell ---------------- */
 
-const themeScript = `<script>(function(){var t=null;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}document.documentElement.dataset.theme=t})();<\/script>`;
+const themeScript = `<script>(function(){document.documentElement.classList.add("js");var t=null;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}document.documentElement.dataset.theme=t})();<\/script>`;
 
 function head({
   locale,
@@ -136,9 +136,9 @@ function head({
     <link rel="alternate" hreflang="pt-BR" href="${site.siteUrl}/${ptPath}" />
     <link rel="alternate" hreflang="en" href="${enUrl}" />
     <link rel="alternate" hreflang="x-default" href="${site.siteUrl}/${ptPath}" />
-    <meta name="theme-color" content="#0e0e14" />
+    <meta name="theme-color" content="#0D1117" />
     ${themeScript}
-    <link rel="preload" href="/assets/fonts/jetbrains-mono.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
     <meta property="og:type" content="${ogType}" />
     <meta property="og:url" content="${url}" />
     <meta property="og:title" content="${esc(title)}" />
@@ -228,16 +228,13 @@ function page({ locale, ptPath, enPath, title, description, jsonLd, body, withCo
 ${head({ locale, ptPath, enPath, title, description, ogType, jsonLd })}
   <body>
     <a class="skip-link" href="#conteudo">${esc(locale.aria.pular)}</a>
-    <div class="scroll-progress" aria-hidden="true"></div>
-    <div class="grain" aria-hidden="true"></div>
     <div class="container">
 ${body}
     </div>
     <button class="back-to-top" type="button" aria-label="${esc(locale.aria.voltarTopo)}">
       ${icon("arrow-up")}
     </button>
-${withConfig ? configScript(locale) + "\n" : ""}    <script src="/assets/vendor/lenis.min.js" defer><\/script>
-    <script src="/assets/js/app.js" defer><\/script>
+${withConfig ? configScript(locale) + "\n" : ""}    <script src="/assets/js/app.js" defer><\/script>
   </body>
 </html>
 `;
@@ -261,6 +258,8 @@ ${group}          </div>
 
 function renderSkills(locale) {
   const dirs = ["left", "up", "right", "up"];
+  const lang = locale.prefix === "/en/" ? "en" : "pt";
+  const labels = locale.conhecimentos;
   return skillsData.grupos
     .map((group, i) => {
       const chips = group.itens
@@ -269,11 +268,40 @@ function renderSkills(locale) {
             `              <span class="chip">${icon(item.icon ?? "check")}${esc(item.nome)}</span>`
         )
         .join("\n");
+      const how = group.comoUso[lang]
+        .map((li) => `                <li>${esc(li)}</li>`)
+        .join("\n");
+      const evidence = group.ondeAparece
+        .map((slug) => projects.find((p) => p.slug === slug))
+        .filter(Boolean)
+        .map((p) => {
+          const url =
+            locale.prefix === "/en/"
+              ? `/en/projects/${p.slug}/`
+              : `/projetos/${p.slug}/`;
+          return `                <a href="${url}">${esc(p.title)} ↗</a>`;
+        })
+        .join("\n");
       return `        <div class="skills-group" data-anime="${dirs[i % dirs.length]}">
-          <h3 class="skills-title">${esc(t(group.nome, locale))}</h3>
+          <div class="skills-title-row">
+            <h3 class="skills-title">${icon(group.icon ?? "check", "skills-icon")}${esc(t(group.nome, locale))}</h3>
+            <span class="skills-kicker">${esc(t(group.kicker, locale))}</span>
+          </div>
           <p class="skills-desc">${esc(t(group.descricao, locale))}</p>
+          <div class="skills-how">
+            <span class="skills-label">${esc(labels.comoUso)}</span>
+            <ul>
+${how}
+            </ul>
+          </div>
           <div class="skills-chips">
 ${chips}
+          </div>
+          <div class="skills-evidence">
+            <span class="skills-label">${esc(labels.ondeAparece)}</span>
+            <div class="skills-links">
+${evidence}
+            </div>
           </div>
         </div>`;
     })
@@ -352,6 +380,7 @@ function renderCards(locale) {
           </div>
           </a>
           <div class="card-body">
+            <span class="card-period">${esc(t(p.caseStudy.periodo, locale))}</span>
             <h3><a class="card-title-link" href="${projectUrl}">${esc(p.title)}</a></h3>
             <div class="tags">
 ${tags}
@@ -372,7 +401,9 @@ ${external}
 function renderContact(locale) {
   const endpoint = site.formspreeEndpoint ?? "";
   const f = locale.contato.form;
+  const c = locale.contato;
   const id = locale.prefix === "/en/" ? "contact" : "contato";
+  const mailto = `mailto:${site.email}?subject=${encodeURIComponent(c.mailSubject)}&amp;body=${encodeURIComponent(c.mailBody)}`;
   const form = endpoint
     ? `          <form class="contato-form" data-endpoint="${esc(endpoint)}" aria-label="${esc(f.aria)}">
             <div class="form-row">
@@ -385,16 +416,50 @@ function renderContact(locale) {
           </form>`
     : "";
   return `      <section class="sessao-contato" id="${id}">
-        <div class="sessao-header" data-anime="up">
-          <h2>${esc(locale.contato.titulo)}</h2>
-        </div>
-        <div class="contato-conteudo" data-anime="up">
-          <p>${esc(locale.contato.intro)}</p>
-          <a class="contato-email" href="mailto:${site.email}">${site.email}</a>
+${sectionHeader(5, locale.contato.titulo)}
+        <div class="contato-shell" data-anime="up">
+          <div class="contato-lead">
+            <p class="contato-intro">${esc(c.intro)}</p>
+            <span class="contato-status"><i aria-hidden="true"></i>${esc(locale.hero.metaStatus)}</span>
+          </div>
+          <div class="contato-panel">
+            <div class="contato-email-row">
+              <a class="contato-email" href="mailto:${site.email}">${site.email}</a>
+              <button
+                class="contato-copy"
+                type="button"
+                data-email="${esc(site.email)}"
+                data-copied="${esc(c.copied)}"
+                data-copy-error="${esc(c.copyError)}"
+              >${esc(c.copyEmail)}</button>
+            </div>
+            <span class="contato-copy-status" role="status" aria-live="polite"></span>
+            <a class="ButtonCustom contato-mailto" href="${mailto}">
+              ${esc(c.openEmail)} ${icon("arrow-up-right", "btn-icon")}
+            </a>
+            <div class="contato-canais">
+              <span class="contato-canais-label">${esc(c.channels)}</span>
+              <a href="mailto:${site.email}">
+                ${icon("email")}<span>${esc(c.emailLabel)}</span><span class="contato-canal-arrow">↗</span>
+              </a>
+              <a href="${site.linkedin}" target="_blank" rel="noopener noreferrer">
+                ${icon("linkedin")}<span>${esc(c.linkedinLabel)}</span><span class="contato-canal-arrow">↗</span>
+              </a>
+              <a href="${site.github}" target="_blank" rel="noopener noreferrer">
+                ${icon("github")}<span>${esc(c.githubLabel)}</span><span class="contato-canal-arrow">↗</span>
+              </a>
+            </div>
+          </div>
 ${form}
-${socialLinks(locale)}
         </div>
       </section>`;
+}
+
+function sectionHeader(index, title) {
+  return `        <div class="sessao-header" data-anime="up">
+          <span class="section-kicker" aria-hidden="true">${String(index).padStart(2, "0")}</span>
+          <h2>${esc(title)}</h2>
+        </div>`;
 }
 
 function renderHome(localeKey) {
@@ -438,7 +503,7 @@ function renderHome(localeKey) {
             : stat.target;
       const dataStat = stat.target === "anos" ? ' data-stat="anos"' : "";
       return `            <div class="stat">
-              <span class="stat-num"${dataStat} data-target="${target}">0</span>
+              <span class="stat-num"${dataStat} data-target="${target}">${target}</span>
               <span class="stat-label">${esc(stat.label)}</span>
             </div>`;
     })
@@ -495,19 +560,9 @@ ${themeToggle(locale, true)}
 
       <main id="conteudo">
       <header id="top">
-        <div class="aurora" aria-hidden="true">
-          <span class="aurora-blob aurora-1"></span>
-          <span class="aurora-blob aurora-2"></span>
-          <span class="aurora-blob aurora-3"></span>
-        </div>
         <div class="banner">
           <p class="banner-ola">${esc(locale.hero.ola)}</p>
-          <h1 aria-label="Lucas Oliveira">${["Lucas", "Oliveira"]
-            .map(
-              (word, i) =>
-                `<span class="word" style="animation-delay:${(0.1 + i * 0.08).toFixed(2)}s" aria-hidden="true">${word}</span>`
-            )
-            .join(" ")}</h1>
+          <h1 aria-label="Lucas Oliveira">Lucas Oliveira</h1>
           <p class="banner-typing">
             ${esc(locale.hero.typedPrefix)}
             <span class="typewriter" id="typewriter">${esc(locale.hero.typedWords[0])}</span><span
@@ -522,26 +577,32 @@ ${themeToggle(locale, true)}
             <a class="ButtonCustom" href="#${ids.sobre}">${esc(locale.hero.ctaPrimario)}</a>
             <a class="ButtonSend outline banner-cta-secondary" href="#${ids.contato}">${esc(locale.hero.ctaSecundario)}</a>
           </div>
+          <p class="hero-meta">
+            <span>${esc(locale.hero.metaLocal)}</span>
+            <i>·</i>
+            <span>${esc(locale.hero.metaStatus)}</span>
+          </p>
         </div>
-        <img
-          class="hero-logo"
-          src="/assets/images/hero-logo.png"
-          alt=""
-          aria-hidden="true"
-          width="374"
-          height="479"
-          loading="lazy"
-          decoding="async"
-        />
+
+        <div class="hero-terminal" aria-hidden="true">
+          <div class="hero-terminal-bar">
+            <span></span><span></span><span></span>
+            <em>lucas@portfolio: ~</em>
+          </div>
+          <div class="hero-terminal-body">
+            <p><b>$</b> node build.mjs</p>
+            <p class="ok">✓ dist/</p>
+            <p><b>$</b> git push origin master</p>
+            <p class="ok">✓ deploy</p>
+          </div>
+        </div>
       </header>
 
 ${renderMarquee(locale.marquee)}
 
       <!-- Sobre -->
       <section class="sessao-sobre" id="${ids.sobre}">
-        <div class="sessao-header" data-anime="up">
-          <h2>${esc(locale.sobre.titulo)}</h2>
-        </div>
+${sectionHeader(1, locale.sobre.titulo)}
         <div class="bento">
           <div class="bento-item bento-bio" data-anime="up">
             <h3>${esc(locale.sobre.cargo)}</h3>
@@ -574,14 +635,16 @@ ${stats}
               ${icon("arrow-up-right", "btn-icon")}</a
             >
           </div>
+          <div class="bento-item bento-stack" data-anime="up">
+            <h3>${esc(locale.sobre.stackLabel)}</h3>
+            <p class="stack-value">${esc(locale.sobre.stackValue)}</p>
+          </div>
         </div>
       </section>
 
       <!-- Conhecimentos -->
       <section class="sessao-conhecimentos" id="${ids.conhecimentos}">
-        <div class="sessao-header" data-anime="up">
-          <h2>${esc(locale.conhecimentos.titulo)}</h2>
-        </div>
+${sectionHeader(2, locale.conhecimentos.titulo)}
         <div class="conhecimentos">
 ${renderSkills(locale)}
         </div>
@@ -589,9 +652,7 @@ ${renderSkills(locale)}
 
       <!-- Experiência -->
       <section class="sessao-experiencia" id="${ids.experiencia}">
-        <div class="sessao-header" data-anime="up">
-          <h2>${esc(locale.experiencia.titulo)}</h2>
-        </div>
+${sectionHeader(3, locale.experiencia.titulo)}
         <div class="timeline">
 ${renderTimeline(locale)}
         </div>
@@ -599,9 +660,7 @@ ${renderTimeline(locale)}
 
       <!-- Projetos -->
       <section class="sessao-projetos" id="${ids.projetos}">
-        <div class="sessao-header" data-anime="up">
-          <h2>${esc(locale.projetos.titulo)}</h2>
-        </div>
+${sectionHeader(4, locale.projetos.titulo)}
         <div class="filter-bar" role="group" aria-label="${esc(locale.aria.filtro)}">
 ${filtros}
         </div>

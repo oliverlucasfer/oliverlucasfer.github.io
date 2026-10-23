@@ -47,7 +47,9 @@
         "typedWords": ["Full Stack", "Mobile", "Flutter"],
         "desc": "anos construindo produtos web e mobile que estendem o ERP da Conceito Tecnologia, do banco de dados ao deploy em produção.",
         "ctaPrimario": "Conheça meu trabalho",
-        "ctaSecundario": "Fale comigo"
+        "ctaSecundario": "Fale comigo",
+        "metaLocal": "Barreiras, BA",
+        "metaStatus": "Disponível para conversar"
       },
       "marquee": [
         "ASP.NET Core", "Angular", "Flutter", "TypeScript", "PostgreSQL",
@@ -59,6 +61,8 @@
         "cargo": "Desenvolvedor Full Stack",
         "bioP1": "Sou desenvolvedor há cerca de 5 anos, com foco em aplicações web robustas usando <strong>ASP.NET Core</strong> no backend e <strong>Angular</strong> no frontend. Gosto de construir produtos de ponta a ponta, do banco de dados ao deploy em produção com containers e pipelines de CI/CD.",
         "bioP2": "Também atuo no desenvolvimento mobile com <strong>Flutter</strong>, criando apps multiplataforma (Android/iOS) integrados aos sistemas da empresa.",
+        "stackLabel": "Stack atual",
+        "stackValue": ".NET · Angular · Flutter · PostgreSQL",
         "stats": [
           { "target": "anos", "label": "anos de experiência" },
           { "target": "projetos", "label": "projetos no portfólio" },
@@ -72,7 +76,9 @@
         }
       },
       "conhecimentos": {
-        "titulo": "Conhecimentos"
+        "titulo": "Conhecimentos",
+        "comoUso": "Como uso",
+        "ondeAparece": "Onde aparece"
       },
       "experiencia": {
         "titulo": "Experiência",
@@ -130,6 +136,16 @@
       "contato": {
         "titulo": "Contato",
         "intro": "Vamos conversar? Ficarei feliz em responder.",
+        "copyEmail": "Copiar e-mail",
+        "copied": "E-mail copiado",
+        "copyError": "Não foi possível copiar",
+        "openEmail": "Abrir no meu e-mail",
+        "mailSubject": "Contato pelo portfólio",
+        "mailBody": "Olá, Lucas! Vi seu portfólio e gostaria de conversar sobre...",
+        "channels": "Canais",
+        "emailLabel": "E-mail",
+        "linkedinLabel": "LinkedIn",
+        "githubLabel": "GitHub",
         "form": {
           "nome": "Seu nome",
           "email": "Seu e-mail",
@@ -210,7 +226,9 @@
         "typedWords": ["Full Stack", "Mobile", "Flutter"],
         "desc": "years building web and mobile products that extend Conceito Tecnologia's ERP, from database to production deployment.",
         "ctaPrimario": "Check out my work",
-        "ctaSecundario": "Get in touch"
+        "ctaSecundario": "Get in touch",
+        "metaLocal": "Barreiras, BA",
+        "metaStatus": "Open to a conversation"
       },
       "marquee": [
         "ASP.NET Core", "Angular", "Flutter", "TypeScript", "PostgreSQL",
@@ -222,6 +240,8 @@
         "cargo": "Full Stack Developer",
         "bioP1": "I've been a developer for about 5 years, focused on robust web applications using <strong>ASP.NET Core</strong> on the backend and <strong>Angular</strong> on the frontend. I enjoy building products end to end, from the database to production deployment with containers and CI/CD pipelines.",
         "bioP2": "I also work with mobile development using <strong>Flutter</strong>, creating cross-platform apps (Android/iOS) integrated with the company's systems.",
+        "stackLabel": "Current stack",
+        "stackValue": ".NET · Angular · Flutter · PostgreSQL",
         "stats": [
           { "target": "anos", "label": "years of experience" },
           { "target": "projetos", "label": "projects in this portfolio" },
@@ -235,7 +255,9 @@
         }
       },
       "conhecimentos": {
-        "titulo": "Skills"
+        "titulo": "Skills",
+        "comoUso": "How I use",
+        "ondeAparece": "Where it appears"
       },
       "experiencia": {
         "titulo": "Experience",
@@ -293,6 +315,16 @@
       "contato": {
         "titulo": "Contact",
         "intro": "Let's talk? I'll be glad to hear from you.",
+        "copyEmail": "Copy email",
+        "copied": "Email copied",
+        "copyError": "Couldn't copy",
+        "openEmail": "Open in email",
+        "mailSubject": "Portfolio contact",
+        "mailBody": "Hi Lucas! I saw your portfolio and would like to talk about...",
+        "channels": "Channels",
+        "emailLabel": "Email",
+        "linkedinLabel": "LinkedIn",
+        "githubLabel": "GitHub",
         "form": {
           "nome": "Your name",
           "email": "Your e-mail",

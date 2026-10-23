@@ -4,10 +4,24 @@
       "id": "backend",
       "icon": "dotnet",
       "nome": { "pt": "Backend", "en": "Backend" },
+      "kicker": { "pt": "APIs · dados · testes", "en": "APIs · data · tests" },
       "descricao": {
         "pt": "APIs REST, ORMs, bancos SQL/NoSQL e testes",
         "en": "REST APIs, ORMs, SQL/NoSQL databases and testing"
       },
+      "comoUso": {
+        "pt": [
+          "APIs REST com autenticação JWT/OAuth e organização em camadas.",
+          "EF Core/Dapper, modelagem PostgreSQL/Firebird e busca com Solr.",
+          "Testes com xUnit e integração contínua."
+        ],
+        "en": [
+          "REST APIs with JWT/OAuth authentication and layered organization.",
+          "EF Core/Dapper, PostgreSQL/Firebird modeling and Solr search.",
+          "Testing with xUnit and continuous integration."
+        ]
+      },
+      "ondeAparece": ["cimobile-web", "cidash", "prodocs", "smartschool"],
       "itens": [
         { "nome": "C# / .NET", "icon": "dotnet" },
         { "nome": "REST APIs", "icon": "code" },
@@ -24,10 +38,24 @@
       "id": "frontend",
       "icon": "angular",
       "nome": { "pt": "Frontend", "en": "Frontend" },
+      "kicker": { "pt": "SPAs · estado · UI", "en": "SPAs · state · UI" },
       "descricao": {
         "pt": "SPAs com Angular e ecossistema moderno",
         "en": "SPAs with Angular and the modern ecosystem"
       },
+      "comoUso": {
+        "pt": [
+          "SPAs Angular com RxJS e estado (NgRx/Akita/Elf).",
+          "Tailwind e Angular Material para interfaces responsivas.",
+          "Consumo de APIs, formulários e componentes acessíveis."
+        ],
+        "en": [
+          "Angular SPAs with RxJS and state (NgRx/Akita/Elf).",
+          "Tailwind and Angular Material for responsive interfaces.",
+          "API consumption, forms and accessible components."
+        ]
+      },
+      "ondeAparece": ["cimobile-web", "cidash", "cipdv", "catalogo-filmes"],
       "itens": [
         { "nome": "Angular 2+", "icon": "angular" },
         { "nome": "TypeScript", "icon": "typescript" },
@@ -42,10 +70,24 @@
       "id": "devops",
       "icon": "docker",
       "nome": { "pt": "DevOps", "en": "DevOps" },
+      "kicker": { "pt": "containers · CI/CD", "en": "containers · CI/CD" },
       "descricao": {
         "pt": "Containers, pipelines de CI/CD e versionamento",
         "en": "Containers, CI/CD pipelines and versioning"
       },
+      "comoUso": {
+        "pt": [
+          "Docker para ambientes reproduzíveis.",
+          "Pipelines GitHub Actions/Jenkins, do build ao deploy.",
+          "Versionamento e revisão com Git/GitHub."
+        ],
+        "en": [
+          "Docker for reproducible environments.",
+          "GitHub Actions/Jenkins pipelines, from build to deploy.",
+          "Versioning and review with Git/GitHub."
+        ]
+      },
+      "ondeAparece": ["prodocs", "cimobile-web", "minhas-listas"],
       "itens": [
         { "nome": "Git & GitHub", "icon": "git" },
         { "nome": "Docker", "icon": "docker" },
@@ -57,10 +99,24 @@
       "id": "mobile",
       "icon": "flutter",
       "nome": { "pt": "Mobile", "en": "Mobile" },
+      "kicker": { "pt": "Android · iOS", "en": "Android · iOS" },
       "descricao": {
         "pt": "Apps cross-platform com Flutter e Firebase",
         "en": "Cross-platform apps with Flutter and Firebase"
       },
+      "comoUso": {
+        "pt": [
+          "Apps Flutter/Dart para Android e iOS.",
+          "Drift/SQLite offline-first e persistência local.",
+          "Firebase e integrações com APIs."
+        ],
+        "en": [
+          "Flutter/Dart apps for Android and iOS.",
+          "Drift/SQLite offline-first and local persistence.",
+          "Firebase and API integrations."
+        ]
+      },
+      "ondeAparece": ["minhas-listas", "cimobile-app", "ciself-checkout"],
       "itens": [
         { "nome": "Flutter", "icon": "flutter" },
         { "nome": "Dart", "icon": "dart" },
